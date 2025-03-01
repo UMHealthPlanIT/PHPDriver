@@ -1,0 +1,3 @@
+﻿function SetDateFormat() {
+    $(".datefield").datepicker();
+}
