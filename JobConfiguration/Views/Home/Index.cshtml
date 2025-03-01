@@ -1,0 +1,106 @@
+﻿@model JobConfiguration.Models.FoundTableDetails
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="modal fade" id="boardModal" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog notes" style="width:1500px">
+        <div class="modal-content" id="boardData" style="margin-bottom:0px;">
+            <div style="margin-left:15px;margin-right:15px;">
+                <button type="button" class="btn btn-light closeButton" onclick="$('#boardModal').modal('hide');">&#10006;</button>
+                <h2>Supporting Information Confirmation</h2>
+                <div>
+                    <p>By accessing this table you have acknowledged that you have read the supporting information provided for this table</p>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div style="text-align:center;margin-top:-1.5%;">
+
+            <a class="btn btn-success" id="continue" href="">Continue</a>
+            <a class="btn btn-success" id="supporting" href="" target="_blank">Supporting Information</a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h1 style="color: mediumseagreen;">Job Configuration</h1>
+    </div>
+</div>
+
+<div class="row" role="main">
+    <div class="col-xs-12">
+        <table class="table table-hover" id="table1">
+            <thead style="background-color: mediumseagreen; color: white;">
+                <tr>
+                    <th>
+                        Table Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Supporting Information
+                    </th>
+                </tr>
+            </thead>
+            @foreach (System.Data.DataRow configTab in Model.TableData.Rows)
+            {
+                string x = configTab[0].ToString();
+            <tr id="@x" style="cursor:pointer">
+                <td onclick="ReadReminder(@x, '@configTab[3].ToString()','@Url.Action("TableSelect", "Home", new { TableName = x })','@configTab[2].ToString()')" style="font-weight:bold;color:green">@x</td>
+                <td onclick="ReadReminder(@x, '@configTab[3].ToString()','@Url.Action("TableSelect", "Home", new { TableName = x })','@configTab[2].ToString()')">@configTab[1].ToString()</td>
+                <td>
+                    @if (@configTab[2].ToString() != "")
+                    {
+                        if (@configTab[2].ToString().Contains("https"))
+                        {
+                            <a href="@configTab[2].ToString()" target="_blank">Knowledge Article</a>
+                        }
+                        else
+                        {
+                            @configTab[2].ToString()
+                        }
+
+                    }
+
+
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        // Initialize DataTable
+        var table = $('#table1').DataTable({
+            "dom": '<"top"l>rt<"bottom"ip>',
+            "lengthMenu": [[100, 50, 25, 10, -1],[100, 50, 25, 10, "All"]]
+        });
+
+        // Adds our custom search element, with default DataTable search behavior
+        $('#table1_length').after('<input id="customSearch" type="search" class="jobSearchBox2" placeholder="Search Table" />');
+        $("#customSearch").on('keyup', function () {
+            table.search(this.value).draw();
+        });
+
+    });
+
+    function ReadReminder(tableName, check, tableLink, supportingLink) {
+        if (check === "True") {
+            $('#boardModal').modal('show');
+            $('#continue').attr("href", tableLink);
+            $('#supporting').attr("href", supportingLink);
+        } else {
+            window.location.href = tableLink;
+        }
+    }
+</script>

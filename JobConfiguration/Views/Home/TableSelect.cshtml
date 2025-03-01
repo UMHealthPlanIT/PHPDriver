@@ -1,0 +1,99 @@
+﻿@model JobConfiguration.Models.FoundTableDetails
+
+@{
+    ViewBag.Title = "TableSelect";
+    ViewBag.TableName = Model.TableName;
+}
+
+<div class="row">
+    <div class="col-xs-2 col-xs-offset-1">
+        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary", @role = "button", @style = "width: 75%; font-weight: bold; margin-top: 15px;" })
+    </div>
+    <div class="col-xs-6 text-center">
+        <h2 style="color: mediumseagreen;">@Model.TableName</h2>
+    </div>
+    <div class="col-xs-2">
+        @Html.ActionLink("Create New", "Create", new { TableName = Model.TableName }, new { @class = "btn btn-primary pull-right", @role = "button", @style = "width: 75%; font-weight: bold; margin-top: 15px;" })
+    </div>
+    <div class="col-xs-8 col-xs-offset-2 text-center">
+        @Model.TableDescription
+    </div>
+</div>
+
+@if (Model.SupportingInformation != "")
+{
+    <div class="row" style="justify-content: center;display: flex;">
+        <button class="btn btn-primary" style="width: 10%; font-weight: bold; margin-top: 15px;">
+            <a href="@Model.SupportingInformation" style="color:white;text-decoration:none;" target="_blank">Supporting Information</a>
+        </button>
+    </div>
+}
+
+
+@if (Model.bulkUpdateAllowed)
+{
+    <div id="bulkDiv" class="hidden" style="display: inline;">
+        @Html.ActionLink("Download Table", "Download", new { controller = "BulkUpdate", TableName = Model.TableName }, new { @class = "btn btn-primary pull-right", @role = "button", @style = "font-weight: bold; margin-left: 15px;" })
+        <a class="btn btn-primary pull-right" href="@Url.Action("Index", "BulkUpdate")?TableName=@Model.TableName" role="button" style="font-weight: bold;">Bulk Update</a>
+    </div>
+}
+
+<div class="row" role="main">
+    <div class="col-xs-12">
+        <table class="table table-striped table-condensed" id="table1" style="width: 100%;">
+            <thead style="background-color: mediumseagreen;">
+                <tr id="customTableFilter" style="display: none; color: black;">
+                    <th> </th>
+
+                    @{
+                        int idColIndex = -1;
+
+                        foreach (System.Data.DataColumn header in Model.TableData.Columns)
+                        {
+                            if (header.ColumnName.Equals(Model.IdColumn))
+                            {
+                                idColIndex = Model.TableData.Columns.IndexOf(header);
+                            }
+                            else if (!header.ColumnName.Equals("KeySelectors"))
+                            {
+                                <th class="filter-select">@header.ColumnName</th>
+                            }
+                        }
+                    }
+                </tr>
+                <tr style="color: white;">
+                    <th>Action</th>
+
+                    @{
+                        foreach (System.Data.DataColumn header in Model.TableData.Columns)
+                        {
+                            if (!header.ColumnName.Equals("KeySelectors") && !header.ColumnName.Equals(Model.IdColumn))
+                            {
+                                <th>@header.ColumnName</th>
+                            }
+                        }
+                    }
+                </tr>
+            </thead>
+
+            @foreach (System.Data.DataRow item in Model.TableData.Rows)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @Html.ActionLink("Edit", "Edit", new { TableName = Model.TableName, KeySelector = item["KeySelectors"].ToString() }, new { @class = "btn btn-default btn-block btn-xs glyphicon glyphicon-edit" })
+                        @Html.ActionLink("Delete", "Delete", new { TableName = Model.TableName, KeySelector = item["KeySelectors"].ToString() }, new { @class = "btn btn-default btn-block btn-xs glyphicon glyphicon-remove" })
+                    </td>
+                    @for (int i = 0; i < Model.TableData.Columns.Count - 1; i++)
+                    {
+                        if (i != idColIndex)
+                        {
+                            <td>@item[i]</td>
+                        }
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/Custom/JobConfig.js")

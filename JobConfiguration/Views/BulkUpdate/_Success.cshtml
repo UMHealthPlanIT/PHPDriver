@@ -1,0 +1,16 @@
+﻿<div id="successDiv" class="well div-step">
+    <p style="font-size: 1.5em; font-weight: bold; color: #165D46;">
+        Success
+    </p>
+    <p>
+        The data you provided was successfully loaded into the table! Please click Continue below to be taken back to the table details page.
+    </p>
+</div>
+
+<hr />
+
+<div class="row" role="navigation">
+    <div class="col-xs-5 col-xs-offset-7 col-lg-4 col-lg-offset-8">
+        @Html.ActionLink("Continue", "TableSelect", "Home", new { TableName = Model.tableName}, new { @class = "btn btn-block btn-success" })
+    </div>
+</div>

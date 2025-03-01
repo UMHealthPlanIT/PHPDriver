@@ -1,0 +1,99 @@
+﻿@using (Html.BeginForm("Upload", "BulkUpdate", FormMethod.Post, new { @id = "uploadForm", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="step4Div" class="well div-step">
+        @{
+            if (Model.errorMessage != null && !Model.errorMessage.Equals(""))
+            {
+                <div id="errorDiv" class="alert alert-danger">
+                    <p>@Model.errorMessage</p>
+                    <p>Please fix the error(s) and upload the file again. Note: If the error specifies a row that doesn't exist (too large), delete the first blank row on your spreadsheet and try again.</p>
+                </div>
+            }
+        }
+        <p style="font-size: 1.5em; font-weight: bold; color: #165D46;">
+            Step 4 : Upload
+        </p>
+        <p>
+            Select a file by clicking 'Choose File' below. Once you've selected the correct file, click the
+            Continue button to upload it and begin the table update.
+        </p>
+        <div class="form-group text-center" style="margin-top: 50px;">
+            <button type="button" class="btn btn-primary file-select">Choose File</button>
+            <input type="text" class="form-control file-select" placeholder="No file chosen" style="display: inline;" readonly />
+            @Html.Editor("fileUpload", new { htmlAttributes = new { @class = "form-control", @type = "file", @accept = ".xlsx", @style = "display: none;" } })
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row" role="navigation">
+        <div class="col-xs-5 col-lg-4">
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-block btn-danger">Cancel</a>
+        </div>
+        <div class="col-xs-5 col-xs-offset-2 col-lg-4 col-lg-offset-4">
+            <a id="finish" class="btn btn-success btn-block disabled" data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#submitFileModal">Continue</a>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+
+        var uploadBtn = $('#finish');
+        var hiddenFileInput = $('#fileUpload');
+        var form = $('#uploadForm');
+
+        $('.file-select').click(function () {
+
+            hiddenFileInput.click();
+
+        });
+
+        hiddenFileInput.change(function () {
+
+            var excelFileExt = new RegExp('.*\.xlsx');
+            var val = this.value;
+
+            if (excelFileExt.test(val)) {
+                uploadBtn.removeClass('disabled');
+            } else {
+                uploadBtn.addClass('disabled');
+            }
+
+            $('input.file-select').val(val);
+
+        });
+
+        form.submit(function (e) {
+            e.preventDefault();
+
+            if (hiddenFileInput[0].files.length == 1) {
+                var formData = new FormData();
+                formData.append(hiddenFileInput[0].files[0].name, hiddenFileInput[0].files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    url: "@Url.Action("Upload", "BulkUpdate")",
+                    success: function (data) {
+                        $('#stepContent').html(data);
+                        $('#submitFileModal').modal('hide');
+                    }
+                });
+            }
+        });
+
+        uploadBtn.click(function () {
+
+            if (!$(this).hasClass('disabled')) {
+                form.submit();
+            }
+
+        });
+
+    });
+</script>

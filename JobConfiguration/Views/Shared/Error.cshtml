@@ -1,0 +1,22 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2 class="text-danger text-center">An error occurred while processing your request.</h2>
+
+<h4 class="text-danger text-center">If this issue keeps occuring, please submit a ticket to the helpdesk.</h4>
+
+<hr />
+
+<div class="row">
+    <div class="alert alert-danger col-xs-8 col-xs-offset-2">
+        <h4 class="text-danger">Error Message: @ViewBag.ErrorMessage</h4>
+        <button data-toggle="collapse" data-target="#errorText">Click me for more info</button>
+        <div id="errorText" class="collapse" style="margin-top:10px;">
+            <h4 class="text-danger">Error Stacktrace:</h4>
+            <h4 class="text-danger">@ViewBag.ErrorStackTrace</h4>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿<div id="step1Div" class="well div-step">
+    @{
+        if (Model.errorMessage != null && !Model.errorMessage.Equals(""))
+        {
+            <div id="errorDiv" class="alert alert-danger">
+                @Model.errorMessage
+            </div>
+        }
+    }
+    <p style="font-size: 1.5em; font-weight: bold; color: #165D46;">
+        Information
+    </p>
+    <p>
+        This feature allows you to easily make a large amount of changes to this table. You will be asked
+        to download an Excel file that contains all the data in this table. Once you download the provided
+        file, you may add/modify/delete any amount of records you want. When you're finished editing the
+        file, you will be asked to upload your updated file. This will automatically make the changes to
+        the table that you have specified.
+    </p>
+    <p>
+        Please note, using this feature will clear the contents of the table and replace them with the data
+        contained in the Excel spreadsheet that you upload, so it is important that you follow the steps. It is
+        also important that you keep in mind the data types and/or specified values that a column may contain.
+        If there are any errors, you will be notified and the table will remain unchanged until you correct them.
+    </p>
+</div>
+
+<hr />
+
+<div class="row" role="navigation">
+    <div class="col-xs-5 col-lg-4">
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-block btn-danger">Cancel</a>
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 col-lg-4 col-lg-offset-4">
+        @Ajax.ActionLink("Continue", "Continue", "BulkUpdateController", new AjaxOptions
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "stepContent",
+                OnSuccess = "initializeProgBar(" + (Model.currentStep + 1) + ");",
+            }, new { @id = "continue", @class = ("btn btn-block btn-success") })
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        initializeProgBar(@Model.currentStep);
+    });
+
+</script>

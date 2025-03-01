@@ -1,0 +1,76 @@
+﻿.jc-progbar {
+    margin: 50px 0 50px 0 !important;
+    padding: 0 20px 0 20px;
+}
+
+    .jc-progbar > .jc-progbar-step {
+        padding: 0;
+    }
+
+        .jc-progbar > .jc-progbar-step > .jc-progbar-step-title {
+            text-align: center;
+            font-size: 1.2em;
+            position: relative;
+            top: -2em;
+        }
+
+        .jc-progbar > .jc-progbar-step > .jc-progbar-dot {
+            height: 2.6em;
+            width: 2.6em;
+            border-radius: 50%;
+            border: .6em solid #9DC43B;
+            background-color: #165D46;
+            position: absolute;
+            top: 50%;
+            margin-top: -1.3em;
+            left: 50%;
+            margin-left: -1.3em;
+            z-index: 1;
+        }
+
+        .jc-progbar > .jc-progbar-step > .jc-progbar-bar {
+            height: .8em;
+            width: 100%;
+            background-color: #9DC43B;
+            position: absolute;
+            top: 50%;
+            margin-top: -.4em;
+            z-index: 0;
+        }
+
+        .jc-progbar > .jc-progbar-step > .jc-progbar-staticbar {
+            height: .8em;
+            width: 100%;
+            background-color: lightgray;
+            position: absolute;
+            top: 50%;
+            margin-top: -.4em;
+        }
+
+        .jc-progbar > .jc-progbar-step:first-child > .jc-progbar-bar,
+        .jc-progbar > .jc-progbar-step:first-child > .jc-progbar-staticbar {
+            width: 50%;
+            left: 50%;
+        }
+
+        .jc-progbar > .jc-progbar-step:last-child > .jc-progbar-bar,
+        .jc-progbar > .jc-progbar-step:last-child > .jc-progbar-staticbar,
+        .jc-progbar > .jc-progbar-step.jc-active > .jc-progbar-bar {
+            width: 51%;
+            right: 51%;
+        }
+
+        .jc-progbar > .jc-progbar-step.jc-active > .jc-progbar-step-title {
+            font-weight: bold;
+            color: #165D46;
+        }
+
+        .jc-progbar > .jc-progbar-step.jc-disabled > .jc-progbar-dot,
+        .jc-progbar > .jc-progbar-step.jc-disabled > .jc-progbar-bar {
+            background-color: lightgray;
+            border-color: lightgray;
+        }
+
+        .jc-progbar > .jc-progbar-step:first-child.jc-active > .jc-progbar-bar {
+            background-color: lightgray;
+        }

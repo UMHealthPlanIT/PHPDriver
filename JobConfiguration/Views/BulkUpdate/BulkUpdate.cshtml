@@ -1,0 +1,82 @@
+﻿@model JobConfiguration.Models.BulkUpdateTable
+
+@{
+    ViewBag.Title = "Bulk Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/JobConfig-Progress-Bar.css")
+@Styles.Render("~/Content/Spinner.css")
+
+<div class="row text-center">
+    <div class="col-xs-12" style="margin: 20px 0 20px 0;">
+        <h2 style="color:mediumseagreen;">Bulk Update - @Model.tableName</h2>
+    </div>
+</div>
+
+<hr />
+
+@Html.Hidden("progressBarStep", Model.currentStep)
+
+<div class="row">
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+        <div class="row jc-progbar">
+            <div class="col-xs-3 jc-progbar-step jc-active">
+                <div class="jc-progbar-step-title">Step 1: Information</div>
+                <div class="jc-progbar-dot"></div>
+                <div class="jc-progbar-staticbar"></div>
+                <div class="jc-progbar-bar"></div>
+            </div>
+            <div class="col-xs-3 jc-progbar-step jc-disabled">
+                <div class="jc-progbar-step-title">Step 2: Download</div>
+                <div class="jc-progbar-dot"></div>
+                <div class="jc-progbar-staticbar"></div>
+                <div class="jc-progbar-bar"></div>
+            </div>
+            <div class="col-xs-3 jc-progbar-step jc-disabled">
+                <div class="jc-progbar-step-title">Step 3: Modify</div>
+                <div class="jc-progbar-dot"></div>
+                <div class="jc-progbar-staticbar"></div>
+                <div class="jc-progbar-bar"></div>
+            </div>
+            <div class="col-xs-3 jc-progbar-step jc-disabled">
+                <div class="jc-progbar-step-title">Step 4: Upload</div>
+                <div class="jc-progbar-dot"></div>
+                <div class="jc-progbar-staticbar"></div>
+                <div class="jc-progbar-bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-xs-offset-0 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <div id="stepContent">
+                    @RenderPage("_Information.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="submitFileModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="top: 30%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #005C46; color: white;">
+                <h4 class="modal-title text-center">Updating Table</h4>
+            </div>
+            <div class="modal-body text-center">
+                <p>
+                    Please wait while we update the table with the requested changes.
+                </p>
+                @RenderPage("~/Views/Shared/_Spinner.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/Scripts/JobConfig-Progress-Bar.js")
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")

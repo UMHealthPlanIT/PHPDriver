@@ -1,0 +1,43 @@
+﻿<div id="step2Div" class="well div-step">
+    @{
+        if (Model.errorMessage != null && !Model.errorMessage.Equals(""))
+        {
+            <div id="errorDiv" class="alert alert-danger">
+                @Model.errorMessage
+            </div>
+        }
+    }
+    <p style="font-size: 1.5em; font-weight: bold; color: #165D46;">
+        Step 2 : Download
+    </p>
+    <p>
+        Your Excel spreadsheet is ready! Please click the download button below to download your file, then
+        click continue for information on the next step.
+    </p>
+    <div class="text-center" style="margin-top: 50px;">
+        @Html.ActionLink("Download", "Download", new { controller = "BulkUpdate", tableName = Model.tableName }, new { @class = "btn btn-primary download-btn", @role = "button"})
+    </div>
+</div>
+
+<hr />
+
+<div class="row" role="navigation">
+    <div class="col-xs-5 col-lg-4">
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-block btn-danger">Cancel</a>
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 col-lg-4 col-lg-offset-4">
+        @Ajax.ActionLink("Continue", "Continue", "BulkUpdateController", new AjaxOptions
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "stepContent",
+                OnSuccess = "initializeProgBar(" + (Model.currentStep + 1) + ");",
+            }, new { @id = "continue", @class = ("btn btn-block btn-success disabled") })
+    </div>
+</div>
+
+<script>
+    $('.download-btn').click(function () {
+        $('#continue').removeClass('disabled');
+    });
+</script>

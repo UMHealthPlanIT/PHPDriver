@@ -1,0 +1,23 @@
+﻿<div id="navigation">
+    <div class="navbar navbar-sparrow navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="logo-div"></div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <div id="links-div"></div>
+                <div id="search-div" class="col-sm-3 col-md-3">
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p class="nav navbar-text navbar-right" style="display:inline;">Hello, @User.Identity.Name</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
