@@ -1,0 +1,3452 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.8": {
+      "Cronos/0.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.0.0"
+        },
+        "compile": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotNetZip/1.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        }
+      },
+      "FastMember.Signed/1.1.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net40/FastMember.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FastMember.Signed.dll": {}
+        }
+      },
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets": {}
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.60.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Drawing",
+          "System.IdentityModel",
+          "System.Net.Http",
+          "System.Windows.Forms",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.8.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
+      "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.SharePoint.Client/14.0.4762.1000": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OctoPack/3.6.1": {
+        "type": "package",
+        "build": {
+          "build/OctoPack.targets": {}
+        }
+      },
+      "PDFsharp/1.50.5147": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net20/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SevenZipBinaryLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        }
+      },
+      "Squid-Box.SevenZipSharp/1.6.2.24": {
+        "type": "package",
+        "compile": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SSH.NET/2023.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.8.0",
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.FileSystem.Primitives/4.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem.Primitives": "4.0.1"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.Packaging.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.Packaging.dll": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PHPUtilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "DotNetZip": "1.16.0",
+          "FastMember.Signed": "1.1.0",
+          "Microsoft.Exchange.WebServices": "2.2.0",
+          "Microsoft.Identity.Client": "4.60.3",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1000",
+          "Microsoft.Office.Interop.Outlook": "15.0.4420.1017",
+          "Microsoft.PowerShell.5.ReferenceAssemblies": "1.1.0",
+          "Microsoft.SharePoint.Client": "14.0.4762.1000",
+          "Newtonsoft.Json": "13.0.3",
+          "PDFsharp": "1.50.5147",
+          "RestSharpSigned": "105.2.3",
+          "SSH.NET": "2023.0.0",
+          "SevenZipBinaryLib": "1.0.0",
+          "Squid-Box.SevenZipSharp": "1.6.2.24",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
+        },
+        "compile": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win": {
+      "Cronos/0.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.0.0"
+        },
+        "compile": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotNetZip/1.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        }
+      },
+      "FastMember.Signed/1.1.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net40/FastMember.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FastMember.Signed.dll": {}
+        }
+      },
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets": {}
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.60.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Drawing",
+          "System.IdentityModel",
+          "System.Net.Http",
+          "System.Windows.Forms",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.8.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
+      "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.SharePoint.Client/14.0.4762.1000": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OctoPack/3.6.1": {
+        "type": "package",
+        "build": {
+          "build/OctoPack.targets": {}
+        }
+      },
+      "PDFsharp/1.50.5147": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net20/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SevenZipBinaryLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        }
+      },
+      "Squid-Box.SevenZipSharp/1.6.2.24": {
+        "type": "package",
+        "compile": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SSH.NET/2023.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.8.0",
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.FileSystem.Primitives/4.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem.Primitives": "4.0.1"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.Packaging.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.Packaging.dll": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PHPUtilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "DotNetZip": "1.16.0",
+          "FastMember.Signed": "1.1.0",
+          "Microsoft.Exchange.WebServices": "2.2.0",
+          "Microsoft.Identity.Client": "4.60.3",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1000",
+          "Microsoft.Office.Interop.Outlook": "15.0.4420.1017",
+          "Microsoft.PowerShell.5.ReferenceAssemblies": "1.1.0",
+          "Microsoft.SharePoint.Client": "14.0.4762.1000",
+          "Newtonsoft.Json": "13.0.3",
+          "PDFsharp": "1.50.5147",
+          "RestSharpSigned": "105.2.3",
+          "SSH.NET": "2023.0.0",
+          "SevenZipBinaryLib": "1.0.0",
+          "Squid-Box.SevenZipSharp": "1.6.2.24",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
+        },
+        "compile": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-arm64": {
+      "Cronos/0.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.0.0"
+        },
+        "compile": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotNetZip/1.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        }
+      },
+      "FastMember.Signed/1.1.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net40/FastMember.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FastMember.Signed.dll": {}
+        }
+      },
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets": {}
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.60.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Drawing",
+          "System.IdentityModel",
+          "System.Net.Http",
+          "System.Windows.Forms",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.8.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
+      "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.SharePoint.Client/14.0.4762.1000": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OctoPack/3.6.1": {
+        "type": "package",
+        "build": {
+          "build/OctoPack.targets": {}
+        }
+      },
+      "PDFsharp/1.50.5147": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net20/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SevenZipBinaryLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        }
+      },
+      "Squid-Box.SevenZipSharp/1.6.2.24": {
+        "type": "package",
+        "compile": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SSH.NET/2023.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.8.0",
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.FileSystem.Primitives/4.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem.Primitives": "4.0.1"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.Packaging.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.Packaging.dll": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PHPUtilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "DotNetZip": "1.16.0",
+          "FastMember.Signed": "1.1.0",
+          "Microsoft.Exchange.WebServices": "2.2.0",
+          "Microsoft.Identity.Client": "4.60.3",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1000",
+          "Microsoft.Office.Interop.Outlook": "15.0.4420.1017",
+          "Microsoft.PowerShell.5.ReferenceAssemblies": "1.1.0",
+          "Microsoft.SharePoint.Client": "14.0.4762.1000",
+          "Newtonsoft.Json": "13.0.3",
+          "PDFsharp": "1.50.5147",
+          "RestSharpSigned": "105.2.3",
+          "SSH.NET": "2023.0.0",
+          "SevenZipBinaryLib": "1.0.0",
+          "Squid-Box.SevenZipSharp": "1.6.2.24",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
+        },
+        "compile": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x64": {
+      "Cronos/0.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.0.0"
+        },
+        "compile": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotNetZip/1.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        }
+      },
+      "FastMember.Signed/1.1.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net40/FastMember.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FastMember.Signed.dll": {}
+        }
+      },
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets": {}
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.60.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Drawing",
+          "System.IdentityModel",
+          "System.Net.Http",
+          "System.Windows.Forms",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.8.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
+      "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.SharePoint.Client/14.0.4762.1000": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OctoPack/3.6.1": {
+        "type": "package",
+        "build": {
+          "build/OctoPack.targets": {}
+        }
+      },
+      "PDFsharp/1.50.5147": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net20/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SevenZipBinaryLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        }
+      },
+      "Squid-Box.SevenZipSharp/1.6.2.24": {
+        "type": "package",
+        "compile": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SSH.NET/2023.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.8.0",
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.FileSystem.Primitives/4.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem.Primitives": "4.0.1"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.Packaging.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.Packaging.dll": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PHPUtilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "DotNetZip": "1.16.0",
+          "FastMember.Signed": "1.1.0",
+          "Microsoft.Exchange.WebServices": "2.2.0",
+          "Microsoft.Identity.Client": "4.60.3",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1000",
+          "Microsoft.Office.Interop.Outlook": "15.0.4420.1017",
+          "Microsoft.PowerShell.5.ReferenceAssemblies": "1.1.0",
+          "Microsoft.SharePoint.Client": "14.0.4762.1000",
+          "Newtonsoft.Json": "13.0.3",
+          "PDFsharp": "1.50.5147",
+          "RestSharpSigned": "105.2.3",
+          "SSH.NET": "2023.0.0",
+          "SevenZipBinaryLib": "1.0.0",
+          "Squid-Box.SevenZipSharp": "1.6.2.24",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
+        },
+        "compile": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x86": {
+      "Cronos/0.7.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Cronos.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/2.7.2": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.Packaging": "4.0.0"
+        },
+        "compile": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/DocumentFormat.OpenXml.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DotNetZip/1.16.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/DotNetZip.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "related": ".SqlServer.xml;.xml"
+          }
+        }
+      },
+      "FastMember.Signed/1.1.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Data"
+        ],
+        "compile": {
+          "lib/net40/FastMember.Signed.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FastMember.Signed.dll": {}
+        }
+      },
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets": {}
+        }
+      },
+      "Microsoft.Exchange.WebServices/2.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/40/Microsoft.Exchange.WebServices.Auth.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/40/Microsoft.Exchange.WebServices.dll": {
+            "related": ".Auth.pdb;.Auth.xml;.pdb;.xml"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.60.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.1"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core",
+          "System.Data",
+          "System.Data.DataSetExtensions",
+          "System.Drawing",
+          "System.IdentityModel",
+          "System.Net.Http",
+          "System.Windows.Forms",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Microsoft.Identity.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "type": "package",
+        "compile": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/Microsoft.IdentityModel.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.8.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/Microsoft.IdentityModel.Tokens.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Excel.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Outlook.dll": {}
+        }
+      },
+      "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net4/System.Management.Automation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.SharePoint.Client/14.0.4762.1000": {
+        "type": "package",
+        "compile": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        },
+        "runtime": {
+          "lib/Microsoft.SharePoint.Client.Runtime.dll": {},
+          "lib/Microsoft.SharePoint.Client.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "OctoPack/3.6.1": {
+        "type": "package",
+        "build": {
+          "build/OctoPack.targets": {}
+        }
+      },
+      "PDFsharp/1.50.5147": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Drawing"
+        ],
+        "compile": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net20/PdfSharp.Charting.dll": {
+            "related": ".xml"
+          },
+          "lib/net20/PdfSharp.dll": {
+            "related": ".Charting.xml;.xml"
+          }
+        },
+        "resource": {
+          "lib/net20/de/PdfSharp.Charting.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net20/de/PdfSharp.resources.dll": {
+            "locale": "de"
+          }
+        }
+      },
+      "RestSharpSigned/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/RestSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "SevenZipBinaryLib/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/7z.dll": {},
+          "lib/netstandard2.0/SevenZipBinaryLib.dll": {}
+        }
+      },
+      "Squid-Box.SevenZipSharp/1.6.2.24": {
+        "type": "package",
+        "compile": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net472/SevenZipSharp.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "SSH.NET/2023.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net462/Renci.SshNet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net45/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Buffers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.8.0",
+          "Microsoft.IdentityModel.Tokens": "6.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.IdentityModel.Tokens.Jwt.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.IO.FileSystem.Primitives/4.0.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.FileSystem.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem.Primitives": "4.0.1"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.IO.Packaging.dll": {}
+        },
+        "runtime": {
+          "lib/net46/System.IO.Packaging.dll": {}
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Numerics.Vectors": "4.5.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.3"
+        },
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Numerics",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net46/System.Numerics.Vectors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net461/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "PHPUtilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.7.2",
+          "DotNetZip": "1.16.0",
+          "FastMember.Signed": "1.1.0",
+          "Microsoft.Exchange.WebServices": "2.2.0",
+          "Microsoft.Identity.Client": "4.60.3",
+          "Microsoft.Office.Interop.Excel": "15.0.4795.1000",
+          "Microsoft.Office.Interop.Outlook": "15.0.4420.1017",
+          "Microsoft.PowerShell.5.ReferenceAssemblies": "1.1.0",
+          "Microsoft.SharePoint.Client": "14.0.4762.1000",
+          "Newtonsoft.Json": "13.0.3",
+          "PDFsharp": "1.50.5147",
+          "RestSharpSigned": "105.2.3",
+          "SSH.NET": "2023.0.0",
+          "SevenZipBinaryLib": "1.0.0",
+          "Squid-Box.SevenZipSharp": "1.6.2.24",
+          "System.IdentityModel.Tokens.Jwt": "6.8.0"
+        },
+        "compile": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PHPUtilities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cronos/0.7.1": {
+      "sha512": "aa2DY3qGBnwX7/jW4c17PyRlIeAtc5nYTlAPekc0113jcbBuz9vQkQaQ9NG+TNGlAj4esFxh8OuKUv4vmAODbw==",
+      "type": "package",
+      "path": "cronos/0.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cronos.0.7.1.nupkg.sha512",
+        "cronos.nuspec",
+        "lib/net40/Cronos.dll",
+        "lib/net40/Cronos.xml",
+        "lib/net45/Cronos.dll",
+        "lib/net45/Cronos.xml",
+        "lib/netstandard1.0/Cronos.dll",
+        "lib/netstandard1.0/Cronos.xml",
+        "lib/netstandard2.0/Cronos.dll",
+        "lib/netstandard2.0/Cronos.xml"
+      ]
+    },
+    "DocumentFormat.OpenXml/2.7.2": {
+      "sha512": "tWT7iu0ab9PNoMTWjv24rt+qnyqvcnPOYs167vPnk4aegAYSAxoUjwNW+VxY8xoLtJntQ/JlWTi7Vt+8TghLlQ==",
+      "type": "package",
+      "path": "documentformat.openxml/2.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "documentformat.openxml.2.7.2.nupkg.sha512",
+        "documentformat.openxml.nuspec",
+        "lib/net35/DocumentFormat.OpenXml.dll",
+        "lib/net35/DocumentFormat.OpenXml.xml",
+        "lib/net40/DocumentFormat.OpenXml.dll",
+        "lib/net40/DocumentFormat.OpenXml.xml",
+        "lib/net46/DocumentFormat.OpenXml.dll",
+        "lib/net46/DocumentFormat.OpenXml.xml",
+        "lib/netstandard1.3/DocumentFormat.OpenXml.dll",
+        "lib/netstandard1.3/DocumentFormat.OpenXml.xml"
+      ]
+    },
+    "DotNetZip/1.16.0": {
+      "sha512": "CS9sjjXF23FLIbwlLT5k/jXBYxVnLMn01lyAvN/hxFM+UDvSicjTPB9ZMA+Wp/QlvBPbD2pzkAXUp1O50gP/Lw==",
+      "type": "package",
+      "path": "dotnetzip/1.16.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnetzip.1.16.0.nupkg.sha512",
+        "dotnetzip.nuspec",
+        "lib/net40/DotNetZip.dll",
+        "lib/net40/DotNetZip.pdb",
+        "lib/net40/DotNetZip.xml",
+        "lib/netstandard2.0/DotNetZip.dll",
+        "lib/netstandard2.0/DotNetZip.pdb",
+        "lib/netstandard2.0/DotNetZip.xml"
+      ]
+    },
+    "EntityFramework/6.1.3": {
+      "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
+      "type": "package",
+      "path": "entityframework/6.1.3",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/App.config.transform",
+        "content/Web.config.transform",
+        "entityframework.6.1.3.nupkg.sha512",
+        "entityframework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
+    "FastMember.Signed/1.1.0": {
+      "sha512": "KtHizZHsSlc61wbRoiO08ccU8DE0ibXPEkH3zg2sUIW8/q/KNNLPsPAvf2UHjj+XYwYw0lK2vHBnJu30pyWRYA==",
+      "type": "package",
+      "path": "fastmember.signed/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fastmember.signed.1.1.0.nupkg.sha512",
+        "fastmember.signed.nuspec",
+        "lib/net35/FastMember.Signed.dll",
+        "lib/net40/FastMember.Signed.dll",
+        "lib/netstandard1.3/FastMember.Signed.dll"
+      ]
+    },
+    "Microsoft.CodeDom.Providers.DotNetCompilerPlatform/4.1.0": {
+      "sha512": "o34xN9ugrjXCj45UuZhKjHzuxWCdrlWdqhzhVJ6J7a67djTFD6k+1WBm8Hz7Dbi+KQm98eUmlKEg3DsF1uqZow==",
+      "type": "package",
+      "path": "microsoft.codedom.providers.dotnetcompilerplatform/4.1.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets",
+        "icons/dotnet.png",
+        "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll",
+        "lib/net472/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml",
+        "microsoft.codedom.providers.dotnetcompilerplatform.4.1.0.nupkg.sha512",
+        "microsoft.codedom.providers.dotnetcompilerplatform.nuspec",
+        "tasks/DotNetCompilerPlatformTasks.dll",
+        "tasks/System.Management.dll",
+        "tools/Roslyn-4.1.0/Microsoft.Build.Tasks.CodeAnalysis.dll",
+        "tools/Roslyn-4.1.0/Microsoft.CSharp.Core.targets",
+        "tools/Roslyn-4.1.0/Microsoft.CodeAnalysis.CSharp.Scripting.dll",
+        "tools/Roslyn-4.1.0/Microsoft.CodeAnalysis.CSharp.dll",
+        "tools/Roslyn-4.1.0/Microsoft.CodeAnalysis.Scripting.dll",
+        "tools/Roslyn-4.1.0/Microsoft.CodeAnalysis.VisualBasic.dll",
+        "tools/Roslyn-4.1.0/Microsoft.CodeAnalysis.dll",
+        "tools/Roslyn-4.1.0/Microsoft.DiaSymReader.Native.amd64.dll",
+        "tools/Roslyn-4.1.0/Microsoft.DiaSymReader.Native.x86.dll",
+        "tools/Roslyn-4.1.0/Microsoft.Managed.Core.CurrentVersions.targets",
+        "tools/Roslyn-4.1.0/Microsoft.Managed.Core.targets",
+        "tools/Roslyn-4.1.0/Microsoft.VisualBasic.Core.targets",
+        "tools/Roslyn-4.1.0/System.Buffers.dll",
+        "tools/Roslyn-4.1.0/System.Collections.Immutable.dll",
+        "tools/Roslyn-4.1.0/System.Memory.dll",
+        "tools/Roslyn-4.1.0/System.Numerics.Vectors.dll",
+        "tools/Roslyn-4.1.0/System.Reflection.Metadata.dll",
+        "tools/Roslyn-4.1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/Roslyn-4.1.0/System.Text.Encoding.CodePages.dll",
+        "tools/Roslyn-4.1.0/System.Threading.Tasks.Extensions.dll",
+        "tools/Roslyn-4.1.0/VBCSCompiler.exe",
+        "tools/Roslyn-4.1.0/VBCSCompiler.exe.config",
+        "tools/Roslyn-4.1.0/csc.exe",
+        "tools/Roslyn-4.1.0/csc.exe.config",
+        "tools/Roslyn-4.1.0/csc.rsp",
+        "tools/Roslyn-4.1.0/csi.exe",
+        "tools/Roslyn-4.1.0/csi.exe.config",
+        "tools/Roslyn-4.1.0/csi.rsp",
+        "tools/Roslyn-4.1.0/vbc.exe",
+        "tools/Roslyn-4.1.0/vbc.exe.config",
+        "tools/Roslyn-4.1.0/vbc.rsp"
+      ]
+    },
+    "Microsoft.Exchange.WebServices/2.2.0": {
+      "sha512": "NlkaTD0uWtg9VbiWq0VDWMBPzHFknH3tmstrxt0acrT09LBGqATTjRpsGOODz6tUdX7/dehBinxsf75U5Uw/+A==",
+      "type": "package",
+      "path": "microsoft.exchange.webservices/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "doc/License Terms.rtf",
+        "doc/README.htm",
+        "doc/Redist.txt",
+        "lib/40/Microsoft.Exchange.WebServices.Auth.dll",
+        "lib/40/Microsoft.Exchange.WebServices.Auth.pdb",
+        "lib/40/Microsoft.Exchange.WebServices.Auth.xml",
+        "lib/40/Microsoft.Exchange.WebServices.dll",
+        "lib/40/Microsoft.Exchange.WebServices.pdb",
+        "lib/40/Microsoft.Exchange.WebServices.xml",
+        "microsoft.exchange.webservices.2.2.0.nupkg.sha512",
+        "microsoft.exchange.webservices.nuspec"
+      ]
+    },
+    "Microsoft.Identity.Client/4.60.3": {
+      "sha512": "jve1RzmSpBhGlqMzPva6VfRbLMLZZc1Q8WRVZf8+iEruQkBgDTJPq8OeTehcY4GGYG1j6UB1xVofVE+n4BLDdw==",
+      "type": "package",
+      "path": "microsoft.identity.client/4.60.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/monoandroid12.0/Microsoft.Identity.Client.dll",
+        "lib/monoandroid12.0/Microsoft.Identity.Client.xml",
+        "lib/net462/Microsoft.Identity.Client.dll",
+        "lib/net462/Microsoft.Identity.Client.xml",
+        "lib/net6.0-android31.0/Microsoft.Identity.Client.dll",
+        "lib/net6.0-android31.0/Microsoft.Identity.Client.xml",
+        "lib/net6.0-ios15.4/Microsoft.Identity.Client.dll",
+        "lib/net6.0-ios15.4/Microsoft.Identity.Client.xml",
+        "lib/net6.0-windows7.0/Microsoft.Identity.Client.dll",
+        "lib/net6.0-windows7.0/Microsoft.Identity.Client.xml",
+        "lib/net6.0/Microsoft.Identity.Client.dll",
+        "lib/net6.0/Microsoft.Identity.Client.xml",
+        "lib/netstandard2.0/Microsoft.Identity.Client.dll",
+        "lib/netstandard2.0/Microsoft.Identity.Client.xml",
+        "lib/uap10.0.17763/Microsoft.Identity.Client.dll",
+        "lib/uap10.0.17763/Microsoft.Identity.Client.pri",
+        "lib/uap10.0.17763/Microsoft.Identity.Client.xml",
+        "lib/xamarinios10/Microsoft.Identity.Client.dll",
+        "lib/xamarinios10/Microsoft.Identity.Client.xml",
+        "microsoft.identity.client.4.60.3.nupkg.sha512",
+        "microsoft.identity.client.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Abstractions/6.35.0": {
+      "sha512": "xuR8E4Rd96M41CnUSCiOJ2DBh+z+zQSmyrYHdYhD6K4fXBcQGVnRCFQ0efROUYpP+p0zC1BLKr0JRpVuujTZSg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.abstractions/6.35.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net45/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net461/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net461/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net462/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net462/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net472/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net472/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/net6.0/Microsoft.IdentityModel.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Abstractions.xml",
+        "microsoft.identitymodel.abstractions.6.35.0.nupkg.sha512",
+        "microsoft.identitymodel.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.JsonWebTokens/6.8.0": {
+      "sha512": "+7JIww64PkMt7NWFxoe4Y/joeF7TAtA/fQ0b2GFGcagzB59sKkTt/sMZWR6aSZht5YC7SdHi3W6yM1yylRGJCQ==",
+      "type": "package",
+      "path": "microsoft.identitymodel.jsonwebtokens/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net45/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/net461/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/net461/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.xml",
+        "microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
+        "microsoft.identitymodel.jsonwebtokens.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Logging/6.8.0": {
+      "sha512": "Rfh/p4MaN4gkmhPxwbu8IjrmoDncGfHHPh1sTnc0AcM/Oc39/fzC9doKNWvUAjzFb8LqA6lgZyblTrIsX/wDXg==",
+      "type": "package",
+      "path": "microsoft.identitymodel.logging/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.Logging.dll",
+        "lib/net45/Microsoft.IdentityModel.Logging.xml",
+        "lib/net461/Microsoft.IdentityModel.Logging.dll",
+        "lib/net461/Microsoft.IdentityModel.Logging.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
+        "microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
+        "microsoft.identitymodel.logging.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel.Tokens/6.8.0": {
+      "sha512": "gTqzsGcmD13HgtNePPcuVHZ/NXWmyV+InJgalW/FhWpII1D7V1k0obIseGlWMeA4G+tZfeGMfXr0klnWbMR/mQ==",
+      "type": "package",
+      "path": "microsoft.identitymodel.tokens/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net45/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net461/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net461/Microsoft.IdentityModel.Tokens.xml",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
+        "microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
+        "microsoft.identitymodel.tokens.nuspec"
+      ]
+    },
+    "Microsoft.Office.Interop.Excel/15.0.4795.1000": {
+      "sha512": "DfceS96ustwfL8EOJNNRtpk6b0RylhjNpgeeemuvi9X4GYks2UTeAimjSrdFEfuqRo5ibZ4Sd0gJIeDr9gMa6Q==",
+      "type": "package",
+      "path": "microsoft.office.interop.excel/15.0.4795.1000",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Excel.dll",
+        "microsoft.office.interop.excel.15.0.4795.1000.nupkg.sha512",
+        "microsoft.office.interop.excel.nuspec"
+      ]
+    },
+    "Microsoft.Office.Interop.Outlook/15.0.4420.1017": {
+      "sha512": "EGB97WvdV7+hzZa1ujAMo5a4FIXVGBVNXlhJvBI+VfGchmHwtpl9LYNLP6F1kaFggtUr0g99G9yaqV6dgK5Oug==",
+      "type": "package",
+      "path": "microsoft.office.interop.outlook/15.0.4420.1017",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Outlook.dll",
+        "microsoft.office.interop.outlook.15.0.4420.1017.nupkg.sha512",
+        "microsoft.office.interop.outlook.nuspec"
+      ]
+    },
+    "Microsoft.PowerShell.5.ReferenceAssemblies/1.1.0": {
+      "sha512": "EE87t3aUXlO0Rjq83Ti8z1g4wwsWnB4W+pOn84i3QWzUOOuP5gZg8n4Y8XTZ7GkxGcoSR6w/d/kBJTJbc3VZPQ==",
+      "type": "package",
+      "path": "microsoft.powershell.5.referenceassemblies/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net4/Microsoft.Management.Infrastructure.dll",
+        "lib/net4/Microsoft.PowerShell.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.Commands.Diagnostics.dll",
+        "lib/net4/Microsoft.PowerShell.ConsoleHost.dll",
+        "lib/net4/Microsoft.PowerShell.ConsoleHost.xml",
+        "lib/net4/Microsoft.PowerShell.Core.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Core.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.Diagnostics.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Diagnostics.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.Editor.dll",
+        "lib/net4/Microsoft.PowerShell.GPowerShell.dll",
+        "lib/net4/Microsoft.PowerShell.GPowerShell.xml",
+        "lib/net4/Microsoft.PowerShell.GraphicalHost.dll",
+        "lib/net4/Microsoft.PowerShell.GraphicalHost.xml",
+        "lib/net4/Microsoft.PowerShell.ISECommon.dll",
+        "lib/net4/Microsoft.PowerShell.ISECommon.xml",
+        "lib/net4/Microsoft.PowerShell.Management.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Management.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.PSReadLine.dll",
+        "lib/net4/Microsoft.PowerShell.PackageManagement.dll",
+        "lib/net4/Microsoft.PowerShell.Security.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Security.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.Security.dll",
+        "lib/net4/Microsoft.PowerShell.Security.xml",
+        "lib/net4/Microsoft.PowerShell.Utility.Activities.dll",
+        "lib/net4/Microsoft.PowerShell.Utility.Activities.xml",
+        "lib/net4/Microsoft.PowerShell.Workflow.ServiceCore.xml",
+        "lib/net4/Microsoft.Powershell.Workflow.ServiceCore.dll",
+        "lib/net4/System.Management.Automation.dll",
+        "lib/net4/System.Management.Automation.xml",
+        "microsoft.powershell.5.referenceassemblies.1.1.0.nupkg.sha512",
+        "microsoft.powershell.5.referenceassemblies.nuspec"
+      ]
+    },
+    "Microsoft.SharePoint.Client/14.0.4762.1000": {
+      "sha512": "pY+Fy+aG8bSHJYj4irmFc5Jo1mrglZGJ6MBR/aJYD75h+slmaSjj8xtBH82WLWH+gXghvZY7RDvZgJbPx1w+EQ==",
+      "type": "package",
+      "path": "microsoft.sharepoint.client/14.0.4762.1000",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Microsoft.SharePoint.Client.Runtime.dll",
+        "lib/Microsoft.SharePoint.Client.dll",
+        "microsoft.sharepoint.client.14.0.4762.1000.nupkg.sha512",
+        "microsoft.sharepoint.client.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "OctoPack/3.6.1": {
+      "sha512": "BSsS1nFHEv7oF0MM7EUtiPTv5INnTjXZzpmbPqZVSCRTMyFNaQ+R0UboNyHj8ACQmEUR1ktGmVFM7PC6qJ369g==",
+      "type": "package",
+      "path": "octopack/3.6.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/NuGet.exe",
+        "build/NuGet.exe.readme.txt",
+        "build/OctoPack.Tasks.dll",
+        "build/OctoPack.Tasks.pdb",
+        "build/OctoPack.targets",
+        "content/net35/_._",
+        "content/net40/_._",
+        "content/netcore45/_._",
+        "content/portable-net4+sl50+netcore45+wpa81+wp8/_._",
+        "license.txt",
+        "octopack.3.6.1.nupkg.sha512",
+        "octopack.nuspec",
+        "tools/Install.ps1",
+        "tools/Uninstall.ps1"
+      ]
+    },
+    "PDFsharp/1.50.5147": {
+      "sha512": "vr5KBIqcXu2hqZ43UTwPR+jqHgMrT5tsPtJvEF+mORKoBNMh3bRWgAwic0U1sT2IVb4PR5m0GyQxnmCz8jBHWg==",
+      "type": "package",
+      "path": "pdfsharp/1.50.5147",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/PdfSharp.Charting.dll",
+        "lib/net20/PdfSharp.Charting.xml",
+        "lib/net20/PdfSharp.dll",
+        "lib/net20/PdfSharp.xml",
+        "lib/net20/de/PdfSharp.Charting.resources.dll",
+        "lib/net20/de/PdfSharp.resources.dll",
+        "pdfsharp.1.50.5147.nupkg.sha512",
+        "pdfsharp.nuspec"
+      ]
+    },
+    "RestSharpSigned/105.2.3": {
+      "sha512": "KJg/LHj1Rf+sUyRgGM0VDw27JHBvv7LXJLDDZkUtHwuBWEcAM9co5t/S7jcx48wsYjwRqcmLaagDBm8spcTUFQ==",
+      "type": "package",
+      "path": "restsharpsigned/105.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/RestSharp.dll",
+        "lib/net35/RestSharp.xml",
+        "lib/net4-client/RestSharp.dll",
+        "lib/net4-client/RestSharp.xml",
+        "lib/net4/RestSharp.dll",
+        "lib/net4/RestSharp.xml",
+        "lib/net45/RestSharp.dll",
+        "lib/net45/RestSharp.xml",
+        "lib/net451/RestSharp.dll",
+        "lib/net451/RestSharp.xml",
+        "lib/net452/RestSharp.dll",
+        "lib/net452/RestSharp.xml",
+        "lib/net46/RestSharp.dll",
+        "lib/net46/RestSharp.xml",
+        "lib/sl5/RestSharp.dll",
+        "lib/sl5/RestSharp.xml",
+        "readme.txt",
+        "restsharpsigned.105.2.3.nupkg.sha512",
+        "restsharpsigned.nuspec"
+      ]
+    },
+    "SevenZipBinaryLib/1.0.0": {
+      "sha512": "2c54c9nMpiup8I8JhVH3RC/lcpbXDIlW9yB2VHQt82S3rS9s4A3K0W+1o5MSV5ZhgakRqKRKyi2sLEEdELInSw==",
+      "type": "package",
+      "path": "sevenzipbinarylib/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "7-Zip_Icon.svg.png",
+        "lib/netstandard2.0/7z.dll",
+        "lib/netstandard2.0/SevenZipBinaryLib.dll",
+        "sevenzipbinarylib.1.0.0.nupkg.sha512",
+        "sevenzipbinarylib.nuspec"
+      ]
+    },
+    "Squid-Box.SevenZipSharp/1.6.2.24": {
+      "sha512": "1T4GqUM9YveA/HsFsco67tXyzrBTo7vbzHC3ZSY7xxPe9s2yN65R42O3PnUEukmpB30wx+162YeMI4Xx/156LA==",
+      "type": "package",
+      "path": "squid-box.sevenzipsharp/1.6.2.24",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/readme.md",
+        "lib/net472/SevenZipSharp.dll",
+        "lib/net472/SevenZipSharp.pdb",
+        "lib/net472/SevenZipSharp.xml",
+        "lib/netcoreapp3.1/SevenZipSharp.dll",
+        "lib/netcoreapp3.1/SevenZipSharp.pdb",
+        "lib/netcoreapp3.1/SevenZipSharp.xml",
+        "lib/netstandard2.0/SevenZipSharp.dll",
+        "lib/netstandard2.0/SevenZipSharp.pdb",
+        "lib/netstandard2.0/SevenZipSharp.xml",
+        "license",
+        "squid-box.sevenzipsharp.1.6.2.24.nupkg.sha512",
+        "squid-box.sevenzipsharp.nuspec"
+      ]
+    },
+    "SSH.NET/2023.0.0": {
+      "sha512": "g+3VDUrYhm0sqSxmlQFgRFrmBxhQvVh4pfn4pqjkX7WXE3tTjt1tIsOtjuz3mz/5s8gFFQVRydwCJ7Ohs54sJA==",
+      "type": "package",
+      "path": "ssh.net/2023.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/Renci.SshNet.dll",
+        "lib/net462/Renci.SshNet.xml",
+        "lib/net6.0/Renci.SshNet.dll",
+        "lib/net6.0/Renci.SshNet.xml",
+        "lib/net7.0/Renci.SshNet.dll",
+        "lib/net7.0/Renci.SshNet.xml",
+        "lib/netstandard2.0/Renci.SshNet.dll",
+        "lib/netstandard2.0/Renci.SshNet.xml",
+        "lib/netstandard2.1/Renci.SshNet.dll",
+        "lib/netstandard2.1/Renci.SshNet.xml",
+        "ssh.net.2023.0.0.nupkg.sha512",
+        "ssh.net.nuspec"
+      ]
+    },
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "type": "package",
+      "path": "system.buffers/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.1.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Diagnostics.DiagnosticSource/6.0.1": {
+      "sha512": "KiLYDu2k2J82Q9BJpWiuQqCkFjRBWVq4jDzKKWawVi9KWzyD0XG3cmfX0vqTQlL14Wi9EufJrbL0+KCLTbqWiQ==",
+      "type": "package",
+      "path": "system.diagnostics.diagnosticsource/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net461/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net5.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net5.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net6.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
+        "system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.IdentityModel.Tokens.Jwt/6.8.0": {
+      "sha512": "5tBCjAub2Bhd5qmcd0WhR5s354e4oLYa//kOWrkX+6/7ZbDDJjMTfwLSOiZ/MMpWdE4DWPLOfTLOq/juj9CKzA==",
+      "type": "package",
+      "path": "system.identitymodel.tokens.jwt/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/net461/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/net461/System.IdentityModel.Tokens.Jwt.xml",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll",
+        "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.xml",
+        "system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
+        "system.identitymodel.tokens.jwt.nuspec"
+      ]
+    },
+    "System.IO.FileSystem.Primitives/4.0.1": {
+      "sha512": "kWkKD203JJKxJeE74p8aF8y4Qc9r9WQx4C0cHzHPrY3fv/L/IhWnyCHaFJ3H1QPOH6A93whlQ2vG5nHlBDvzWQ==",
+      "type": "package",
+      "path": "system.io.filesystem.primitives/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.IO.FileSystem.Primitives.dll",
+        "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.IO.FileSystem.Primitives.dll",
+        "ref/netstandard1.3/System.IO.FileSystem.Primitives.dll",
+        "ref/netstandard1.3/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/de/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/es/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/fr/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/it/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/ja/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/ko/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/ru/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.FileSystem.Primitives.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.FileSystem.Primitives.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.io.filesystem.primitives.4.0.1.nupkg.sha512",
+        "system.io.filesystem.primitives.nuspec"
+      ]
+    },
+    "System.IO.Packaging/4.0.0": {
+      "sha512": "taPqPWcAj/h6e/c+zIWIVe1ddJtpV6acC6g9GpolxUcIwUaH6zc0ZbFS8kkVzBkuWv76pMalKeTzfmHtfT1pXA==",
+      "type": "package",
+      "path": "system.io.packaging/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net46/System.IO.Packaging.dll",
+        "lib/netstandard1.3/System.IO.Packaging.dll",
+        "ref/net46/System.IO.Packaging.dll",
+        "ref/netstandard1.3/System.IO.Packaging.dll",
+        "system.io.packaging.4.0.0.nupkg.sha512",
+        "system.io.packaging.nuspec"
+      ]
+    },
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "type": "package",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "PHPUtilities/1.0.0": {
+      "type": "project",
+      "path": "../PHPUtilities/Utilities.csproj",
+      "msbuildProject": "../PHPUtilities/Utilities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.8": [
+      "Cronos >= 0.7.1",
+      "EntityFramework >= 6.1.3",
+      "Microsoft.CodeDom.Providers.DotNetCompilerPlatform >= 4.1.0",
+      "Microsoft.Exchange.WebServices >= 2.2.0",
+      "OctoPack >= 3.6.1",
+      "PHPUtilities >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\glauchn\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\PHPController\\Controller.csproj",
+      "projectName": "PHPController",
+      "projectPath": "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\PHPController\\Controller.csproj",
+      "packagesPath": "C:\\Users\\glauchn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\PHPController\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\NuGet.Config",
+        "C:\\Users\\glauchn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net48"
+      ],
+      "sources": {
+        "X:\\NuGet Packages": {},
+        "http://tfspvas01:8080/tfs/PHP%20IT/_packaging/PHP-IT/nuget/v3/index.json": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net48": {
+          "projectReferences": {
+            "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\PHPUtilities\\Utilities.csproj": {
+              "projectPath": "C:\\Users\\glauchn\\source\\repos\\JobAutomation\\JobsApps\\PHPUtilities\\Utilities.csproj"
+            }
+          }
+        }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net48": {
+        "dependencies": {
+          "Cronos": {
+            "target": "Package",
+            "version": "[0.7.1, )"
+          },
+          "Cronos": {
+            "target": "Package",
+            "version": "[0.7.1, )"
+          },
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.1.3, )"
+          },
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.1.3, )"
+          },
+          "Microsoft.CodeDom.Providers.DotNetCompilerPlatform": {
+            "target": "Package",
+            "version": "[4.1.0, )"
+          },
+          "Microsoft.CodeDom.Providers.DotNetCompilerPlatform": {
+            "target": "Package",
+            "version": "[4.1.0, )"
+          },
+          "Microsoft.Exchange.WebServices": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.Exchange.WebServices": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "OctoPack": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.6.1, )"
+          },
+          "OctoPack": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.6.1, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-arm64": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://tfspvas01:8080/tfs/PHP%20IT/_packaging/PHP-IT/nuget/v3/index.json'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
