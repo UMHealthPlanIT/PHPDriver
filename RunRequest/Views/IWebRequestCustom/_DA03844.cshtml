@@ -1,0 +1,33 @@
+﻿<span>
+    Identifies if members with gaps in care are still currently enrolled. Used to create a mailing/call list. Please choose between specifying both start and end dates, or neither.
+</span>
+<br />
+<br />
+
+<label for="enrollmentEligStart">Enrollment Eligibility Start Date</label>
+<input id="enrollmentEligStart" class="form-control" type="datetime" name="EnrollmentEligStartDate" data-optional="true" />
+<br />
+<br />
+
+<label for="enrollmentEligEnd">Enrollment Eligibility End Date</label>
+<input id="enrollmentEligEnd" class="form-control" type="datetime" name="EnrollmentEligEndDate" data-optional="true" />
+<br />
+<br />
+
+<script>
+    function largeListPassThrough() {
+        if ($('#editModal').val() != '1') {
+            getWebRequestData('#groupNum', 'GetGroups');
+            $('#editModal').val('1');
+        }
+    };
+    $('input[type=datetime]').each(function (index, data) {
+        $(this).datepicker();
+    });
+</script>
+
+<style>
+    .warning-text {
+        color: red;
+    }
+</style>

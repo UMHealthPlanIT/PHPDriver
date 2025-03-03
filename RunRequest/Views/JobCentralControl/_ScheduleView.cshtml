@@ -1,0 +1,59 @@
+﻿@model List<RunRequest.Models.ScheduledJob>
+
+
+
+<ul class="nav flex-column">
+    @foreach (RunRequest.Models.ScheduledJob job in Model)
+    {
+        string colorClass = "";
+        if (job.ScheduleStatus.Contains("On Hold"))
+        {
+            colorClass = "alert-hold";
+        }
+        else if (job.FinalDisposition == "MILESTONE")
+        {
+            colorClass = "alert-success";
+        }
+        else if (job.RunStatus == "S")
+        {
+            colorClass = "alert-info";
+        }
+        else if (job.FinalDisposition == "ERROR")
+        {
+            colorClass = "alert-danger";
+        }
+        else if (job.JobStatusReason != null && job.JobStatusReason.Contains("Waiting To Start"))
+        {
+            colorClass = "alert-not-ready";
+        }
+        else
+        {
+            colorClass = "alert-primary";
+        }
+        string notesIcon = "";
+        if (job.HasNotes == "Yes")
+        {
+            notesIcon = "fa fa-sticky-note";
+        }
+
+        <li class="nav-item alert @colorClass the-post-title">
+            @if (job.ScheduleStatus.Contains("On Hold"))
+            {
+                <a href="javascript:GetLogs('@job.JobId', '@job.ScheduledStartTime.Value.Ticks.ToString()')" class="nav-link active jobpill @job.Owner hold" data-toggle="tooltip" data-placement="top" title="Job on hold">@job.JobId    <i class="fa-regular fa-circle-pause"></i></a>
+                <span>@job.ScheduledStartTime</span>
+            }
+            else if (job.JobStatusReason != null && job.JobStatusReason.Contains("Waiting To Start"))
+            {
+                <a href="javascript:GetLogs('@job.JobId', '@job.ScheduledStartTime.Value.Ticks.ToString()')" class="nav-link active jobpill @job.Owner no-datasource" data-toggle="tooltip" data-placement="top" title="@job.JobStatusReason">@job.JobId <i class="fa-regular fa-wifi-slash"></i></a>
+                <span>@job.ScheduledStartTime</span>
+            }
+            else
+            {
+                <a href="javascript:GetLogs('@job.JobId', '@job.ScheduledStartTime.Value.Ticks.ToString()', '@job.Owner')" class="nav-link active jobpill @job.Owner">@job.JobId</a>
+                <span><i class="@notesIcon" aria-hidden="true"></i>@job.ScheduledStartTime</span>
+            }
+
+
+        </li>
+    }
+</ul>

@@ -1,0 +1,181 @@
+﻿
+@model List<RunRequest.Models.JobSummaryDetails>
+
+@{
+    ViewBag.Title = "Run Request";
+}
+
+<div id="modalWrapper"></div>
+<div id="helpModalWrapper"></div>
+<div class="modal fade loading" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="width: 85px">
+            <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </div>
+    </div>
+</div>
+
+@{
+    if (!ViewBag.JobDirect)
+    {
+        <div id="sidebar">
+            <div class="panel-group" id="filterList">
+                <div class="panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle filterCategory" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                Type
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="radio">
+                                <label><input class="TypeFilter selections" type="radio" name="filterRadio" value="All">All</label>
+                            </div>
+                            @if (ViewBag.UserCanRunJobs)
+                            {
+                                <div class="radio">
+                                    <label><input id="runnableJobsFilter" class="TypeFilter selections" type="radio" name="filterRadio" value="JobsICanRun">Jobs I Can Run</label>
+                                </div>
+                            }
+
+                            <div class="radio">
+                                <label><input class="TypeFilter selections" type="radio" name="filterRadio" value="DotNet">Scheduled Job</label>
+                            </div>
+                            <div class="radio">
+                                <label><input class="TypeFilter selections" type="radio" name="filterRadio" value="WebReport">Web Report</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                @{
+                    if (ViewBag.ServiceLine == "PHP")
+                    {
+                        <div class="panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle filterCategory collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                        @ViewBag.FirstFilter
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    @foreach (RunRequest.Models.Departments dep in ViewBag.DistinctDepartments)
+                                    {
+                                        <div class="radio">
+                                            <label><input type="radio" class="DepartmentFilter selections" name="filterRadio" value="@(dep.DepartmentNoSpaces)">@(dep.DepartmentProperName.Replace("PHP", "").Trim())</label>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                @if (ViewBag.ServiceLine == "PHP")
+                {
+                    <div class="panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle filterCategory" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    Format
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseThree" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                @if (ViewBag.ServiceLine == "PHP")
+                                {
+                                    <div class="radio">
+                                        <label><input class="FormatFilter selections" type="radio" name="filterRadio" value="Tableau">Tableau</label>
+                                    </div>
+                                }
+                                <div class="radio">
+                                    <label><input class="FormatFilter selections" type="radio" name="filterRadio" value="Excel">Internal Report</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input class="FormatFilter selections" type="radio" name="filterRadio" value="OutboundData">Outbound Data</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle filterCategory" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                View
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="radio">
+                                <label><input class="ViewFilter" type="radio" name="viewRadio" value="Cards" checked>Cards</label>
+                            </div>
+                            <div class="radio">
+                                <label><input class="ViewFilter" type="radio" name="viewRadio" value="List">List</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+}
+<div id="cardDeckContent" class="card-deck">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <div class="cards" onclick="JobDetails('@Model[i].jobCode')">
+            @Html.Partial("JobSummaryCard", Model[i])
+        </div>
+
+    }
+</div>
+
+<div id="listView" class="row" role="main" style="display:none">
+    <div class="col-xs-12" style="padding-right:0px;">
+        <table id="run-table" class="table table-hover">
+            <thead id="table-head" style="background-color: #006F51; color: white;">
+                <tr >
+                    <th>
+                        Job ID
+                    </th>
+                    <th>
+                        Job Name
+                    </th>
+                    <th>
+                        Run Status
+                    </th>
+                </tr>
+            </thead>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr id="@Model[i].jobCode-list" class="job-item" style="cursor:pointer" onclick="JobDetails('@Model[i].jobCode')" data-department="@String.Join(" ", Model[i].Department.Select(x => x.DepartmentNoSpaces))" data-jobType="@Model[i].JobType" data-format="@Model[i].Format.Replace(" ","").Trim()" data-runAccess="@Model[i].UserCanRun">
+                    <td onclick=""><i style="float: left; margin-right: 15px;" class="fa @Model[i].toolIcon reporticon"></i><p style="font-weight:bold;color:green;">@Model[i].jobCode </p></td>
+                    <td onclick="">@Model[i].title</td>
+                    <td id="@(Model[i].jobCode)-list-val" class="jobStatus-list" data-source="@String.Join(", ", Model[i].dataSource.ToArray())" data-jobType="@Model[i].JobType"><i id="@(Model[i].jobCode)img-list" class="statusImages" style="float: left; margin-right: 15px;"></i><p></p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/CustomScripts/JobSummary.js")
+@Scripts.Render("~/Scripts/CustomScripts/RunRequest.js")
+
+<script>
+    $(window).on("load", function () {
+        if (!($('#filterList').hasClass('panel-group'))) {
+            $('.cards')[0].click();
+        }
+    })
+    $(document).ready(setupStatus("@Url.Action("")"));
+    $(document).ready($("#homeMenuItem").addClass("active"));
+    $(document).ready($("#jobcontrolcentralMenuItem").removeClass("active"));
+</script>

@@ -1,0 +1,26 @@
+﻿@model List<RunRequest.Models.JobNotes>
+<button type="button" class="btn btn-light closeButton" onclick="CloseNotes()">&#10006;</button>
+<h3>Notes</h3>
+<div class="" id="dataContainer" jobindex="@Model[0].JobIndex" rundate="@Model[0].JobRunDate" style="width:100%">
+
+    @foreach (RunRequest.Models.JobNotes note in Model)
+    {
+        if (note.NoteText != "EMPTY")
+        {
+            <hr>
+            <div class="row">
+                <div class=".col-md-4" style="">User: @note.AdminUser</div><div class=".col-md-4" style="font-style: italic">Time: @note.NoteDateTime</div>
+            </div>
+            <div class="row">
+                <div style="font: bold 15px Arial, sans-serif">@note.NoteText</div>
+            </div>
+        }
+    }
+    <br>
+    <br>
+    <textarea id="newNote" style="width: 100%; max-width: 100%; height: 200px; border-color: lightgrey"></textarea>
+</div>
+<div class="text-center" style="padding-top:20px;">
+    <button type="button" class="btn btn-success" onclick="SaveNote()" style="width: 80px;">Save</button>
+</div>
+

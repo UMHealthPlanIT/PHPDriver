@@ -1,0 +1,193 @@
+﻿@using System.ComponentModel.DataAnnotations;
+@model RunRequest.Models.JobSummaryDetails
+
+@{ 
+    String owner = "Sparrow";
+    if (Model.Department[0].DepartmentProperName.Contains("PHP"))
+    {
+        owner = "PHP";
+    }
+}
+
+<script>
+    // Needed to get the Select2 search bar focused on clicking a dropdown
+    $.fn.modal.Constructor.prototype.enforceFocus = function () { };
+</script>
+
+<div class="modal fade" id="editModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content modal-job-details">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-header">
+                <p class="h4 modal-title">@Model.title</p>
+                <p class="h5" style="color:darkgrey">@Model.jobCode - @Model.tool</p>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#Launch" onclick="ShowTab('LaunchDetails')">Detail</a></li>
+                <li><a data-toggle="tab" href="#History" onclick="ShowTab('historyTable')">History</a></li>
+                @if (!Model.tool.Contains("WebReport"))
+                {
+                    <li><a data-toggle="tab" href="#Schedule" onclick="ShowTab('scheduleDetails')">Schedule</a></li>
+                }
+                <li><a data-toggle="tab" href="#JobConfiguration" onclick="ShowTab('jobConfiguration')">Job Configuration</a></li>
+            </ul>
+
+
+            <div id="Launch" class="tab-pane fade in active">
+                <div id="LaunchDetails" class="tab-content">
+                    @if (Model.description != "")
+                    {
+                        <div class="modal-body">@Html.Raw(Model.description)</div>
+                    }
+                    else
+                    {
+                        <div class="modal-body">No Description Available</div>
+                    }
+
+                    @if (Model.Attachments)
+                    {
+                        <button type="button" id="attachmentsButton" class="btn btn-default" onclick="GetJobAttachments('@Model.jobCode')">Get Attachments</button>
+                    }
+
+
+
+                    <div class="ModalStatusDetails">
+                        <div id="@(Model.jobCode)valModal">
+
+                        </div>
+                        <div id="@(Model.jobCode)imgModal">
+
+                        </div>
+                    </div>
+                    @{
+                        ViewBag.IsOptional = 0;
+                    }
+                    @if (Model.Parameters != null)
+                    {
+                        <form id="parameterForm">
+                            @foreach (var parameter in Model.Parameters)
+                            {
+                                ViewBag.IsOptional = 0;
+                                ViewBag.Required = parameter.IsOptional ? "" : "required";
+                                <div class="modal-body">
+                                    <label for="parameter-@parameter.Name" class="@ViewBag.Required">@parameter.SpacedName</label>
+                                    @if (parameter.DataType == typeof(String))
+                                    {
+                                        <input class="form-control" type="text" name="@parameter.Name" id="parameter-@parameter.Name" data-optional="@parameter.IsOptional">
+                                    }
+                                    else if (parameter.DataType == typeof(DateTime))
+                                    {
+                                        <input class="form-control" type="datetime" name="@parameter.Name" id="parameter-@parameter.Name" data-optional="@parameter.IsOptional">
+                                    }
+                                    else if (parameter.DataType == typeof(List<String>))
+                                    {
+                                        if (parameter.MultipleSelect)
+                                        {
+                                            @:<select class="form-control select2-multi" name="@parameter.Name" multiple data-optional="@parameter.IsOptional">
+                                                ViewBag.IsOptional = parameter.IsOptional ? 0 : 1;
+                                            }
+                                            else
+                                            {
+                                                @:<select class="form-control select2-single" name="@parameter.Name" data-optional="@parameter.IsOptional">
+                                                    @:<option></option> <!--Needed for placeholder text-->
+                                                    ViewBag.IsOptional = parameter.IsOptional ? 0 : 1;
+                                                }
+
+                                                foreach (var option in parameter.DropDownOptions)
+                                                {
+                                                    @:<option value="@option">@option</option>
+                                                }
+
+                                            @:</select>
+                                        }
+                                    <span>@parameter.Description</span>
+                            </div>
+                        }
+                            <span hidden class="text-danger fileWarning modal-body">Please enter all required fields.</span>
+                        </form>
+                    }
+
+                    <div>
+                        @if (Model.consumesInboundFiles)
+                        {
+                            <div class="modal-body">
+                                <label for="file">Choose file(s) to upload</label>
+                                <input class="form-control" type="file" id="file" name="file" multiple>
+                            </div>
+                        }
+                    </div>
+                    <div id="loadingDiv" class="loading hidden"><i class="fa fa-3x fa-spinner fa-spin loadingIcon"></i></div>
+                </div>
+            </div>
+            <div id="History" class="tab-pane fade">
+                <div id="historyTable" class="tab-content" style="display:none"></div>
+            </div>
+            <div id="Schedule" class="tab-pane fade">
+                <div class="scheduleSpinner" style="text-align: center;">
+                    <span class="fa-solid fa-calendar-lines-pen fa-4x fa-shake"></span>
+                </div>
+
+                <div id="scheduleDetails" class="tab-content" style="display:none">
+
+
+                </div>
+            </div>
+            <div id="JobConfiguration" class="tab-pane fade">
+                <div id="jobConfigLoader" style="text-align: center;">
+                    <i class="fa-solid fa-gear fa-4x fa-spin" style="left: 7px;bottom: 15px;position: relative;"></i><i class="fa-solid fa-gear fa-4x fa-spin fa-spin-reverse"></i>
+                </div>
+                <div id="jobConfiguration" class="tab-content" style="display:none">
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                @if (Model.UserCanRun == "JobsICanRun")
+                {
+                    <button type="button" id="launchButton" class="btn btn-default" onclick="LaunchJob('@Model.jobCode', '@Model.tool', 'RunRequest', '@owner')">Launch</button>
+                }
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        //Adds select2 dropdown functionality to any <select> with the class .select2
+        $(".select2-single").select2({
+            width: "100%", // Needed for IE support
+            minimumResultsForSearch: 5,
+            placeholder: "Select an option...",
+            allowClear: @ViewBag.IsOptional
+        });
+
+        $(".select2-multi").select2({
+            width: "100%", // Needed for IE support
+            minimumResultsForSearch: 5,
+            placeholder: "Select one or more options...",
+            allowClear: @ViewBag.IsOptional
+        });
+
+        $('input[type=datetime]').each(function (index, data) {
+            $(this).datepicker();
+        });
+
+
+        getStatus("@(Model.jobCode)", "#@(Model.jobCode)imgModal", "#@(Model.jobCode)valModal", false, true, "@(Model.tool)");
+
+
+        JobHistory('@Model.jobCode', 1);
+
+        if (!'@Model.tool'.includes('WebReport')) {
+            JobSchedule('@Model.jobCode', 1);
+        }
+        JobConfig('@Model.jobCode');
+    });
+
+</script>

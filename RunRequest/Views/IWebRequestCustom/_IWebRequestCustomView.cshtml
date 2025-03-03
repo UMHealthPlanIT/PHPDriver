@@ -1,0 +1,61 @@
+﻿@model RunRequest.Models.JobSummaryDetails
+@{
+    String owner = "Sparrow";
+    if (Model.Department[0].DepartmentProperName.Contains("PHP"))
+    {
+        owner = "PHP";
+    }
+}
+
+
+<div class="modal fade" id="editModal" role="dialog" data-keyboard="false" data-backdrop="static" onmouseover="largeListPassThrough()">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">@ViewBag.jobId @Model.title</h4>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#Launch" onclick="ShowTab('LaunchDetails')">Detail</a></li>
+                <li><a data-toggle="tab" href="#History" onclick="ShowTab('historyTable')">History</a></li>
+            </ul>
+            <div id="History" class="tab-pane fade">
+                <div id="historyTable" class="tab-content" style="display:none"></div>
+            </div>
+
+            <form id="parameterForm">
+                <div id="Launch" class="tab-pane fade in active">
+                    <div id="LaunchDetails" class="tab-content">
+                        <div class="modal-body">
+                            @{
+                                String jobIndex = ViewBag.jobId;
+                                Html.RenderPartial("~/Views/IWebRequestCustom/_" + jobIndex + ".cshtml");
+                            }
+                        </div>
+                        <span hidden="" class="text-danger fileWarning modal-body">Please enter all required fields.</span>
+                        <div id="loadingDiv" class="loading hidden">
+                            <i class="fa fa-3x fa-spinner fa-spin loadingIcon"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="modal-footer">
+                @if (Model.UserCanRun == "JobsICanRun")
+                {
+                    <button type="button" id="launchButton" class="btn btn-default" onclick="LaunchJob('@Model.jobCode', '@Model.tool', 'RunRequest', '@owner')">Launch</button>
+                }
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    getStatus("@(Model.jobCode)", "#@(Model.jobCode)imgModal", "#@(Model.jobCode)valModal", false, true);
+    JobHistory('@Model.jobCode', 1)
+</script>

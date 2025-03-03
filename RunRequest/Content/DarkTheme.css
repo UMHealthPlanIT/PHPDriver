@@ -1,0 +1,270 @@
+﻿
+/* Scrollbar Overrides */
+
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 128, .7);
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px white;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+    background: rgba(128, 0, 128, .9);
+}
+
+
+/* Navbar Overrides */
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    height: 65px;
+    color: white;
+    background-color: hsla(0, 0%, 0%, 1);
+    border-bottom: hsla(0, 0%, 60%, 1) 1px solid;
+    box-shadow: gray 0 0 3px;
+}
+
+.btn-sparrow {
+    background-color: hsla(0, 0%, 0%, 1);
+    border: hsla(0, 0%, 20%, 1) 2px solid;
+}
+
+.btn-sparrow:hover,
+.btn-sparrow:active,
+.btn-sparrow:focus {
+    background-color: hsla(0, 0%, 20%, 1);
+}
+
+.SparrowNavbar {
+    margin-top: 11px;
+}
+
+.SparrowNavResponses:hover, .SparrowNavResponses.active {
+    background-color: hsla(0, 0%, 20%, 1) !important;
+    color: white !important;
+    border: hsla(0, 0%, 60%, 1) 2px solid;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.helpButton {
+    display: none;
+}
+
+.clear-search {
+    color: gray !important;
+    cursor: pointer;
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5em;
+    right: 235px;
+    top: 17px;
+}
+
+
+/* Side Panel Overrides */
+
+.nav.nav-tabs > li > a {
+    color: white !important;
+    border: hsla(0, 0%, 60%, 1) 1px solid !important;
+    border-bottom: none !important;
+}
+
+.nav.nav-tabs > li > a:hover,
+.nav.nav-tabs > li.active > a{
+    color: #555 !important;
+    background-color: #ddd !important;
+}
+
+#scheduleTimeStamp {
+    position: absolute !important;
+    top: 72px;
+    right: 30px;
+    color: rgb(188, 130, 188) !important;
+}
+
+.side-panel {
+    left: 0px;
+    top: 0px;
+    height: 100% !important;
+    width: 375px !important;
+    color: hsla(0, 0%, 100%, 1) !important;
+    background-color: hsla(0, 0%, 20%, 1) !important;
+}
+
+.panel {
+    background-color: hsla(0, 0%, 20%, 1) !important;
+    border: none !important;
+}
+
+.alert {
+    width: 300px;
+    margin: 1px auto 1px auto;
+    border: hsla(0, 0%, 60%, 1) 1px solid;
+    border-radius: 10px;
+    color: white;
+    transition: margin-bottom .1s linear, margin-top .1s linear;
+}
+
+.alert > a,
+.alert > span {
+    color: hsla(0, 0%, 100%, 1) !important;
+    border-radius: 9px;
+}
+
+ul > li.alert:first-of-type:hover {
+    margin-bottom: 10px !important;
+    margin-top: 0px !important;
+    transition: margin-bottom .1s linear;
+}
+
+ul > li.alert:last-of-type:hover {
+    margin-bottom: 0px !important;
+    margin-top: 10px !important;
+    transition: margin-top .1s linear;
+}
+
+ul > li.alert:hover {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    transition: margin-bottom .1s linear, margin-top .1s linear;
+}
+
+.alert.alert-primary {
+    background-color: hsla(0, 0%, 100%, .2) !important;
+}
+
+.alert.alert-primary:hover,
+.alert.alert-primary.active,
+.alert.alert-primary:active,
+.alert.alert-primary:focus {
+    background-color: hsla(0, 0%, 100%, .4) !important;
+}
+
+.alert.alert-danger {
+    background-color: rgba(163, 21, 21, .5) !important;
+    border-color: rgba(163, 21, 21, .8) !important;
+}
+
+.alert.alert-danger:hover,
+.alert.alert-danger.active,
+.alert.alert-danger:active,
+.alert.alert-danger:focus {
+    background-color: rgba(163, 21, 21, 1) !important;
+}
+
+.alert.alert-info {
+    background-color: rgba(1, 207, 255, .3) !important;
+    border-color: rgba(1, 207, 255, .5) !important;
+}
+
+.alert.alert-info:hover,
+.alert.alert-info.active,
+.alert.alert-info:active,
+.alert.alert-info:focus {
+    background-color: rgba(1, 207, 255, .5) !important;
+}
+
+.alert.alert-success {
+    background-color: rgba(87, 166, 74, .5) !important;
+    border-color: rgba(87, 166, 74, .4) !important;
+}
+
+.alert.alert-success:hover,
+.alert.alert-success.active,
+.alert.alert-success:active,
+.alert.alert-success:focus {
+    background-color: rgba(87, 166, 74, .8) !important;
+}
+
+li.alert > a:active,
+li.alert > a:hover,
+li.alert > a:focus {
+    background-color: hsla(0, 0%, 100%, 0) !important;
+}
+
+/* Top Window Pane Overrides */
+
+tr {
+    color: lightgray !important;
+}
+
+tr.alert-danger {
+    background-color: rgba(163, 21, 21, .5) !important;
+    border-color: rgba(163, 21, 21, .8) !important;
+    color: lightgray !important;
+}
+
+tr.alert-warning {
+    background-color: rgba(236, 229, 9, 0.5) !important;
+    border-color: rgba(236, 229, 9, 0.6) !important;
+    color: white !important;
+}
+
+/* Bottom Window Pane Overrides */
+
+#runningTimeStamp {
+    color: rgb(188, 130, 188) !important;
+}
+
+
+/* Other Overrides */
+body {
+    height: 100vh;
+    padding: 65px 0 0 0;
+    color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(0, 0%, 20%, 1);
+}
+
+.main-log-content {
+    width: calc(100% - 375px) !important;
+    margin-left: 375px !important;
+    margin-right: 0px !important;
+    padding-left: 5px !important;
+}
+
+.main-log-content > div {
+    padding-left: 5px !important;
+}
+
+.panel > .panel-heading {
+    background-color: hsla(0, 0%, 20%, 1) !important;
+    color: hsla(0, 0%, 80%, 1);
+    border-bottom: hsla(0, 0%, 60%, 1) 1px solid;
+    border-top: none;
+    box-shadow: gray 0 0 3px;
+    margin-bottom: 5px;
+}
+
+#datepicker {
+    background-color: hsla(0, 0%, 20%, 1);
+    border-radius: 5px;
+    border-color: white;
+    color: hsla(0, 0%, 80%, 1);
+    text-align: center;
+}
+
+.btn-success {
+    background-color: rgba(128, 0, 128, .7) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-success:hover {
+    background-color: rgba(128, 0, 128, .4) !important;
+}
+
+.btn-success.disabled {
+    background-color: rgba(128, 0, 128, .3) !important;
+}

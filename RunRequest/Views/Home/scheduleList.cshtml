@@ -1,0 +1,176 @@
+﻿@model RunRequest.Models.JobSchedule
+@using PagedList.Mvc;
+
+@{ 
+    bool testing = false;
+    bool allowedToSchedule = RunRequest.Controllers.Security.ScheduleSecurityCheck(HttpContext.Current.User.Identity.Name, Model);
+}
+
+@if (Model.RunType.ToString() != "Run Request from User")
+{
+    if (Model.NextRun.HasValue)
+    {
+        <div class="alert alert-success alert-dismissible nextRunAlert" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <i class="fa-solid fa-clock"></i>  <strong>@Model.JobId</strong> next runtime is: @Model.NextRun
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning alert-dismissible nextRunAlert" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <i class="fa-solid fa-triangle-exclamation"></i>  <strong>@Model.JobId:</strong> @Model.NoSchedule
+        </div>
+    }
+}
+
+
+<div class="container">
+    <p>
+@if (allowedToSchedule)
+{
+    <button id="createSchedule" type="button" class="btn btn-default" onclick="ScheduleForm('@Model.JobId')">Create New</button>
+}
+    </p>
+    <div id="scheduleArea">
+        <table class="table table-hover displaySchedule fade in">
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(model => model.jobSchedules.First().StartDate)</th>
+                <th>@Html.DisplayNameFor(model => model.jobSchedules.First().EndDate)</th>
+                <th>@Html.DisplayNameFor(model => model.jobSchedules.First().OnHold)</th>
+                <th>@Html.DisplayNameFor(model => model.jobSchedules.First().Parameters)</th>
+                <th>@Html.DisplayNameFor(model => model.jobSchedules.First().HumanExpression)</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.jobSchedules)
+            {
+        <tr id="@Html.DisplayFor(i => item.ID)" class="@item.RowClass">
+            @if (allowedToSchedule)
+{
+
+
+<td class="scheduleCell"><i class="fa-solid fa-pencil" style="cursor:pointer;"></i></td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            <td class="scheduleCell">@Html.DisplayFor(i => item.StartDate)</td>
+            @if (item.EndDate.Year == 9999)
+            {
+                <td class="scheduleCell"><i class="fa-regular fa-infinity"></i></td>
+            }
+            else
+            {
+                <td class="scheduleCell">@Html.DisplayFor(i => item.EndDate)</td>
+            }
+            @if (allowedToSchedule)
+            {
+                <td class="scheduleCell">@Html.EditorFor(i => item.OnHold, new { htmlAttributes = new { @class = "onHoldState", @id = item.ID, @style = "cursor:pointer;" } })</td>
+                }
+            else
+            {
+                <td class="scheduleCell">@Html.DisplayFor(i => item.OnHold, new { htmlAttributes = new { @class = "onHoldState" } })</td>
+                }
+
+            <td class="scheduleCell">@Html.DisplayFor(i => item.Parameters)</td>
+            <td class="scheduleCell" title="@Html.DisplayFor(i => item.Cron_Expression)">@Html.DisplayFor(i => item.HumanExpression)</td>
+
+            @if (allowedToSchedule)
+            {
+                <td class="scheduleCell"><i class="fa-solid fa-trash-can" style="cursor:pointer;"></i></td>
+                }
+            else
+            {
+                <td></td>
+                }
+        </tr>
+            }
+        </table>
+
+        @if (Model.jobSchedules.PageCount > 1)
+        {
+            <p>Page @(Model.jobSchedules.PageCount < Model.jobSchedules.PageNumber ? 0 : Model.jobSchedules.PageNumber) of @Model.jobSchedules.PageCount</p>
+
+            @Html.PagedListPager(Model.jobSchedules, page => Url.Action("GetScheduleDetails",
+  new { jobId = Model.jobSchedules.First().JobId, page = page }), new PagedListRenderOptions { UlElementClasses = new string[] { "pagination schedulePagination" } });
+        }
+    </div>
+</div>
+<script>
+    $('.schedulePagination a').click(function (e) {
+        e.preventDefault();
+        var href = $(this)[0].href;
+        if (href) {
+            var params = href.split("?")[1].split("&");
+            $.ajax({
+                url: "@Url.Action("GetScheduleDetails","Home")",
+                data: { jobId: params[0].split("=")[1], page: params[1].split("=")[1]},
+                success: function (data) {
+                    $('#scheduleDetails').html(data);
+                }
+            });
+        }
+        return;
+    });
+
+    $('.modal-header .nextRunAlert').hide();
+    $('.nextRunAlert').detach().appendTo('.modal-header').first();
+
+
+
+
+    $('.fa-trash-can').click(function () {
+        if (confirm("Are you sure that you want to delete this?")) {
+            var ScheduleId = this.parentElement.parentElement.id;
+            $('.scheduleSpinner').fadeIn();
+            $('#scheduleDetails').fadeOut();
+            $('#nextRunAlert').fadeOut();
+            DeleteSchedule('@Model.JobId', ScheduleId);
+        }
+    });
+
+    $('.fa-pencil').click(function () {
+        var ScheduleId = this.parentElement.parentElement.id;
+        $('#createSchedule').hide();
+        $('#scheduleDetails').fadeOut();
+        $('.scheduleSpinner').fadeIn();
+        $('#nextRunAlert').fadeOut();
+
+
+        EditSchedule('@Model.JobId', ScheduleId)
+    });
+
+
+
+
+
+
+    $('.onHoldState').change(function () {
+        var ScheduleId = this.parentElement.parentElement.id;
+        var OnHold = this.checked;
+        $('.onHoldState').each(function (item) {
+            $(this).attr("disabled", true)
+        })
+
+        $.ajax({
+        url: "@Url.Action("UpdateHoldState", "Home")",
+            data: { jobId: '@Model.JobId', scheduleId: ScheduleId, onHold:OnHold},
+            success: function (data) {
+                JobSchedule('@Model.JobId', @Model.jobSchedules.PageNumber);
+
+                if (!data) {
+                    alert("There was an issue update the onHold status")
+                    $(this).prop('checked', !onHold)
+                    $('.onHoldState').each(function (item) {
+                        $(this).attr("disabled", false)
+                    })
+                }
+
+            }
+        })
+    })
+
+</script>

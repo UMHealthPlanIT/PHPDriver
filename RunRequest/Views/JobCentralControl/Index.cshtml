@@ -1,0 +1,448 @@
+﻿@Scripts.Render("~/Scripts/CustomScripts/JobConsole.js")
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        $(document).ready(function(){alert('@ViewBag.Message');});
+    </script>
+}
+
+
+<div class="modal fade" id="notesModal" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog notes">        
+        <div class="modal-content" id="notesData">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="pageModal" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog notes" style="width:1500px">
+        <div class="modal-content" id="pageData">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="launchModal" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog notes">
+        <div class="modal-content" id="launchData">
+            <button type="button" class="btn btn-light closeButton" onclick="CloseLaunch()">&#10006;</button>
+            <form id="adhocJobLaunchForm" class="container">
+                <div class="row">
+                    <label for="jobIdGroup">Job ID</label>
+                    <div class="form-group col-sm-offset-1" id="jobIdGroup">
+                        <input type="text" class="form-control col-sm-offset-1" id="jobIndex" autofocus>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="parameters">Parameters</label>
+                    <div class="form-group container col-sm-offset-1" id="parameters">
+                        <div class="row">
+                            <button type="button" class="btn btn-light col-sm-1 paramButton" onclick="InsertParameterToList($(this).parent())">&#10133;</button><input type="text" class="form-control col-sm-offset-1 jobparam">
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding-top:20px;">
+                        <button type="button" class="btn btn-success" id="adhocLaunchButton" onclick="LaunchAdhoc()" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Launching">Launch</button>
+                    </div>
+                    <div class="col-md">
+                        <label class="f">
+                            Sparrow
+                            <input class="f__input" type="checkbox" id="launchServer" name="faction" value="Sparrow">
+                            <span class="f__switch">
+                                <span class="f__handle">
+                                    <span class="f__1"></span>
+                                    <span class="f__2">
+                                        <span class="f__2a"></span>
+                                        <span class="f__2b"></span>
+                                        <span class="f__2c"></span>
+                                        <span class="f__2d"></span>
+                                        <span class="f__2e"></span>
+                                    </span>
+                                    <span class="f__3"></span>
+                                    <span class="f__4"></span>
+                                    <span class="f__5"></span>
+                                    <span class="f__6"></span>
+                                    <span class="f__7"></span>
+                                    <span class="f__8"></span>
+                                    <span class="f__9"></span>
+                                    <span class="f__10"></span>
+                                    <span class="f__11"></span>
+                                    <span class="f__12"></span>
+                                    <span class="f__13"></span>
+                                    <span class="f__14"></span>
+                                    <span class="f__15"></span>
+                                    <span class="f__16"></span>
+                                    <span class="f__17"></span>
+                                </span>
+                            </span>
+                            PHP
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="side-panel" id="jobviewpanel">
+    <div class="panel with-nav-tabs panel-default">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#todaysSchedule" data-toggle="tab">Scheduled</a></li>
+                <li><a href="#erroredJobs" data-toggle="tab">Errors <span style="background-color: #d9534f;" class="badge badge-pill" id="errorCount">0</span></a></li>
+                <li><a href="#allJobs" data-toggle="tab">All Logs</a></li>
+            </ul>
+            <div class="row" id="dateandsearch">
+                <div class="col input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" id="datepicker" class="ui-datepicker-current form-control">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input class="form-control" type="search" id="searchfield" value="" placeholder="Search" onkeyup="SearchJobs($(this).val().toLowerCase())">
+                </div>
+                <input type="checkbox" id="sparrow" name="sparrow" value="Sparrow" onclick="FilterJobs($(this))" style="margin-left:4px">
+                <label for="sparrow">Sparrow</label>
+                <input type="checkbox" id="php" name="php" value="PHP" onclick="FilterJobs($(this))" style="margin-left:4px">
+                <label for="php">PHP</label>
+                <input type="checkbox" id="jobs" name="jobs" value="Jobs" onclick="FilterJobs($(this))" style="margin-left:4px">
+                <label for="jobs">Jobs</label>
+                <input type="checkbox" id="system" name="system" value="System" onclick="FilterJobs($(this))" style="margin-left:4px">
+                <label for="system">System</label>
+                <input type="checkbox" id="web" name="web" value="Web" onclick="FilterJobs($(this))" style="margin-left:4px">
+                <label for="web">Web</label>
+                <div id="scheduleTimeStamp" class="col pull-right refresh-time"></div>
+            </div>
+        </div>
+        <div class="panel-body scrolling" id="joblist">
+            <div class="tab-content" style="padding:3px;">
+                <div class="tab-pane fade in active" id="todaysSchedule">
+                    @Html.Action("GetSchedule", "JobCentralControl", new { date = DateTime.Today.ToString("yyyy-MM-dd") })
+                </div>
+                <div class="tab-pane fade" id="erroredJobs">
+                    @Html.Action("GetErroredJobs", "JobCentralControl")
+                </div>
+                <div class="tab-pane fade" id="allJobs">
+                    @Html.Action("GetAllJobs", "JobCentralControl", new { date = DateTime.Today.ToString("yyyy-MM-dd") })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main-log-content">
+    <div id="logView">
+
+    </div>
+    <div id="controlSwitch" >
+        <div class="bottom-panel" id="bottomPanel">
+            <div class="panel with-nav-tabs panel-default" style="border:none">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs" id="bottomTabs">
+                        <li class="nav-item active"><a href="#currentJobs" data-toggle="tab">Running Jobs</a></li>
+                        <li class="nav-item"><a href="#dataSources" data-toggle="tab">Data Sources</a></li>
+                        <li class="nav-item pull-right"><button type="button" class="btn btn-success" onclick="ShowLaunchModal()">Launch</button></li>
+                    </ul>
+                </div>
+                <div class="panel-body" id="statusViewer">
+                    <div class="tab-content scrolling" id="statusContent" >
+                        <div class="tab-pane fade in active status-pane" id="currentJobs">
+                            <div class="loading">
+                                <div class="row" style="height:40%"></div>
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-6">
+                                        <span class="fa fa-spinner fa-spin fa-5x"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade out status-pane" id="dataSources">
+                            <div class="loading">
+                                <div class="row" style="height:40%"></div>
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-6">
+                                        <span class="fa fa-spinner fa-spin fa-5x"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#homeMenuItem").removeClass("active");
+        $("#jobcontrolcentralMenuItem").addClass("active");
+        $('#scheduleTimeStamp').html(GetDateTime());
+        Init("@Url.Action("")");
+        SetFilters();
+        GetDataSources();
+    })
+
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+
+    $("#datepicker").datepicker().datepicker('setDate', new Date())
+
+    $("#datepicker").change(function (evt) {
+        $("#searchfield").val("");
+        LoadScheduleView();
+        LoadAllJobsView();
+    });
+
+    document.onreadystatechange = function () {
+        if (document.readyState === "interactive") {
+            UpdateErrorCount($('#sparrow').prop('checked'), $('#php').prop('checked'));
+            GetRunningJobs();
+        }
+    }
+
+    $(function () {
+        setInterval(function () {
+            LoadScheduleView();
+            LoadErroredJobsView();
+            UpdateErrorCount($('#sparrow').prop('checked'), $('#php').prop('checked'));
+            LoadAllJobsView();
+        }, 300000); // every 5 minutes
+    });
+    $(function () {
+        setInterval(function () {
+            
+            GetRunningJobs();
+        }, 30000); // every 30 sec
+    });
+    function GetNotes(jobIndex, dateTicks) {
+        $.ajax({
+            url: '@Url.Action("GetJobNotes", "JobCentralControl")?jobIndex=' + jobIndex + '&dateTicks=' + dateTicks,
+            success: function (data) {
+                $('#notesData').html(data);
+                $('#notesModal').modal('show');
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function CloseNotes() {
+        $('#notesModal').modal('hide');
+    }
+
+    function ClosePage() {
+        $('#pageModal').modal('hide');
+    }
+
+    function CloseLaunch() {
+        $('#launchModal').modal('hide');
+        ClearLaunchForm();
+    }
+
+    function SaveNote() {
+        var payload = {
+            JobIndex: $('#dataContainer').attr('jobindex'),
+            JobRunDate: $('#dataContainer').attr('rundate'),
+            NoteText: $('#newNote').val()
+        };
+        $.ajax({
+            url: '@Url.Action("SaveNote", "JobCentralControl")',
+            type: 'POST',
+            data: JSON.stringify(payload),
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $('#notesModal').modal('hide');
+                LoadScheduleView();
+                LoadErroredJobsView();
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+
+    function GetLogs(jobIndex, dateTicks, owner) {
+        $('#logView').addClass('glow');
+        $.ajax({
+            url: '@Url.Action("GetLogs", "JobCentralControl")',
+            type: 'GET',
+            cache: false,
+            data: { jobIndex: jobIndex, dateTicks: dateTicks, owner: owner },
+            success: function (response) {
+                $('#logView').removeClass('glow');
+                $('#logView').html(response);
+
+            },
+            error: function (response) {
+                $('#logView').removeClass('glow');
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function GetDataSources() {
+        $.ajax({
+           url: '@Url.Action("GetDataSourceNames", "JobCentralControl")',
+           success: function (data) {
+               $('#dataSources').html(data);
+           },
+           error: function (response) {
+            }
+        });
+
+    }
+
+    function GetRunningJobs() {
+       $.ajax({
+           url: '@Url.Action("GetRunningJobs", "JobCentralControl")',
+           success: function (data) {
+               $('#currentJobs').html(data);
+           },
+           error: function (response) {
+           }
+        });
+
+    }
+
+    function LaunchAdhoc() {
+        $('#adhocLaunchButton').button('loading');
+        var job = $("#jobIndex").val().trim();
+        var parameterElements = $(".jobparam");
+        var parmData = [];
+        for (var i = 0; i < parameterElements.length; i++) {
+            parmData.push($(parameterElements[i]).val().trim());
+            }
+        var launchServerName = "Sparrow";
+        var checkBox = document.getElementById('launchServer');
+        console.log(checkBox.checked);
+        if (checkBox.checked) {
+            launchServerName = "PHP";
+        }
+
+        var parameterJson = JSON.stringify(parmData);
+        var formData = { jobIndex: job, parametersJson: parameterJson, launchServerName:  launchServerName};
+
+        $.ajax({
+            url: '@Url.Action("RunJobAdhoc", "JobCentralControl")',
+            data: formData,
+            cache: false,
+            type: 'POST',
+            success: function (data) {
+                alert(job + " successfully launched");
+                $('#adhocLaunchButton').button('reset');
+                $('#launchModal').modal('hide');
+                ClearLaunchForm();
+            },
+            error: function (response) {
+                alert("There was a problem launching the job");
+                $('#adhocLaunchButton').button('reset');
+            }
+        });
+    }
+    function ShowLaunchModal() {
+        $('#launchModal').modal('show');
+    }
+
+    function ClearLaunchForm() {
+        $('#adhocLaunchButton').html('Launch');
+        $('#parameters').html('<div class="row"><button type="button" class="btn btn-light col-sm-1 paramButton" size="25" onclick="InsertParameterToList($(this).parent())">&#10133;</button><input type="text" class="form-control col-sm-1 jobparam"></div>');
+        $('#jobIndex').val('');
+    }
+
+    function InsertParameterToList(item) {
+        $('<div class="row"><button type="button" class="btn btn-light col-sm-1 paramButton" size="25" onclick="InsertParameterToList($(this).parent())">&#10133;</button><input type="text" class="form-control col-sm-1 jobparam"><button type="button" class="btn btn-light col-sm-1 paramButton" onclick="RemoveParameter($(this).parent())">&#10134;</button></div>').insertAfter(item);
+    }
+
+    function RemoveParameter(item) {
+        $(item).remove();
+    }
+
+    function FilterJobs(chkbox) {
+        var boxChecked = chkbox.prop('checked');
+        var chkBoxName = chkbox.prop('name');
+        var cookieName = 'JobConsoleFilter' + chkBoxName;
+        var sparrow = $('#sparrow').prop('checked');
+        var php = $('#php').prop('checked');
+        SetCookie(cookieName, boxChecked, 365);
+        ApplyFilter(chkBoxName, boxChecked, sparrow, php);
+        UpdateErrorCount(sparrow, php);
+    }
+
+    function SetFilters() {
+        let jobsFilter = GetCookie('JobConsoleFilterjobs');
+        let systemFilter = GetCookie('JobConsoleFiltersystem');
+        let webFilter = GetCookie('JobConsoleFilterweb');
+        let phpFilter = GetCookie('JobConsoleFilterphp');
+        let sparrowFilter = GetCookie('JobConsoleFiltersparrow');
+
+        //Sparrow
+        if (sparrowFilter == '') {
+            SetCookie('JobConsoleFiltersparrow', 'true', 365);
+            $('#sparrow').prop('checked', true);
+        }
+        else {
+            var ischkedsparrow = true;
+            if (sparrowFilter == 'false') {
+                ischkedsparrow = false;
+            }
+            $('#sparrow').prop('checked', ischkedsparrow);
+            FilterJobs($('#jobs'));
+        }
+        //PHP
+        if (phpFilter == '') {
+            SetCookie('JobConsoleFilterphp', 'true', 365);
+            $('#php').prop('checked', true);
+        }
+        else {
+            var ischkedphp = true;
+            if (phpFilter == 'false') {
+                ischkedphp = false;
+            }
+            $('#php').prop('checked', ischkedphp);
+            FilterJobs($('#jobs'));
+        }
+        //Jobs
+        if (jobsFilter == '') {
+            SetCookie('JobConsoleFilterjobs', 'true', 365);
+            $('#jobs').prop('checked', true);
+        }
+        else {
+            var ischkedjobs = true;
+            if (jobsFilter == 'false') {
+                ischkedjobs = false;
+            }
+            $('#jobs').prop('checked', ischkedjobs);
+            FilterJobs($('#jobs'));
+        }
+        //System
+        if (systemFilter == '') {
+            SetCookie('JobConsoleFiltersystem', 'true', 365);
+            $('#system').prop('checked', true);
+        }
+        else {
+            var ischkedsystem = true;
+            if (systemFilter == 'false') {
+                ischkedsystem = false;
+            }
+            $('#system').prop('checked', ischkedsystem);
+            FilterJobs($('#system'));
+        }
+        //Web
+        if (webFilter == '') {
+            console.log('No web filter found');
+            SetCookie('JobConsoleFilterweb', 'true', 365);
+            $('#web').prop('checked', true);
+        }
+        else {
+            var ischkedweb = true;
+            if (webFilter == 'false') {
+                ischkedweb = false;
+            }
+            $('#web').prop('checked', ischkedweb);
+            FilterJobs($('#web'));
+        }
+    }
+</script>

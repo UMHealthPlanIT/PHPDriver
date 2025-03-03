@@ -1,0 +1,10 @@
+﻿@model RunRequest.Models.JobSummaryDetails
+
+@{
+    ViewBag.Title = "iFrameLaunchDialog";
+    Layout = "~/Views/Shared/_liteLayout.cshtml";
+}
+
+@Html.Partial("_LaunchForm", Model)
+
+@Scripts.Render("~/Scripts/CustomScripts/RunRequest.js")  

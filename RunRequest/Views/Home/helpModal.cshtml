@@ -1,0 +1,40 @@
+﻿<div class="modal fade" id="helpModal" role="dialog">
+    <div class="modal-dialog" style="margin-left: 400px">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 1000px !important;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Help</h4>
+            </div>
+
+            <div class="modal-body">
+                <h4>Job Access</h4>
+                <ul>
+                    <li>Only jobs that you have access to run will appear in the list.  Access to a job is controlled via AD group, and must be set on a job-by-job basis (except for a few general cases).  If there is a job you are expecting to have access to but it's not displayed, please submit a ticket to the HelpDesk to have permissions updated.</li>
+                    <li>Jobs are only available to be requested if they are marked as a .Net job (including Mr Data jobs) and the status is set to ‘In Service’ on the Job Index.</li>
+                </ul>
+                <br />
+                <h4>Run Modes</h4>
+                <ul>
+                    <li>There are two run modes for each job: test and production (prod).  If the job is requested to be run in test mode, any email outputs will be sent to the user that requested the test run.  If the job is requested to be run in production mode, whatever email distribution is configured for that job will be used.</li>
+                    <li>For jobs that drop files to network shares or send files outside of the Health System, this will only happen if the job is requested in production mode.  If the job sends a file outside of the Health System and is run in test mode, you will receive an email verification that it was successfully delivered to Rhapsody as the “IT_TEST” job.  If your job delivers a file to an internal network location, please coordinate with Development Services on a job-by-job basis for the preferred test mode handling.</li>
+                </ul>
+                <br />
+                <h4>Job Status</h4>
+                <ul>
+                    <li>All run requests are processed on a 15 minute cycle. This means that your job could be queued for up to 15 minutes before being launched.</li>
+                    <li>Job statuses are only updated on a 15 minute loop as well, meaning your production job run could complete up to 15 minutes earlier than it is flagged as complete in this application.  Your job is complete once it sends an email notification, regardless of what is displayed on the screen.</li>
+                    <li>Status for test mode run requests are not currently tracked by this system and are automatically marked as Finished after 1 hour (regardless if the job completed successfully or with an error).  Please rely on the email output you receive for test runs for the state of your test mode requests.  If a job run in test mode ends with an error, please submit a ticket to the HelpDesk along with the details from the email if you would like it addressed.</li>
+                </ul>
+
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

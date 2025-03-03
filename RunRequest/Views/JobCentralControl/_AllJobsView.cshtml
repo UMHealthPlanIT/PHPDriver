@@ -1,0 +1,10 @@
+﻿@model IEnumerable<RunRequest.Models.RunJob>
+
+<ul class="nav flex-column">
+    @foreach (RunRequest.Models.RunJob job in Model)
+    {
+        <li class="nav-item alert">
+            <a href="javascript:GetLogs('@job.JobIndex', '@job.LogDateTime.Value.Ticks.ToString()')" class="nav-link active jobpill @job.Owner">@job.JobIndex</a>
+        </li>
+    }
+</ul>

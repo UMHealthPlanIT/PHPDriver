@@ -1,0 +1,42 @@
+﻿@model RunRequest.Models.JobSummaryDetails
+
+
+<div class="card rr" data-department="@String.Join(" ", Model.Department.Select(x => x.DepartmentNoSpaces))" data-jobType="@Model.JobType" data-format="@Model.Format.Replace(" ","").Trim()" data-runAccess="@Model.UserCanRun">
+
+    <div class="card-header rr">
+        @Model.title.Substring(0, Model.title.Length > 40 ? 40 : Model.title.Length)
+        <i class="fa @Model.toolIcon fa-2x reportIcon"></i>
+    </div>
+    <div class="card-body rr">
+        <h6 class="card-subtitle rr mb-2 text-muted">@Model.jobCode</h6>
+    </div>
+    @if (Model.devStatus == "In Development")
+    {
+        <div class="card-body rr devStatus">
+            <h6 class="card-subtitle rr mb-2 devText">@Model.devStatus</h6><i class="fa fa-wrench statusImages"></i>
+        </div>
+    }
+    @*@if (Model.nextRun != null)
+    {
+        <div class="card-body rr next-schedule">
+            <h6 class="card-subtitle rr mb-2 schedule">Next Run: @Model.nextRun</h6>
+        </div>
+    }*@
+
+    <div hidden id="@Model.jobCode" data-source="@String.Join(", ", Model.dataSource.ToArray())" data-jobType="@Model.JobType" class="jobStatus @Model.RunStatus.ToString() col-md-6">
+
+        @{
+            String statusText;
+            if (Model.JobType == "WebReport" && Model.RunStatus.ToString() != "DataSourceNotReady")
+            {
+                statusText = "";
+            }
+            else
+            {
+                statusText = @Model.RunStatus.ToString().Replace("OnHold", "On Hold").Replace("DataSourceNotReady", "Data Source Not Ready");
+            }
+            <i id="@(Model.jobCode)img" class="statusImages"></i><div class="statusText" id="@(Model.jobCode)val">@(statusText=="None"?"":statusText)</div>
+        }
+
+    </div>
+</div>

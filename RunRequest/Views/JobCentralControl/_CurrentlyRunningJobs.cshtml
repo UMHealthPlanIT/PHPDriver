@@ -1,0 +1,110 @@
+﻿@model IEnumerable<RunRequest.Models.DriverProcess>
+
+
+
+<div class="row">
+    <div class="col-md-2"><h4></h4></div>
+    <div class="col-md-2"><h4>Program ID</h4></div>
+    <div class="col-md-2"><h4>Owner</h4></div>
+    <div class="col-md-2"><h4>Start Time</h4></div>
+    <div class="col-md-2"><h4>Windows Process ID</h4></div>
+    <div class="col-md-2"><h4>Server</h4></div>
+</div>
+<hr />
+@foreach (RunRequest.Models.DriverProcess proc in Model)
+{
+    string alert = "";
+    if (proc.startedTime < DateTime.Today)
+    {
+        alert = "alert-danger";
+    }
+<div class="row @alert">
+    <div class="col-sm-2"><button type="button" id="@proc.winProcID" class="btn btn-danger" onclick="KillJob('@proc.winProcID', '@proc.args[2]', '@proc.server', '@proc.Owner')" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Kill Job">Kill Job</button></div>
+    @if (proc.args[2] == "")
+    {
+        <div class="col-sm-2">Manual Execution</div>
+    }
+    else if (proc.args[2] == "Mr_Data" || proc.args[2] == "Ms_Data")
+    {
+        <div class="col-sm-2">@proc.args[3]</div>
+    }
+    else
+    {
+        <div class="col-sm-2">@proc.args[2]</div>
+    }
+    <div class="col-sm-2">@proc.Owner</div>
+    <div class="col-sm-2">@proc.startedTime</div>
+    <div class="col-sm-2">@proc.winProcID</div>
+    <div class="col-sm-2">@proc.server</div>
+</div>
+    <hr />
+}
+
+                
+
+<script>
+   function GetPages() {
+       $.ajax({
+           url: '@Url.Action("GetPageDetails", "JobCentralControl")?dataSource=' + "temp",
+           success: function (data) {
+               $('#pageData').html(data);
+               $('#pageModal').modal('show');
+           },
+           error: function (response) {
+               alert(response.responseText);
+           }
+       });
+   }
+
+    function SavePage() {
+        var table = document.getElementById("table");
+        var rowCount = table.rows.length;
+
+        // Start at one to match labeling of ids
+        for (let i = 1; i < rowCount; i++) {
+            var page = $('#canPage_' + i).val() == "Y";
+            var payload = {
+                Name: $('#name_' + i).text(),
+                ReadyTimeStart: $('#timeStart_' + i).val(),
+                ReadyTimeEnd: $('#timeEnd_' + i).val(),
+                NumberOfNotReadyUntilPage: $('#untilPage_' + i).val(),
+                MaxPages: $('#maxPages_' + i).val(),
+                Pageable: page
+            };
+            $.ajax({
+            url: '@Url.Action("SavePageDetails", "JobCentralControl")',
+            type: 'POST',
+            data: JSON.stringify(payload),
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $('#pageModal').modal('hide');
+
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+        }
+
+    }
+
+    function ClosePage() {
+        $('#pageModal').modal('hide');
+    }
+
+    function KillJob(winProcID, jobID, server, owner) {
+        
+        $('#' + winProcID).button('loading');
+        $.ajax({
+            url: '@Url.Action("KillJob", "JobCentralControl")' + '?winProcID=' + winProcID + '&jobID=' + jobID + '&server=' + server + '&owner=' + owner,
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $('#currentJobs').html(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+</script>

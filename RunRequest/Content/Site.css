@@ -1,0 +1,109 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar {
+    background-color: #006F51;
+}
+
+.SparrowNavbar {
+    color: white !important;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 160px;
+    margin-right: 1em;
+    margin-top: .75em;
+}
+
+.SparrowNavResponses:hover, .SparrowNavResponses.active {
+    color: green !important;
+    background-color: #8DC63F !important;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.btn-sparrow {
+    background-color: #006F51;
+    border: none;
+}
+
+.btn-sparrow:hover {
+    background-color: #8DC63F;
+    text-decoration: none;
+    color: black;
+}
+.btn-sparrow:focus {
+    background-color: #8DC63F;
+    text-decoration: none;
+    color: black;
+}
+
+.runModeRadio {
+    padding: 5px 5px 5px 0px;
+}
+
+.iconButton {
+    border: none;
+    border-radius: 6px;
+    color: black;
+    padding: 8.5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.iconButton:hover {
+    color: black;
+    background-color: dodgerblue;
+}
+
+.detailsButton {
+    background-color: blue;
+    color: white;
+}
+
+.displayHistory th,.displayHistory td{
+    text-align: center;
+}
+
+.helpButton {
+    cursor: pointer;
+    position: absolute;
+    left:32em;
+}
+
+.hidden {
+    display: none;
+}
+
+.loading {
+    padding: 100px;
+    text-align: center;
+}
+
+.loadingIcon {
+    font-size: 32px;
+}
+
+.select2-search__field {
+    width: 100% !important;
+}
+
+
+label.required:after {
+    content: "*";
+    color: red;
+}

@@ -1,0 +1,75 @@
+﻿@using PagedList.Mvc;
+@model RunRequest.Models.JobHistory 
+
+<table class="table displayHistory">
+    <tr>
+        <th>@Html.DisplayNameFor(i => Model.History.First().ScheduledStartTime)</th>
+        <th>@Html.DisplayNameFor(i => Model.History.First().Environment)</th>
+        <th>@Html.DisplayNameFor(i => Model.History.First().RunStatus)</th>
+        <th>@Html.DisplayNameFor(i => Model.History.First().RequestedBy)</th>
+    </tr>
+
+    @foreach (var item in Model.History)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(i => item.ScheduledStartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(i => item.Environment)
+        </td>
+        @if (item.RunStatus == "F")
+        {
+            <td>Finished</td>
+        }
+        else{
+            <td>@Html.DisplayFor(i => item.RunStatus)</td>
+        }
+
+        <td>
+            @Html.DisplayFor(i => item.RequestedBy)
+        </td>
+    </tr>
+    }
+
+    @if (Model.History.Count == 0)
+    {
+        <tr>
+            <td>
+                No Job History
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    }
+
+</table>
+
+@if (Model.History.PageCount > 1)
+{
+    <p>Page @(Model.History.PageCount < Model.History.PageNumber ? 0 : Model.History.PageNumber) of @Model.History.PageCount</p>
+
+    @Html.PagedListPager(Model.History, page => Url.Action("JobHistory",
+        new { jobId = Model.JobCode, page = page}))
+}
+
+<script>
+
+    $(".pagination a").click(function (e) {
+        e.preventDefault();
+        var href = $(this)[0].href;
+        if (href) {
+            var params = href.split("?")[1].split("&");
+            $.ajax({
+                url: "@Url.Action("HistoryTable", "Home")",
+                data: { jobId: params[0].split("=")[1], page: params[1].split("=")[1] },
+                success: function (data) {
+                    $('#historyTable').html(data);
+                }
+            });
+        }
+        return;
+    });
+
+</script>
