@@ -1,0 +1,178 @@
+﻿
+<label for="groupprov" class="required">Group or Provider</label>
+<select id="groupprov" class="form-control select2-single" name="groupOrProv" data-optional="false">
+    <option value="">Select an option...</option>
+    <option value="group">Group</option>
+    <option value="provider">Provider</option>
+</select>
+
+<br />
+
+<div id="group" style="display:none">
+    <br />
+    <label for="groupSelect">Group ID (leave blank for all groups)</label>
+    <select id="groupSelect" class="form-control select2-single" name="GRGR_ID" data-optional="True" disabled></select>
+</div>
+
+<div id="provider" style="display:none">
+    <br />
+    <label for="providerSelect">Provider ID(s) (leave blank for all providers)</label>
+    <select id="providerSelect" class="form-control select2-single" name="PROV_ID" multiple data-optional="True" disabled></select>
+</div>
+
+<br />
+
+@{ List<String> authsts = new List<string> { "Void-Closed (CL)", "Completed (CO)", "Disallowed Service (DS)", "Pend with Errors (IN)", "Logged (LG)", "Predetermination (PD)", "Pend (UP)" }; }
+<label for="authsts">Authorization status(es) (leave blank for all statuses)</label>
+<select id="authsts" class="form-control select2-single" name="authStatus" multiple data-optional="True">
+    @foreach (String sts in authsts)
+    {
+        @:<option value="@sts">@sts</option>
+    }
+</select>
+
+<br />
+<br />
+
+<label for="authhist" class="required">Include authorization history?</label>
+<select id="authhist" class="form-control select2-single" name="includeAuthHist" data-optional="false">
+    <option value="">Select an option...</option>
+    <option value="y">Yes</option>
+    <option value="n">No</option>
+</select>
+
+<br />
+<br />
+
+<label for="remvals" class="required">Remove transactions with 999 or greater units?</label>
+<select id="remvals" class="form-control select2-single" name="removeValues" data-optional="false">
+    <option value="">Select an option...</option>
+    <option value="y">Yes</option>
+    <option value="n">No</option>
+</select>
+
+<br />
+<br />
+
+<label for="dosauth" class="required">Date of service or authorization produced range?</label>
+<select id="dosauth" class="form-control select2-single" name="DosOrAuth" data-optional="false">
+    <option value="">Select an option...</option>
+    <option value="dos">Date of Service</option>
+    <option value="auth">Authorization Date</option>
+</select>
+
+<br />
+<br />
+
+<label>Diagnosis Code Filter</label>
+<select class="form-control select2-multi" id="DxFilter" name="DiagnosisCodeFilter" multiple data-optional="true"></select>
+<br />
+<span>Leave blank to include all codes.</span>
+<br />
+<br />
+
+
+<label>Procedure Code Filter</label>
+<select class="form-control select2-multi" id="ProcFilter" name="ProcedureCodeFilter" multiple data-optional="true"></select>
+<br />
+<span>Leave blank to include all codes.</span>
+<br />
+<br />
+
+<div id="dos" style="display:none">
+    <label>Date of service start date</label>
+    <input type="datetime" class="form-control" name="StartDate" data-optional="True" disabled />
+
+    <br />
+    <br />
+
+    <label>Date of service end date</label>
+    <input type="datetime" class="form-control" name="EndDate" data-optional="True" disabled />
+</div>
+
+<div id="auth" style="display:none">
+    <label>Authorization start date</label>
+    <input type="datetime" class="form-control" name="StartDate" data-optional="True" disabled />
+
+    <br />
+    <br />
+
+    <label>Authorization end date</label>
+    <input type="datetime" class="form-control" name="EndDate" data-optional="True" disabled />
+</div>
+
+<script>
+    function largeListPassThrough() {
+        if ($('#editModal').val() != '1') {
+            getWebRequestData('#groupSelect', 'GetGroups');
+            getWebRequestData('#providerSelect', 'GetProviders');
+            getWebRequestData('#DxFilter', 'GetDiagCodes');
+            getWebRequestData('#ProcFilter', 'GetBareProcCodes');
+            $('#editModal').val('1');
+        }
+    };
+
+    $("#groupprov").select2({
+        width: "100%", // Needed for IE support
+        placeholder: "Select an option...",
+        minimumResultsForSearch: 10
+    }).change(function () {
+        if ($(this).val() == "group") {
+            $("#provider > select").val("").attr("disabled", true);
+            $("#provider").hide();
+            $("#group").show();
+            $("#group > select").attr("disabled", false);
+        }
+
+        if ($(this).val() == "provider") {
+            $("#group > select").val("").attr("disabled", true);
+            $("#group").hide();
+            $("#provider").show();
+            $("#provider > select").attr("disabled", false);
+        }
+    });
+
+    // Unfortunately, dropdowns with Select2 need to have unique IDs.
+
+    $("#authsts").select2({
+        width: "100%", // Needed for IE support
+        minimumResultsForSearch: 10,
+        placeholder: "Select one or more options..."
+    });
+
+    $("#authhist").select2({
+        width: "100%", // Needed for IE support
+        minimumResultsForSearch: 10,
+        placeholder: "Select one or more options..."
+    });
+
+    $("#remvals").select2({
+        width: "100%", // Needed for IE support
+        minimumResultsForSearch: 10,
+        placeholder: "Select one or more options..."
+    });
+
+    $("#dosauth").select2({
+        width: "100%", // Needed for IE support
+        placeholder: "Select an option...",
+        minimumResultsForSearch: 10
+    }).change(function () {
+        if ($(this).val() == "dos") {
+            $("#auth input").val("").attr("disabled", true).attr("data-optional", "True");
+            $("#auth").hide();
+            $("#dos").show();
+            $("#dos input").attr("disabled", false).attr("data-optional", "false");
+        }
+
+        if ($(this).val() == "auth") {
+            $("#dos input").val("").attr("disabled", true).attr("data-optional", "True");
+            $("#dos").hide();
+            $("#auth").show();
+            $("#auth input").attr("disabled", false).attr("data-optional", "false");
+        }
+    });
+
+    $('input[type=datetime]').each(function (index, data) {
+        $(this).datepicker();
+    });
+</script>

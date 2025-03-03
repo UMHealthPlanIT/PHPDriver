@@ -1,0 +1,2 @@
+C:\Users\glauchn\source\repos\JobAutomation\JobsApps\RunRequest\obj\Debug\RunRequest.csproj.AssemblyReference.cache
+C:\Users\glauchn\source\repos\JobAutomation\JobsApps\RunRequest\obj\Debug\RunRequest.csproj.CoreCompileInputs.cache

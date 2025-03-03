@@ -1,0 +1,1177 @@
+﻿.navbar-fixed-top,
+.navbar-fixed-bottom {
+  border-width: 0 0 0px;
+}
+
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+  border-bottom: 4px solid #fff;
+}
+
+.statusImages, .statusText, .devText {
+    display:inline;
+    padding:5px;
+}
+
+.devText {
+    color:green !important;
+}
+
+
+.ModalStatusDetails{
+    padding-left:2em;
+}
+
+.ModalStatusDetails > div {
+    display:inline-block;
+}
+
+.card.rr {
+    border-radius: 5px;
+    padding: .5rem;
+    background-color: gainsboro;
+    width: 250px;
+    height: 13rem;
+    cursor: pointer;
+    box-shadow: 0px 1px 5px 0px #888888;
+    position: relative;
+    margin: 10px;
+}
+
+.card.rr:hover {
+    background-color: #2196F3;
+}
+
+#cardDeckContent {
+    margin-top: 25px;
+    margin-left: 275px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#listView {
+    margin-top: 15px;
+    margin-left: 245px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#filterList {
+    position: absolute;
+    margin-top: 3em;
+    width: 80%;
+    left:1.75em;
+    margin-left:auto;
+    margin-right:auto;
+}
+.modal-job-details {
+    width: 600px;
+}
+.modal-content {
+    padding: 4%;
+    margin: 3em;
+}
+
+#table-head {
+    background-color: #006F51;
+    color: white;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 65px;
+}
+
+
+#run-table td {
+    vertical-align: middle;
+}
+
+#run-table p {
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+
+
+#sidebar {
+    width: 275px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: gainsboro;
+    color: #fff;
+    box-shadow: -1px -2px 7px 3px #888888;
+    overflow: auto;
+    margin-top: 50px;
+}
+
+.panel-group {
+    background-color: white;
+    box-shadow: 0px 1px 5px 0px #888888;
+    border-radius: 5px;
+}
+
+.modal-header {
+    margin-bottom: 1%;
+}
+
+.filterCategory {
+    color: green;
+}
+
+#detailPage {
+    position: relative;
+    top: 30px;
+    left: 10%;
+    width: 70%;
+}
+
+.tab-pane {
+    padding-bottom: 2em;
+}
+
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
+    content: "\e114"; /* adjust as needed, taken from bootstrap.css */
+    float: right; /* adjust as needed */
+    color: grey; /* adjust as needed */
+}
+
+.panel-heading{
+    border-top:1px solid black;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+}
+
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+}
+
+label {
+    color: black;
+}
+
+.panel-body {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.panel-title a {
+    text-decoration: none;
+}
+
+.jobSearchBox {
+    width: 220px;
+    height: 40px;
+    position: absolute;
+    top: 6%;
+    left: 50em;
+    font-size: 18px;
+    border: 0;
+    background: #eee;
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.favoriteStar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 18px;
+}
+
+#pageTitle {
+    width: 300px;
+    height: 40px;
+    position: absolute;
+    top: -5%;
+    left: 8em;
+    font-size: 30px;
+    border: 0;
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-fixed-top {
+    border: 0;
+    box-shadow: -1px -2px 7px 3px #888888;
+    /*height: 65px;*/
+    /*background: linear-gradient(90deg, #84bd00 15%, #005C46 0%);*/
+}
+
+.navbar-header {
+    /*position:absolute;*/
+}
+
+#logo {
+    height: 50px;
+    position: fixed;
+    left: 3%;
+    top: .5em;
+}
+
+.reportIcon {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+}
+
+.card-header.rr {
+    padding-right: 40px;
+    display: inline-block;
+}
+
+.card-subtitle.rr {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.card-subtitle.rr.mb-2.schedule{
+    margin-top: 5px;
+}
+
+/* Everything below here is for the Toggle Switch */
+#switchContainer {
+    position: absolute;
+    margin-top: 30px;
+    left: 30%;
+    margin-bottom: 20px;
+    padding: 1em;
+}
+
+#switchLabel {
+    position: absolute;
+    top: 65%;
+    width: 250%;
+    left: -35%;
+    color: darkslategrey;
+    font-weight: bold;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: darkslategrey;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+/* End of Toggle Switch */
+
+@media screen and (max-width: 1800px) {
+    .card-header.rr {
+        padding-right: 40px;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    .card-header.rr {
+        padding-right: 40px;
+        display: inline-block;
+    }
+
+    .navbar-header{
+        /*padding-left:3em;*/
+    }
+}
+
+@media screen and (max-width: 1550px) {
+    /*we always want to see the job code on the cards*/
+    /*.card-subtitle.rr {
+        display: none;
+    }*/
+
+    .navbar-header{
+        /*padding-left:9em;*/
+    }
+}
+
+@media screen and (max-width: 1350px) {
+
+    .card-header.rr {
+        font-size: .9em;
+    }
+
+    .navbar-header {
+        padding-left: 15em;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .card-header.rr {
+        padding-right: 40px;
+        font-size: 1em;
+        display: inline-block;
+    }
+
+    .card-subtitle.rr {
+        display: inline-block;
+    }
+}
+
+
+.jobStatus{
+    position:absolute;
+    bottom:8px;
+    right:-15px;
+}
+
+.devStatus {
+    position: absolute;
+    bottom: -4px;
+    left: 0px;
+}
+
+.displayHistory{
+    margin-top:1em;
+}
+
+.toolLabel{
+    padding-left:3em;
+    font-weight:bold;
+}
+
+.panel.with-nav-tabs .panel-heading {
+    padding: 5px 5px 0 5px;
+}
+
+.panel.with-nav-tabs .nav-tabs {
+    border-bottom: none;
+}
+
+.panel.with-nav-tabs .nav-justified {
+    margin-bottom: -1px;
+}
+
+
+/********************************************************************/
+/*** PANEL DEFAULT ***/
+.with-nav-tabs.panel-default .nav-tabs > li > a,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+}
+
+    .with-nav-tabs.panel-default .nav-tabs > .open > a,
+    .with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
+    .with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
+    .with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+        color: #777;
+        background-color: #ddd;
+        border-color: transparent;
+    }
+
+.with-nav-tabs.panel-default .nav-tabs > li.active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
+    color: #555;
+    background-color: #fff;
+    border-color: #ddd;
+    border-bottom-color: transparent;
+}
+
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+    .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a {
+        color: #777;
+    }
+
+        .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+        .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+            background-color: #ddd;
+        }
+
+    .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+    .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+    .with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+        color: #fff;
+        background-color: #555;
+    }
+/********************************************************************/
+/*** PANEL PRIMARY ***/
+.with-nav-tabs.panel-primary .nav-tabs > li > a,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+    color: #fff;
+}
+
+    .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+    .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        color: #fff;
+        background-color: #3071a9;
+        border-color: transparent;
+    }
+
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+    color: #428bca;
+    background-color: #fff;
+    border-color: #428bca;
+    border-bottom-color: transparent;
+}
+
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #428bca;
+    border-color: #3071a9;
+}
+
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+    color: #fff;
+}
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+        background-color: #3071a9;
+    }
+
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+    background-color: #4a9fe9;
+}
+
+#statusPanel {
+    background-color: #006F51;
+    box-shadow: inherit;
+    position: absolute;
+    bottom: -30px;
+    right: 10%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+}
+
+div.circle {
+    -moz-border-radius: 10px/10px;
+    -webkit-border-radius: 10px 10px;
+    border-radius: 10px/10px;
+    width: 10px;
+    height: 10px;
+}
+
+.errors {
+    border: solid 8px #d9534f;
+}
+
+.running {
+    border: solid 8px #b8daff;
+}
+
+.unrun {
+    border: solid 8px #ffffff;
+}
+
+.panel, .route-blurb-container {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.stylishButtons {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    padding: 6px 20px;
+    /*margin: 0;*/
+    cursor: pointer;
+    border: 1px solid #bbb;
+    overflow: visible;
+    font: bold 13px arial, helvetica, sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #555;
+    background-color: #ddd;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    background-image: linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    -webkit-transition: background-color .2s ease-out;
+    -moz-transition: background-color .2s ease-out;
+    -ms-transition: background-color .2s ease-out;
+    -o-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    background-clip: padding-box; /* Fix bleeding */
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+    text-shadow: 0 1px 0 rgba(255,255,255, .9);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.stylishButtons:hover {
+    background-color: #eee;
+    color: #555;
+}
+
+.stylishButtons:active {
+    background: #e9e9e9;
+    position: relative;
+    top: 1px;
+    text-shadow: none;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+}
+
+.modal-body {
+    padding: 5px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+}
+.loading .modal-dialog {
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: 35%;
+    left: 10%;
+    background-color: transparent;
+    border: none;
+}
+
+.notes .modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.modal-content {
+    vertical-align: middle;
+}
+
+#Launch {
+   margin-top: 10px;
+    
+}
+#JobConfiguration {
+   position: relative; 
+   top: -40px;
+}
+
+#Schedule {
+    position: relative;
+    top: -40px;
+}
+
+.scheduleCell {
+    text-align: center;
+}
+.scheduleInput {
+    margin-right: 1px;
+}
+.scheduleHelper{
+    display: none;
+    overflow: initial;
+}
+.scheduleHelper .show {
+    display: inline-block;
+    overflow: initial;
+}
+.stretchModal{
+    width: fit-content;
+    right: 160px;
+}
+
+
+#logView {
+    width: 100%;
+    height: 60%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#controlSwitch {
+    width: 100%;
+    height: 40%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#main-log-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    margin-left: 20%;
+}
+
+.dim {
+    background-color: rgba(0,0,0,0.5);
+}
+
+
+.scrolling {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#statusViewer {
+    padding-right: 0px;
+}
+
+.closeButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.paramButton {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    outline: 0;
+    background-color: transparent;
+}
+
+
+@keyframes glow {
+    from {
+        box-shadow: inset 0 0 5em 2em #4361ee;
+    }
+
+    to {
+        box-shadow: inset 0 0 5em -3em #4361ee;
+    }
+}
+
+.glow {
+    animation: glow 1s infinite alternate;
+}
+
+#joblist {
+    max-height: 750px;
+    min-height: 750px;
+    padding: 5px;
+}
+
+#statusContent {
+    max-height: 320px;
+    width: 100%;
+    min-height: 320px;
+}
+
+.status-pane {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+}
+
+.refresh-time {
+    color: forestgreen;
+    font-size: small;
+}
+
+#controlRefreshTime {
+    margin: 9px 10px 0px 0px;
+}
+
+#dateandsearch {
+    height: 5%;
+    margin: 8px 7px 2px 4px;
+}
+
+#jobviewpanel {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-color: white;
+}
+
+#launchModal {
+    overflow-y: auto;
+}
+
+.holdToggle,
+.holdToggle::before,
+.holdToggle::after {
+    transition: 400ms all ease-in-out 50ms;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+}
+
+#OnHold {
+    display: none;
+}
+
+    /*Button is :CHECKED*/
+
+    #OnHold:checked ~ div {
+        background: rgb(127 134 126);
+        box-shadow: 0 0 2px rgb(255 255 255);
+    }
+
+        #OnHold:checked ~ div label {
+            left: 40px;
+        }
+
+
+/*shared*/
+
+.holdToggle {
+    border-radius: 5px;
+}
+
+
+/*'un':checked state so the job is on*/
+
+#holdToggleDiv {
+    height: 30px;
+    width: 60px;
+    background: rgb(85 155 60);
+    position: relative;
+    box-shadow: 0 0 2px rgb(0 0 0);
+}
+
+#holdToggleLabel {
+    height: 15px;
+    width: 15px;
+    background: rgb(255 255 255);
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    cursor: pointer;
+}
+
+/* Job Launch Server Toggle*/
+
+/* Switch base */
+.f, .f span {
+    display: block;
+}
+
+.f {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    margin: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.f__input {
+    position: fixed;
+    top: -1.5em;
+    left: -1.5em;
+}
+
+.f__handle, .f__handle span {
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+.f__handle, .f__switch {
+    height: 3em;
+}
+
+.f__handle {
+    clip-path: circle(50% at 50% 50%);
+    position: relative;
+    width: 3em;
+    transition-duration: 0.4s;
+}
+
+    .f__handle span {
+        position: absolute;
+        transition-duration: 0.2s;
+    }
+
+.f__switch {
+    background: var(--switchBg);
+    border-radius: 1.5em;
+    margin: 0 0.75em;
+    width: 6em;
+}
+
+.f__input:focus {
+    outline: 0;
+}
+
+.f__input:focus-visible + .f__switch {
+    box-shadow: 0 0 0.25em var(--primary);
+}
+
+.f__input:checked + .f__switch .f__handle {
+    transform: translateX(100%);
+}
+/* Shapes */
+.f__1, .f__2a, .f__2b, .f__9, .f__10, .f__17 {
+    border-radius: 50%;
+}
+
+.f__1, .f__handle > span:nth-child(n + 11) {
+    background: #fff0;
+}
+
+.f__input:checked + .f__switch .f__1,
+.f__input:checked + .f__switch .f__handle > span:nth-child(n + 11) {
+    background: #fff;
+}
+
+    .f__1, .f__2, .f__2 span,
+    .f__input:checked + .f__switch .f__9,
+    .f__input:checked + .f__switch .f__handle > span:nth-child(n + 11):nth-child(-n + 17) {
+        transition-delay: 0.4s;
+    }
+
+.f__1 {
+    box-shadow: 0 -0.5em 0 0.4em #fa0012 inset;
+    width: 3em;
+    height: 3em;
+}
+
+.f__input:checked + .f__switch .f__1 {
+    box-shadow: 0 0 0 0.1em #000 inset;
+}
+
+.f__2 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+}
+
+.f__input:checked + .f__switch .f__2 {
+    transform: scaleY(0);
+}
+
+    .f__input:checked + .f__switch .f__handle > span:nth-child(-n + 2),
+    .f__input:checked + .f__switch .f__2 span {
+        transition-delay: 0s;
+    }
+
+.f__2a, .f__2b {
+    box-shadow: 0 0 0 0.25em #fa0012 inset;
+    top: 0.35em;
+    width: 1.375em;
+    height: 1.65em;
+}
+
+.f__input:checked + .f__switch .f__2 span:nth-child(-n + 2) {
+    box-shadow: 0 0 0 0.25em #000 inset;
+}
+
+.f__2a {
+    clip-path: polygon(0% 35%,100% 28%,100% 100%,0% 100%);
+    left: 0.15em;
+    transform: rotate(-45deg) skewX(-13deg);
+}
+
+.f__2b {
+    clip-path: polygon(0 28%,100% 35%,100% 100%,0 100%);
+    right: 0.15em;
+    transform: rotate(45deg) skewX(13deg);
+}
+
+.f__input:checked + .f__switch .f__2c,
+.f__handle > span:nth-child(n + 3):nth-child(-n + 8),
+.f__10 {
+    background-color: #000;
+}
+
+.f__2c {
+    background-color: #fa0012;
+    clip-path: polygon(50% 0%,80% 14%,61% 22%,60% 75%,100% 90%,100% 100%,0% 100%,0% 90%,40% 75%,39% 22%,20% 14%);
+    top: 0;
+    left: 1em;
+    width: 1em;
+    height: 2.2em;
+}
+
+.f__2d, .f__2e {
+    top: 0.3em;
+    width: 0.25em;
+    height: 0.55em;
+}
+
+.f__2d {
+    border-radius: 0% 100% 0% 100% / 100% 100% 0% 0%;
+    box-shadow: -0.1em -0.05em 0 #fa0012 inset;
+    left: 1.2em;
+}
+
+.f__input:checked + .f__switch .f__2d {
+    box-shadow: -0.1em -0.05em 0 #000 inset;
+}
+
+.f__2e {
+    border-radius: 100% 0% 0% 100% / 100% 100% 0% 0%;
+    box-shadow: 0.1em -0.05em 0 #fa0012 inset;
+    left: 1.55em;
+}
+
+.f__input:checked + .f__switch .f__2e {
+    box-shadow: 0.1em -0.05em 0 #000 inset;
+}
+
+.f__handle > span:nth-child(n + 3):nth-child(-n + 8),
+.f__handle > span:nth-child(n + 11):nth-child(-n + 16) {
+    transform-origin: 50% 0;
+}
+
+.f__handle > span:nth-child(n + 3):nth-child(-n + 8) {
+    top: 1.5em;
+    left: 1.45em;
+    width: 0.1em;
+    height: 1.4em;
+}
+
+.f__input:checked + .f__switch .f__handle > span:nth-child(n + 3):nth-child(-n + 8), .f__10 {
+    transition-delay: 0.2s;
+}
+
+.f__3 {
+    transform: translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__3 {
+    transform: translateY(-100%) scaleY(1);
+}
+
+.f__4 {
+    transform: rotate(60deg) translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__4 {
+    transform: rotate(60deg) translateY(-100%) scaleY(1);
+}
+
+.f__5 {
+    transform: rotate(120deg) translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__5 {
+    transform: rotate(120deg) translateY(-100%) scaleY(1);
+}
+
+.f__6 {
+    transform: rotate(180deg) translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__6 {
+    transform: rotate(180deg) translateY(-100%) scaleY(1);
+}
+
+.f__7 {
+    transform: rotate(240deg) translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__7 {
+    transform: rotate(240deg) translateY(-100%) scaleY(1);
+}
+
+.f__8 {
+    transform: rotate(300deg) translateY(-100%) scaleY(0);
+}
+
+.f__input:checked + .f__switch .f__8 {
+    transform: rotate(300deg) translateY(-100%) scaleY(1);
+}
+
+.f__9, .f__10, .f__17 {
+    transform: scale(0);
+}
+
+.f__9 {
+    background-image: conic-gradient( #000 15deg, #fff 15deg 45deg, #000 45deg 75deg, #fff 75deg 105deg, #000 105deg 135deg, #fff 135deg 165deg, #000 165deg 195deg, #fff 195deg 225deg, #000 225deg 255deg, #fff 255deg 285deg, #000 285deg 315deg, #fff 315deg 345deg, #000 345deg );
+    top: 0.3em;
+    left: 0.3em;
+    width: 2.4em;
+    height: 2.4em;
+}
+
+.f__10 {
+    top: 0.5em;
+    left: 0.5em;
+    width: 2em;
+    height: 2em;
+}
+
+.f__handle > span:nth-child(n + 3):nth-child(-n + 8), .f__input:checked + .f__switch .f__10 {
+    transition-delay: 0.3s;
+}
+
+.f__input:checked + .f__switch .f__handle > span:nth-child(n + 9):nth-child(-n + 10),
+.f__input:checked + .f__switch .f__17 {
+    transform: scale(1);
+}
+
+.f__handle > span:nth-child(n + 11):nth-child(-n + 16) {
+    clip-path: polygon(50% 0%,100% 100%,0% 100%);
+    top: 1.5em;
+    left: 1.32em;
+    width: 0.36em;
+    height: 0.9em;
+}
+
+.f__11 {
+    transform: scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__11 {
+    transform: scaleX(1);
+}
+
+.f__12 {
+    transform: rotate(60deg) scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__12 {
+    transform: rotate(60deg) scaleX(1);
+}
+
+.f__13 {
+    transform: rotate(120deg) scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__13 {
+    transform: rotate(120deg) scaleX(1);
+}
+
+.f__14 {
+    transform: rotate(180deg) scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__14 {
+    transform: rotate(180deg) scaleX(1);
+}
+
+.f__15 {
+    transform: rotate(240deg) scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__15 {
+    transform: rotate(240deg) scaleX(1);
+}
+
+.f__16 {
+    transform: rotate(300deg) scaleX(0);
+}
+
+.f__input:checked + .f__switch .f__16 {
+    transform: rotate(300deg) scaleX(1);
+}
+
+.f__17 {
+    top: 1.06em;
+    left: 1.06em;
+    width: 0.88em;
+    height: 0.88em;
+}
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #2e3138;
+        --fg: #e3e4e8;
+        --primary: #5583f6;
+        --switchBg: #454954;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 100% !important;
+    }
+}

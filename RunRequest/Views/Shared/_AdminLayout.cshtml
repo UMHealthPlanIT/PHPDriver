@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Custom.css")
+    @Styles.Render("~/Content/JobCentralControl.css")
+    @Styles.Render("~/Content/plumage")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/plumage")
+</head>
+<body style="height: 100vh;">
+    @Html.Partial("NavbarPartial")
+    <div class="container-fluid" style="height: 100%;">
+        <div style="position: relative; height: calc(100% - 5px);">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var parseNavigationLink = (controller, action, text) => {
+        let base = "@Url.Content("~/")";
+
+        if (base === "/") {
+            base = "";
+        }
+        else if (base.length > 1) {
+            base = base.substring(1);
+        }
+
+        return {
+            linkText: text,
+            actionName: action,
+            controllerName: base + controller
+        };
+    };
+
+    navigationParametersJC.links.push(parseNavigationLink("Home", "Index", "Run Request"));
+
+    //security required to access certain links
+    if ("@RunRequest.Controllers.Security.IsUserAllowed(HttpContext.Current.User.Identity.Name)" == "True")
+    {
+        navigationParametersJC.links.push(parseNavigationLink("JobCentralControl", "Index", "Job Console"));
+    }
+
+    doThePlumage();
+    displayNavigation(navigationParametersJC);
+
+</script>

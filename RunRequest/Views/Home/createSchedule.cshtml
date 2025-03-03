@@ -1,0 +1,405 @@
+﻿@model RunRequest.Models.JobSchedule_C
+
+<div class="modal scheduleHelper" id="scheduleHelper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content stretchModal">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" onclick="$('#scheduleHelper').removeClass('show');"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Schedule Helper</h4>
+            </div>
+            <div class="modal-body">
+                <img src="~/Content/images/scheduleHelper.png" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="$('#scheduleHelper').removeClass('show');">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="row">
+                <h4 class="col-xs-9 col-sm-9 col-md-9 col-lg-6">@Model.JobId</h4> 
+                <div class="btn-group col-lg-2 col-lg-offset-4">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Presets<span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-left">
+                        <li><a href="#" id="EveryDay" onclick="Presets(this)">Every Day</a></li>
+                        <li><a href="#" id="EveryWeekday" onclick="Presets(this)">Every Weekday</a></li>
+                        <li><a href="#" id="FirstDoM" onclick="Presets(this)">First Day of Every Month</a></li>
+                        <li><a href="#" id="FirstWDayEveryMonth" onclick="Presets(this)">First Weekday of Every Month</a></li>
+                        <li><a href="#" id="FirstMonday" onclick="Presets(this)">First Monday of Every Month</a></li>
+                        <li><a href="#" id="LastMonday" onclick="Presets(this)">Last Monday of Every Month</a></li>
+                        <li><a href="#" id="Quarterly" onclick="Presets(this)">Quarterly</a></li>
+                        <li><a href="#" id="Yearly" onclick="Presets(this)">Yearly</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.JobId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.JobId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.JobId, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label" for="StartDate">Start Date</label>
+                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control scheduleInput", @type = "datetime", } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label" for="EndDate">End Date</label>
+                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control scheduleInput", @type = "datetime", } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12 col-md-4">
+                        @Html.LabelFor(Model => Model.Owner)
+                        @Html.DropDownListFor(model => model.Owner, new SelectList(new List<String> { "Sparrow","PHP"},"-- Select a Owner --"), new {@class = "form-control scheduleInput" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput">Active</label>
+                        <input class="form-control" id="OnHold" name="OnHold" type="checkbox" @(Model.OnHold ? @Html.Raw("checked") : @Html.Raw(""))  />
+                        <div class="holdToggle" id="holdToggleDiv">
+                            <label class="control-label scheduleInput holdToggle" for="OnHold" id="holdToggleLabel"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12 col-md-4">
+                        <label class="control-label scheduleInput" for="Parameters">Parameters</label>
+                        <input class="form-control"value="@Model.Parameters" id="Parameters" name="Parameters" type="text" placeholder="space separated values"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput" for="Cron_Minute">Cron Minute</label>
+                        <i class="fa-light fa-circle-question scheduleHint" onclick="$('.scheduleHelper').addClass('show')" ;></i>
+                        @Html.EditorFor(model => model.Cron_Minute, new { htmlAttributes = new { @class = "form-control cron-input", @id = "cronMin", @placeholder = "0" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput" for="Cron_Hour">Cron Hour</label>
+                        @Html.EditorFor(model => model.Cron_Hour, new { htmlAttributes = new { @class = "form-control cron-input", @id = "cronHour", @placeholder = "7" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput" for="Cron_Day_Month">Cron Day(s) of the Month</label>
+                        @Html.EditorFor(model => model.Cron_Day_Month, new { htmlAttributes = new { @class = "form-control cron-input", @id = "cronDoM", @placeholder = "*" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput" for="Cron_Month">Cron Month</label>
+                        @Html.EditorFor(model => model.Cron_Month, new { htmlAttributes = new { @class = "form-control cron-input", @id = "cronMonth", @placeholder = "*" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group scheduleDiv">
+                    <div class="col-lg-12">
+                        <label class="control-label scheduleInput" for="Cron_Day_Week">Cron Day(s) of the Week</label>
+                        @Html.EditorFor(model => model.Cron_Day_Week, new { htmlAttributes = new { @class = "form-control cron-input", @id = "cronDoW", @placeholder = "MON#1" } })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+
+            </div>
+        </div>
+    }
+    <hr />
+    <div class="" id="cronAlert" role="alert">
+        <p id="cronOutput"></p>
+        <p id="cronNextRun"></p>
+    </div>
+    <div class="btn-group col-md-offset-7" role="group">
+        @if (Model.ID > 0)
+        {
+            <button type="button" value="Update" class="btn btn-default disabled" id="schdeuleUpdate" onclick="UpdateSchedule('@Model.JobId','@Model.ID')">Update</button>
+        }
+        else
+        {
+            <button type="button" value="Create" class="btn btn-default disabled" id="schdeuleSubmit" onclick="NewSchedule('@Model.JobId')">Create</button>
+        }
+
+        <button type="button" value="Cancel" class="btn btn-default" id="cancelScheduleSubmit" onclick="cancelScheduleSubmit()">Cancel</button>
+    </div>
+</div>
+
+
+
+<script>
+    $("#StartDate").datepicker({
+        minDate: 0,
+        changeMonth: true,
+        showButtonPanel: true
+    }, "setDate", );
+    $("#StartDate").datepicker("setDate", new Date());
+    $("#EndDate").datepicker();
+    $('#EndDate').val('');
+    $('.modal-footer').hide();
+
+    if ('@Model.ID' != '0') {
+       
+        var end = '@Model.EndDate'.split(" ")[0];
+        var start = '@Model.StartDate'.split(" ")[0];
+        $('#StartDate').val(start);
+        $('#EndDate').val(end);
+        if (end.includes('9999')) {
+            $('#EndDate').val('');
+        }
+        Validate();
+    } 
+
+    $('#StartDate').change(function () {
+        Validate();
+    });
+
+
+    function cancelScheduleSubmit() {
+        $('.modal-footer').show();
+        $('#scheduleDetails').html('');
+        $('.scheduleSpinner').show();
+        JobSchedule('@Model.JobId', 1);
+    }
+
+
+    function Validate() {
+
+        $('#schdeuleSubmit').html('<i class="fa-1x fa-solid fa-loader fa-spin" style="color:#784F8F"></i>')
+        $('#schdeuleUpdate').html('<i class="fa-1x fa-solid fa-loader fa-spin" style="color:#784F8F"></i>')
+
+        var startDate = $('#StartDate').val()
+
+        var cronMin = $('#cronMin').val().trim()
+        var cronHour = $('#cronHour').val().trim()
+        var cronDoM = $('#cronDoM').val().trim()
+        var cronMonth = $('#cronMonth').val().trim()
+        var cronDoW = $('#cronDoW').val().trim()
+
+        var cron = cronMin + ' ' + cronHour + ' ' + cronDoM + ' ' + cronMonth + ' ' + cronDoW
+
+
+        $.ajax({
+            url: "@Url.Action("ValidateCron", "Home")",
+            data: { CronExpression: cron, StartDate: startDate},
+            success: function (data3) {
+                var resp = JSON.parse(data3);
+                if (resp.Error === undefined) {
+                    $('#cronAlert').removeAttr('class');
+                    $('#cronOutput').text(resp.HumanExpression);
+                    $('#cronNextRun').text(resp.NextRun);
+                    $('#cronAlert').addClass('alert alert-success');
+                    $('#schdeuleSubmit').removeClass('disabled');
+                    $('#schdeuleUpdate').removeClass('disabled');
+                    $('#schdeuleSubmit').html('Create');
+                    $('#schdeuleUpdate').html('Update');
+                } else {
+                    $('#cronAlert').removeAttr('class');
+                    $('#cronAlert').addClass('alert alert-danger');
+                    $('#cronOutput').text(resp.Error);
+                    $('#cronNextRun').text('');
+                    $('#schdeuleSubmit').addClass('disabled');
+                    $('#schdeuleUpdate').addClass('disabled');
+                    $('#schdeuleSubmit').html('Create')
+                    $('#schdeuleUpdate').html('Update');
+                }
+            }
+        });
+    }
+
+    function NewSchedule(jobId) {
+        var inputs = $('.form-control');
+        var json = {}
+
+        $.each(inputs, function () {
+            this.type === 'checkbox' ? json[this.name] = this.checked : json[this.name] = this.value || '';
+
+        });
+
+        json['jobId'] = jobId;
+        $('#scheduleArea').fadeOut();
+        $('.scheduleSpinner').fadeIn();
+
+
+
+        $.ajax({
+            url: "@Url.Action("NewSchedule","Home")",
+            data: json,
+            success: function (data2) {
+                JobSchedule(jobId, 1);
+            },
+            error: function () {
+                $('.scheduleSpinner').fadeOut();
+                $('#scheduleDetails').html(`<div class="alert alert-danger text-center scheduleError" role="alert"> <i class="fa-solid fa-message-exclamation fa-2x"></i>
+                    <span class="sr-only">Error:</span><h3>Something went wrong! If this persists please call the HelpDesk.</h3>
+                    <a href="{}" target="_blank">
+                    <i class="fa-solid fa-up-right-from-square"></i></a><a href="#" onclick="JobSchedule('`+jobId+`', 1)"<i class="fa-solid fa-arrows-rotate" ></i></a>
+                    </div>`);
+
+            }
+        });
+    }
+
+        function debounce(func, wait, immediate) {
+
+            var timeout;
+            return function () {
+                var context = this, args = arguments;
+                var later = function () {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+
+        $('.cron-input').keyup(function () { $('#schdeuleSubmit').addClass('disabled'); });
+        $('.cron-input').keyup(debounce(function () {
+        var count = $('.cron-input').filter(function ( index ) {
+            return $(this).val().length > 0;
+        }).length
+
+        if (count === 5) {
+            Validate();
+        } else {
+            $('#cronAlert').removeAttr('class');
+            $('#cronNextRun').text('');
+            $('#cronOutput').text('');
+            }
+        }, 500))
+
+   
+
+        function Presets(type) {
+            var hour = Math.floor(Math.random() * (17 - 8)) + 8;
+            if (hour === 14) {
+                hour = hour - 1;
+            } else if (hour === 15) {
+                hour = hour + 1;
+            }
+
+            var month = Math.floor(Math.random() * (12 - 1)) + 1;
+            var dayOfMonth = Math.floor(Math.random() * (31 - 1)) + 1;
+
+            $('#cronMin').val('0');
+            $('#cronHour').val(hour);
+
+            if (type.id === 'EveryDay' | type.id === 'EveryWeekday') {
+
+
+                $('#cronDoM').val('*');
+                $('#cronMonth').val('*');
+                type.id === 'EveryDay' ? $('#cronDoW').val('*') : $('#cronDoW').val('1-5');
+            }
+            if (type.id === 'FirstDoM' | type.id === 'FirstWDayEveryMonth') {
+
+                type.id === 'FirstDoM' ? $('#cronDoM').val('1') : $('#cronDoM').val('1W');
+                $('#cronMonth').val('*');
+                $('#cronDoW').val('*');
+            }
+            if (type.id === 'FirstMonday' | type.id === 'LastMonday') {
+                $('#cronDoM').val('*');
+                $('#cronMonth').val('*');
+                type.id === 'FirstMonday' ? $('#cronDoW').val('MON#1') : $('#cronDoW').val('MONL');
+            }
+            if (type.id === 'Quarterly' | type.id === 'Yearly') {
+                $('#cronDoM').val(dayOfMonth);
+                type.id === 'Quarterly' ? $('#cronMonth').val('*/3') : $('#cronMonth').val(month);
+                $('#cronDoW').val('*');
+            }
+
+
+
+
+            Validate();
+        }
+
+        function UpdateSchedule(jobId,scheduleId) {
+             var inputs = $('.form-control');
+        var json = {}
+
+        $.each(inputs, function () {
+            this.type === 'checkbox' ? json[this.name] = this.checked : json[this.name] = this.value || '';
+
+        });
+
+            json['jobId'] = jobId;
+            json['scheduleId'] = scheduleId
+        $('#scheduleArea').fadeOut();
+        $('.scheduleSpinner').fadeIn();
+
+
+
+        $.ajax({
+            url: "@Url.Action("UpdateSchedule","Home")",
+            data: json,
+            success: function (data2) {
+                JobSchedule(jobId, 1);
+            },
+            error: function () {
+                $('.scheduleSpinner').fadeOut();
+                $('#scheduleDetails').html(`<div class="alert alert-danger text-center scheduleError" role="alert"> <i class="fa-solid fa-message-exclamation fa-2x"></i>
+                    <span class="sr-only">Error:</span><h3>Something went wrong! If this persists please call the HelpDesk.</h3>
+                    <a href="{}" target="_blank">
+                    <i class="fa-solid fa-up-right-from-square"></i></a><a href="#" onclick="JobSchedule('`+ jobId + `', 1)"<i class="fa-solid fa-arrows-rotate" ></i></a>
+                    </div>`);
+
+            }
+        });
+        }
+
+</script>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+    }

@@ -1,0 +1,12 @@
+﻿@{
+    String controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+
+    if (controller == "JobCentralControl")
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}

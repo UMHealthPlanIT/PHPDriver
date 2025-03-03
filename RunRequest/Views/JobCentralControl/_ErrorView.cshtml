@@ -1,0 +1,36 @@
+﻿@model List<RunRequest.Models.ScheduledJob>
+
+
+
+<ul class="nav flex-column" id="errorList">
+    @foreach (RunRequest.Models.ScheduledJob job in Model)
+    {
+        string colorClass = "";
+        if (job.FinalDisposition == "MILESTONE")
+        {
+            colorClass = "alert-success";
+        }
+        else if (job.RunStatus == "S")
+        {
+            colorClass = "alert-info";
+        }
+        else if (job.FinalDisposition == "ERROR")
+        {
+            colorClass = "alert-danger";
+        }
+        else
+        {
+            colorClass = "alert-primary";
+        }
+        string notesIcon = "";
+        if (job.HasNotes == "Yes")
+        {
+            notesIcon = "fa fa-sticky-note";
+        }
+
+        <li class="nav-item alert @colorClass the-post-title">
+            <a href="javascript:GetLogs('@job.JobId', '@job.ScheduledStartTime.Value.Ticks.ToString()', '@job.Owner')" class="nav-link active jobpill @job.Owner">@job.JobId</a>
+            <span><i class="@notesIcon" aria-hidden="true"></i>@job.ScheduledStartTime</span>
+        </li>
+    }
+</ul>

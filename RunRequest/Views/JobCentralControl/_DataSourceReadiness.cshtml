@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Utilities.APIWork.DataSource>
+
+<div class="row">
+    <div class="col-md-1"><h4>Status</h4></div>
+    <div class="col-md-3"><h4>Datasource</h4></div>
+    <div class="col-md-2"><h4 style="text-align:center;">Manual Status</h4></div>
+    <div class="col-md-2"><h4 style="text-align:center;">Override Status</h4></div>
+    @*<div class="col-md-4"><span style="float:right;font-size:30px;cursor:pointer" onclick="GetPages()">&#9881;</span></div>*@
+</div>
+@foreach (Utilities.APIWork.DataSource dataSource in Model)
+{
+    string manualCheckedText = dataSource.manualSwitch ? "checked" : "";
+    string overrideCheckedText = dataSource.overrideReadinessQuery ? "checked" : "";
+
+<div class="row">
+    <div class="col-md-1">
+        @if (dataSource.sourceReady)
+        {
+            <i id="@dataSource.name.Replace(" ","").Replace("(", "").Replace(")", "")" class="glyphicon glyphicon-ok-sign" style="color:lawngreen; font-size:1.5em; margin-left:15%; float:left;"></i>
+        }
+        else
+        {
+            <i id="@dataSource.name.Replace(" ","").Replace("(", "").Replace(")", "")" class="glyphicon glyphicon-remove-sign" style="color:red; font-size:1.5em; margin-left:15%; float:left;"></i>
+        }
+    </div>
+    <div id="timesPaged">
+
+
+    </div>
+    <div class="col-md-3"><h5>@dataSource.name</h5></div>
+    <div class="col-md-2">
+        <label class="switch" style="margin-left:auto;margin-right:auto;display:block;">
+            <input type="checkbox" @manualCheckedText name="@dataSource.name.Replace(" ","|")" id="manual-@dataSource.name.Replace(" ","|")" class="manual-switch" />
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="col-md-2">
+        <label class="switch" style="margin-left:auto;margin-right:auto;display:block;">
+            <input type="checkbox" @overrideCheckedText name="@dataSource.name.Replace(" ","|")" id="override-@dataSource.name.Replace(" ","|")" class="override-switch" />
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+</div>
+}
+<script>
+    $(document).ready(function () {
+        var model = @Html.Raw(Json.Encode(Model));
+        //model.shift();
+        var sourceArray = []
+        for (var source of model) {
+            sourceArray.push(source.name);
+        }
+        CallDataSources(sourceArray);
+        setInterval(CallDataSources, 30000, sourceArray);
+
+        $("#dataSources .switch > input").click(function () {
+            if ($(this).hasClass("override-switch")) {
+                overrideInsteadOfReady = true;
+            }
+            else {
+                overrideInsteadOfReady = false;
+            }
+            $.ajax({
+                url: "@Url.Action("ToggleSource", "JobCentralControl")",
+                data: { dataSource: $(this).attr("name").replace(/\|/g, " "), yesOrNo: $(this).prop("checked"), overrideInsteadOfReady: overrideInsteadOfReady },
+                success: function (data) {
+                    //$("#dataSources").html(data);
+                    CallDataSources(sourceArray);
+                },
+                cache: false
+            });
+        });
+        //keeps current tab active on refresh!
+        $("#bottomTabs a[data-toggle=\"tab\"]").on("show.bs.tab", function (e) {
+            localStorage.setItem("activeTab", $(e.target).attr("href"));
+        });
+        var activeTab = localStorage.getItem("activeTab");
+        if (activeTab) {
+            $("#bottomTabs a[href=\"" + activeTab + "\"]").tab("show");
+        } else {
+            $("#bottomTabs a[href=\"#currentJobs\"]").tab("show");
+        }
+    });
+
+    @*$(document).ready(function () {
+        var model = @Html.Raw(Json.Encode(Model));
+        //model.shift();
+        var sourceArray = []
+        for (var source of model) {
+            sourceArray.push(source.name);
+        }
+        CallDataSources(sourceArray);
+        setInterval(CallDataSources, 30000, sourceArray);
+    }); // 30 sec*@
+</script>
