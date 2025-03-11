@@ -1,7 +1,0 @@
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.csproj.AssemblyReference.cache
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.csproj.SuggestedBindingRedirects.cache
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.exe.config
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.JobService.resources
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.ProjectInstaller.resources
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.csproj.GenerateResource.cache
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\PHPController\obj\Development\PHPController.csproj.CoreCompileInputs.cache

@@ -1,2 +1,0 @@
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\JobCentralControlAPI\obj\Debug\JobCentralControlAPI.csproj.AssemblyReference.cache
-C:\Users\glauchn\source\repos\JobAutomation\JobsApps\JobCentralControlAPI\obj\Debug\JobCentralControlAPI.csproj.CoreCompileInputs.cache
