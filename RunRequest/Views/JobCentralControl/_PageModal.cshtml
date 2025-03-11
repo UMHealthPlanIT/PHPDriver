@@ -1,0 +1,73 @@
+﻿@model List<RunRequest.Models.DataSourcePaging>
+<button type="button" class="btn btn-light closeButton" onclick="ClosePage()">&#10006;</button>
+<h2>Datasource Paging Information</h2>
+<div>
+    <table id="table">
+
+        <tr>
+            <th>Name</th>
+            <th>Ready Time Start</th>
+            <th>Ready Time End</th>
+            <th>Consecutive Not Ready</th>
+            <th>Number of Not Ready Until Page</th>
+            <th>Times Paged Oncall</th>
+            <th>Last Paged</th>
+            <th>Max Pages</th>
+            <th>Pageable</th>
+        </tr>
+        @{int i = 0;}
+        @foreach (RunRequest.Models.DataSourcePaging source in Model)
+        {
+            i++;
+            <tr>
+                <td id="name_@i">@source.Name</td>
+                <td><input class="pageInput" id="timeStart_@i" rows="1" value="@source.ReadyTimeStart" style="width:100px" /></td>
+                <td><input class="pageInput" id="timeEnd_@i" rows="1" value="@source.ReadyTimeEnd" style="width:100px" /></td>
+                <td>@source.ConsecutiveNotReady</td>
+                <td><input class="pageInput" id="untilPage_@i" rows="1" value="@source.NumberOfNotReadyUntilPage" style="width:100px" /></td>
+                <td>@source.TimesPagedOncall</td>
+                <td>@source.LastPaged</td>
+                <td><input class="pageInput" id="maxPages_@i" type="text" value="@source.MaxPages" style="width:100px" /></td>
+                <td>
+                    <select name="pageable" id="canPage_@i" style="width:50px;height:26px;border-radius:5px">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                    </select>
+                </td>
+                <script>
+                    let element = document.getElementById("canPage_@i");
+                    @if(source.Pageable)
+                    {
+                        @:element.value = "Y";
+                    }
+                    else
+                    {
+                        @:element.value = "N";
+                    }
+                </script>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="text-center" style="position: absolute; left: 50%;">
+    <div style="position: relative; left: -50%; ">
+        <button type="button" class="btn btn-success" onclick="SavePage()" style="display:inline-block;">Save</button>
+    </div>
+</div>
+
+
+<style>
+    th, td {
+        padding: 15px;
+    }
+
+    .pageInput {
+        border-radius: 5px;
+        resize: none;
+        white-space: nowrap;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+</style>

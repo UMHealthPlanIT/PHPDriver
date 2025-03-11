@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!--Sparrow puts all Intranet sites in Compatability Mode, this turns that off for our site-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (ViewBag.TableName != null)
+    {
+        <title>@ViewBag.TableName - JobConfig</title>
+    }
+    else
+    {
+        <title>@ViewBag.Title - JobConfig</title>
+    }
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Custom.css")
+    @Styles.Render("https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css")
+    @Styles.Render("https://cdn.datatables.net/fixedheader/3.1.4/css/fixedHeader.dataTables.min.css")
+    @Styles.Render("~/Content/plumage")
+    @*@Styles.Render("~/Content/datatables.min.css")*@
+    @Styles.Render("~/Content/jquery-ui-1.12.1.min.css")
+    @Scripts.Render("~/Scripts/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Scripts/DateValidation.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/moment.min.js")
+    @Scripts.Render("~/bundles/plumage")
+    @Scripts.Render("~/bundles/custom")
+    @*@Scripts.Render("~/Scripts/datatables.min.js")*@
+    @Scripts.Render("https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js")
+    @Scripts.Render("https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js")
+    @Scripts.Render("https://cdn.datatables.net/plug-ins/1.10.20/sorting/datetime-moment.js")
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        @Html.Partial("NavbarPartial")
+        <!--<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-2">
+                    <ul class="nav navbar-nav">
+                        @{
+                        string header = "Sparrow Job Configuration";
+                        if (System.Web.Configuration.WebConfigurationManager.AppSettings["RunMode"] == "Test")
+                        {
+                            header += "- Test";
+                        }
+                        else
+                        {
+                            header += "- Prod";
+                        }
+                        <li>@Html.ActionLink(header, "Index", "Home", null, new { style = "color: white;", data_toggle = "tooltip", title = "Home" })</li>
+                         }
+                    </ul>
+                </div>
+                <div class="col-xs-4">
+                    <p class="nav navbar-text" style="color:white">Hello, @HttpContext.Current.User.Identity.Name</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+        <div class="body-content" id="MainBody">
+            @RenderBody()
+            <hr />
+            <footer class="text-center">
+                <p>&copy; @DateTime.Now.Year - PHP IT</p>
+            </footer>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script>
+    doThePlumage();
+    displayNavigation(navigationParameters);
+</script>
+
+
+
+

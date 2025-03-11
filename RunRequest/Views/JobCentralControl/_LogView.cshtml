@@ -1,0 +1,188 @@
+﻿@model IEnumerable<RunRequest.Models.LogRecord>
+@{
+    int errorCount = 1;
+    string ji = "";
+    string d = "";
+    string owner = "";
+    int runCount = 1;
+    string rerunDisabled = "disabled";
+    string notesDisabled = "disabled";
+    string collapseClass = "collapse";
+    List<RunRequest.Models.LogRecord> runCycles = Model.GroupBy(r => r.UID).Select(l => l.First()).ToList();
+    int executionCount = runCycles.Count();
+    if (executionCount <= 1)
+    {
+        collapseClass = "";
+    }
+}
+@foreach (var item in Model)
+{
+    ji = item.JobIndex;
+    d = item.ScheduledStartTime.Value.Ticks.ToString();
+    owner = item.Owner;
+    if (item.LogDateTime.Date == DateTime.Today.Date)
+    {
+        rerunDisabled = "";
+    }
+    if(item.ScheduledStartTime <= DateTime.Now)
+    {
+        notesDisabled = "";
+    }
+}
+<div class="scrolling" id="logViewer" style="width: 100%; height: 90%;">
+    <div id="recovery" style="padding-left:0px;padding-top:6px;padding-bottom:6px;"></div>
+    
+    <div class="btn-group btn-group-sm btn-group-vertical col-md-offset-9" role="group" style="position:fixed">
+        <button class="btn stylishButtons" id="lastError" onclick="LastError(0,@executionCount)">Prev</button>
+        <button class="btn stylishButtons" id="nextError" onclick="NextError(1,@executionCount)">Next</button>
+    </div>
+    <div id="accordion">
+        @foreach (RunRequest.Models.LogRecord uid in runCycles)
+        {
+            List<RunRequest.Models.LogRecord> logsForOneRun = Model.Where(i => i.UID == uid.UID.ToString()).ToList();
+            string tooManyRecords = "";
+            if (logsForOneRun.Count >= 1000)
+            {
+                tooManyRecords = "<tr><td style=\"color:red\">Record limit exceeded</td></tr>";
+            }
+            string heading = "heading" + runCount.ToString();
+
+            string collapse = "collapse" + runCount.ToString();
+            string color = "";
+            if (logsForOneRun.Where(prop => prop.LogCategory == "ERROR").Count() > 0)
+            {
+                color = "alert-danger";
+            }
+            <div class="card">
+                <div class="card-header" id="@heading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link @color" data-toggle="collapse" data-target="#@collapse" aria-expanded="true" aria-controls="@collapse">Launch Time: @logsForOneRun.First().LogDateTime.ToString()</button>
+                    </h5>
+                </div>
+                <div id="@collapse" class="@collapseClass" aria-labelledby="@heading" data-parent="#accordion">
+                    <div class="card-body">
+                        <table class="table" style="table-layout:fixed;">
+                            <tr>
+                                <th width="10%" scope="col">
+                                    @Html.DisplayNameFor(model => model.JobIndex)
+                                </th>
+                                <th width="10%" scope="col">
+                                    @Html.DisplayNameFor(model => model.LogDateTime)
+                                </th>
+                                <th width="10%" scope="col">
+                                    @Html.DisplayNameFor(model => model.LogCategory)
+                                </th>
+                                <th width="10%" scope="col">
+                                    @Html.DisplayNameFor(model => model.LoggedByUser)
+                                </th>
+                                <th width="50%" scope="col">
+                                    @Html.DisplayNameFor(model => model.LogContent)
+                                </th>
+                                <th width="10%" scope="col">
+                                    @Html.DisplayNameFor(model => model.UID)
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (RunRequest.Models.LogRecord item in logsForOneRun)
+                            {
+                                string colorClass = "";
+                                string errorAnchorOpen = "";
+                                string errorId = "";
+                                if (item.LogCategory == "WARNING")
+                                {
+                                    colorClass = "alert-warning";
+                                }
+                                else if (item.LogCategory == "ERROR")
+                                {
+                                    colorClass = "alert-danger";
+                                    errorId = "ERROR" + errorCount.ToString();
+                                    errorAnchorOpen = "<tr><td><a id=\"ERROR" + errorCount.ToString() + "\"></a></td></tr>";
+                                    errorCount++;
+                                }
+                                <tr class="@colorClass" id="@errorId">
+
+                                    <td width="10%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.JobIndex)
+                                    </td>
+                                    <td width="10%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.LogDateTime)
+                                    </td>
+                                    <td width="10%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.LogCategory)
+                                    </td>
+                                    <td width="10%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.LoggedByUser)
+                                    </td>
+                                    <td width="50%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.LogContent)
+                                    </td>
+                                    <td width="10%" style="word-wrap: break-word;">
+                                        @Html.DisplayFor(modelItem => item.UID)
+                                    </td>
+                                </tr>
+                            }
+                            @Html.Raw(tooManyRecords)
+                        </table>
+                    </div>
+                </div>
+            </div>
+            runCount = runCount + 1;
+        }
+    </div>
+</div>
+<div id="jobControls" style="width: 99%; height: 10%; overflow-y: hidden; overflow-x: hidden; display: flex; align-items: center;">
+    <div class="btn-group btn-group-lg col-md-4 col-md-offset-4" role="group">
+        @Html.ActionLink("Resolve", "MarkResolved", "JobCentralControl", new { jobIndex = ji, dateTicks = d, owner = owner }, new { @class = "btn btn-success", @style = "margin: auto" })
+        <button type="button" id="rerunButton" class="btn btn-success @rerunDisabled" onclick="RerunJob('@ji', '@d', '@owner')" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Launching">ReRun</button>
+        <button type="button" class="btn btn-success @notesDisabled" onclick="GetNotes('@ji', '@d')">Notes</button>
+    </div>
+</div>
+
+<script>
+    function htmlDecode(input) {
+        var doc = new DOMParser().parseFromString(input, "text/html");
+        return doc.documentElement.textContent;
+    }
+
+    if ('@ViewBag.recovery' != null) {
+
+        var tag = document.createElement("p");
+        
+        tag.style.borderRadius = '10px';
+        tag.style.backgroundColor = 'lightblue';
+        tag.style.paddingLeft = '13px';
+        tag.style.paddingRight = '8px';
+        if ('@ViewBag.recovery' == "Recovery Details: Not Available") {
+            var message = "Not Available";
+            tag.textContent = "Recovery Details: " + message;
+            var div = document.getElementById("recovery");
+            div.appendChild(tag);
+        } else {
+            $("#recovery").html(htmlDecode('@ViewBag.recovery'));
+            var message = document.getElementById("recovery").firstChild.firstChild.textContent;
+            tag.textContent = "Recovery Details: " + message;
+            console.log("regular");
+            var div = document.getElementById("recovery").firstChild;
+            div.replaceChild(tag, div.firstChild);
+        }
+
+    }
+
+    function RerunJob(jobIndex, date, owner) {
+        $('#rerunButton').button('loading');
+        $.ajax({
+            url: '@Url.Action("ReRunJob", "JobCentralControl")' + '?jobIndex=' + jobIndex + '&date=' + date + '&owner=' + owner,
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $('#rerunButton').button('reset');
+                alert(jobIndex + ' was restarted successfully.');
+            },
+            error: function (response) {
+                $('#rerunButton').button('reset');
+                alert(response.responseText);
+            }
+        });
+    }
+    
+</script>

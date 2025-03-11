@@ -1,0 +1,41 @@
+﻿.alert {
+    margin-bottom: 0 !important;
+    padding: 0;
+    border-color: lightgray !important;
+}
+
+li.alert > span {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+}
+
+li.alert > a {
+    z-index: 1;
+}
+
+li.alert > a:hover,
+li.alert > a:active,
+li.alert > a:focus {
+    background-color: rgba(238, 238, 238, .5);
+}
+
+li.alert-success > a,
+li.alert-success > span {
+    color: #468847;
+}
+
+li.alert-danger > a,
+li.alert-danger > span {
+    color: #b94a48;
+}
+
+li.alert-info > a,
+li.alert-info > span {
+    color: #3a87ad;
+}
+
+li.alert-primary > a,
+li.alert-primary > span {
+    color: black;
+}

@@ -1,0 +1,39 @@
+﻿<div id="step3Div" class="well div-step">
+    @{
+        if (Model.errorMessage != null && !Model.errorMessage.Equals(""))
+        {
+            <div id="errorDiv" class="alert alert-danger">
+                @Model.errorMessage
+            </div>
+        }
+    }
+    <p style="font-size: 1.5em; font-weight: bold; color: #165D46;">
+        Step 3 : Modify
+    </p>
+    <p>
+        Please make any modifications to the Excel spreadsheet that you need. It is important that you
+        keep in mind the data types and/or specified values that a column may contain. You cannot add
+        or remove any columns with this feature. If there are any errors, you will be notified and the
+        table will remain unchanged.
+    </p>
+    <p>
+        When you are finished making changes, please click Continue below.
+    </p>
+</div>
+
+<hr />
+
+<div class="row" role="navigation">
+    <div class="col-xs-5 col-lg-4">
+        <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-block btn-danger">Cancel</a>
+    </div>
+    <div class="col-xs-5 col-xs-offset-2 col-lg-4 col-lg-offset-4">
+        @Ajax.ActionLink("Continue", "Continue", "BulkUpdateController", new AjaxOptions
+            {
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "stepContent",
+                OnSuccess = "initializeProgBar(" + (Model.currentStep + 1) + ");",
+            }, new { @id = "continue", @class = ("btn btn-block btn-success") })
+    </div>
+</div>

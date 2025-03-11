@@ -1,0 +1,164 @@
+﻿@model JobConfiguration.Models.TableUpdate
+
+@{
+    ViewBag.Title = "Edit";
+    String NameOfTable = Model.TableName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(SetDateFormat());
+    </script>
+
+}
+
+<div class="row text-center">
+    <h2 style="color: mediumseagreen">Edit - @Model.TableName</h2>
+</div>
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="row" role="main">
+        <div class="col-xs-8 col-xs-offset-3 col-sm-10 col-sm-offset-0">
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.Hidden("KeySelector", Model.KeySelector)
+                @Html.Hidden("TableName", Model.TableName)
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @{
+                    int Counter = 0;
+                    foreach (KeyValuePair<object, object> val in Model.PropertiesValues)
+                    {
+                        <div class="row form-group">
+                            @Html.Label(val.Key.ToString(), htmlAttributes: new { @class = "control-label col-sm-6 text-right" })
+
+                            <div class="col-sm-6">
+                                @Html.Hidden(String.Format("PropertiesValues[{0}].key", Counter), (object)val.Key.ToString())
+
+                                @{ JobConfiguration.Models.ColumnDetails colDetails = Model.TableDetails.TableColumns.Where(x => x.ColumnName == val.Key.ToString()).First();
+
+                                    if (colDetails.CHARACTER_MAXIMUM_LENGTH == 0 || colDetails.CHARACTER_MAXIMUM_LENGTH == null)
+                                    {
+                                        colDetails.CHARACTER_MAXIMUM_LENGTH = 11;
+                                    }
+
+                                    if (colDetails.IdColumn)
+                                    {
+                                        @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = val.Value.ToString() } });
+                                    }
+                                    else if (colDetails.SetList == true)
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            if (colDetails.ColumnName == "ZEROEXITCODE")
+                                            {
+                                                <div style="padding-left: 0px; min-width:300px;" class="col-sm-5">
+                                                    @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control", @required = "Required" })
+                                                </div>
+                                                <div style="margin-left: 0px; font-size: 1.6vmin;  min-width:300px; max-height: 330px; overflow: hidden;" class="alert alert-warning col-sm-3" role="alert">
+                                                    ZeroExitCode determines how Mr Data will handle jobs that result in no records: <br />
+                                                    •	0 - Acceptable that the report returned no records. <br />
+                                                    •	4 - User might be concerned that there is no data returned, but no IT investigation is necessary. <br />
+                                                    •	6000 - No records indicates a major or unexpected issue and should be investigated by IT. <br />
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control", @required = "Required" });
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control" });
+                                        }
+                                    }
+                                    else if (colDetails.ColumnName == "STOREDPROCEDURE")
+                                    {
+                                        @Html.TextBox(String.Format("PropertiesValues[{0}].value", Counter), null, new { @class = "form-control", @rows = 1, onkeyup = "DisableUnusedField(this.id)", id = "SPField", @Value = val.Value.ToString() }) //Add upon approval inside curly bracket: , onchange = "CodeTestReminder(this.id)"
+                                    }
+                                    else if (colDetails.ColumnName == "TFSCODE")
+                                    {
+                                        colDetails.Values = JobConfiguration.Services.PublicUtilities.getDatas(User.Identity.Name);
+                                        @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control", onclick = "DisableUnusedField(this.id)", id = "TFSField" });
+                                        /*This hidden field is required otherwise nothing coming after it will be populated in the model when the select field is disabled*/
+                                        <input id="TFSCodeHidden" type="hidden" name="@String.Format("PropertiesValues[{0}].value", Counter)" value="" />
+                                    }
+                                    else if (colDetails.DATA_TYPE == "datetime" || colDetails.DATA_TYPE == "date")
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control datefield", @required = "Required", @maxlength = 10, @placeholder = "mm/dd/yyyy", @Value = val.Value.ToString() } });
+                                        }
+                                        else
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control datefield", @maxlength = 10, @placeholder = "mm/dd/yyyy", @Value = val.Value.ToString() } });
+                                        }
+                                    }
+                                    else if (colDetails.CHARACTER_MAXIMUM_LENGTH > 500)
+                                    {
+                                        if (colDetails.ColumnName == "CODE")
+                                        {
+                                            <div style="padding-left: 0px; min-width:300px;" class="col-sm-5">
+                                                @Html.TextArea(String.Format("PropertiesValues[{0}].value", Counter), val.Value.ToString(), new { @class = "form-control", @rows = 10, @placeholder = "Put your SQL query here", onkeyup = "DisableUnusedField(this.id)", id = "CodeField" })
+                                            </div>
+                                            <div style="margin-left: 0px; font-size: 1.6vmin; max-height: 214px; overflow: hidden;" class="alert alert-warning col-sm-3" role="alert">
+                                                Do not include any line comments (--), multi-line comments (/* */), or trailing semicolons (;) in the Code Field.
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @required = "Required", @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH, @Value = val.Value.ToString() } });
+                                        }
+                                        else
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH, @Value = val.Value.ToString() } });
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        Counter++;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row" role="navigation">
+        <div class="col-xs-4 col-xs-offset-1 col-sm-2 col-sm-offset-3 col-lg-1 col-lg-offset-4">
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn-block">Back</a>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-4 col-xs-offset-2 col-sm-2 col-lg-1">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/Custom/LieutenantCommanderData.js")
+
+<script>
+    $(window).on("load", function () {
+        if ($("#SPField").val() != "") {
+            DisableUnusedField("SPField")
+        }
+        else if ($("#CodeField").val() != "") {
+            DisableUnusedField("CodeField")
+        }
+        else if ($("#TFSField").val() != "") {
+            DisableUnusedField("TFSField")
+        }
+
+    });
+</script>
+}
+

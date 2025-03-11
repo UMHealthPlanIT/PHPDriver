@@ -1,0 +1,288 @@
+﻿@model RunRequest.Models.JobSummaryDetails
+@{
+    String owner = "PHP";
+
+}
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header">
+        <p class="h4 modal-title">@Model.title</p>
+        <p class="h5" style="color:darkgrey">@Model.jobCode - @Model.tool</p>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Launch" onclick="ShowTab('LaunchDetails')">Detail</a></li>
+    </ul>
+    <div id="Launch" class="tab-pane fade in active">
+        <div id="LaunchDetails" class="tab-content">
+            @if (Model.description != "")
+            {
+                <div class="modal-body">@Html.Raw(Model.description)</div>
+            }
+            else
+            {
+                <div class="modal-body">No Description Available</div>
+            }
+
+            <div class="ModalStatusDetails">
+                <div id="@(Model.jobCode)valModal">
+
+                </div>
+                <div id="@(Model.jobCode)imgModal">
+
+                </div>
+            </div>
+            @{
+                ViewBag.IsOptional = 0;
+            }
+            @if (Model.Parameters != null)
+            {
+                <form id="parameterForm">
+                    @foreach (var parameter in Model.Parameters)
+                    {
+                        ViewBag.IsOptional = 0;
+                        ViewBag.Required = parameter.IsOptional ? "" : "required";
+                        <div class="modal-body">
+                            <label for="parameter-@parameter.Name" class="@ViewBag.Required">@parameter.SpacedName</label>
+                            @if (parameter.DataType == typeof(String))
+                            {
+                                <input class="form-control" type="text" name="@parameter.Name" id="parameter-@parameter.Name" data-optional="@parameter.IsOptional">
+                            }
+                            else if (parameter.DataType == typeof(DateTime))
+                            {
+                                <input class="form-control" type="datetime" name="@parameter.Name" id="parameter-@parameter.Name" data-optional="@parameter.IsOptional">
+                            }
+                            else if (parameter.DataType == typeof(List<String>))
+                            {
+                                if (parameter.MultipleSelect)
+                                {
+                                    @:<select class="form-control select2-multi" name="@parameter.Name" multiple data-optional="@parameter.IsOptional">
+                                        ViewBag.IsOptional = parameter.IsOptional ? 0 : 1;
+                                    }
+                                    else
+                                    {
+                                        @:<select class="form-control select2-single" name="@parameter.Name" data-optional="@parameter.IsOptional">
+                                            @:<option></option> <!--Needed for placeholder text-->
+                                            ViewBag.IsOptional = parameter.IsOptional ? 0 : 1;
+                                        }
+
+                                        foreach (var option in parameter.DropDownOptions)
+                                        {
+                                            @:<option value="@option">@option</option>
+                                        }
+
+                                    @:</select>
+                                }
+                            <span>@parameter.Description</span>
+                    </div>
+                }
+                    <span hidden class="text-danger fileWarning modal-body">Please enter all required fields.</span>
+                </form>
+            }
+
+            <div>
+                @if (Model.consumesInboundFiles)
+                {
+                    <div class="modal-body">
+                        <label for="file">Choose file(s) to upload</label>
+                        <input class="form-control" type="file" id="file" name="file" multiple>
+                    </div>
+                }
+            </div>
+            <div id="loadingDiv" class="loading hidden"><i class="fa fa-3x fa-spinner fa-spin loadingIcon"></i></div>
+        </div>
+    </div>
+
+    @if (Model.UserCanRun == "JobsICanRun")
+    {
+        <div class="e-button">
+            <button type="button" id="launchButton" class="btn btn-default" onclick="LaunchJob('@Model.jobCode', '@Model.tool', 'iFrame', '@owner')">Launch @Model.Department[0].DepartmentProperName</button>
+        </div>
+    }
+</div>
+
+<style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(ellipse at center, #222 39%, #111 100%);
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+    }
+
+    p {
+        font-size: 18px;
+        font-size: 1.8rem;
+        line-height: 26px;
+    }
+
+    .e-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-51%, -50%);
+        -moz-transform: translate(-51%, -50%);
+        -ms-transform: translate(-51%, -50%);
+        -o-transform: translate(-51%, -50%);
+        transform: translate(-51%, -50%);
+        width: 100%;
+        text-align: center;
+    }
+
+        .e-button .btn {
+            font-size: 20px;
+            font-size: 2rem;
+            line-height: 28px;
+            transition: all 0.2s ease-in-out;
+            padding: 25px 0px;
+            height: 78px;
+            border: none;
+            background: none;
+            color: #fff;
+            font-weight: 600;
+            position: relative;
+            outline: none;
+            width: 260px;
+            max-width: 40%;
+            top: 13rem;
+            left: 30%;
+        }
+
+            .e-button .btn span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .e-button .btn span.success-text {
+                    visibility: hidden;
+                    opacity: 0;
+                }
+
+            .e-button .btn:before {
+                border-radius: 50px;
+                content: " ";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                background: #222;
+                z-index: -1;
+                transition: all 0.5s ease-in-out, border 0.3s ease-in-out;
+                border: 2px solid #fff;
+                box-sizing: border-box;
+            }
+
+            .e-button .btn:after {
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                content: '\f00c';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) scale(0);
+                transform-origin: center;
+                right: -28px;
+                z-index: 0;
+                color: #fff;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .e-button .btn:hover {
+                cursor: pointer;
+                transform: scale(1.05) translateY(-5px) translateZ(0);
+            }
+
+                .e-button .btn:hover:before {
+                    background: #2f2f2f;
+                    border-color: transparent;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 15px 20px rgba(0, 0, 0, 0.1);
+                }
+
+            .e-button .btn:active {
+                transform: scale(1) translateY(0) translateZ(0);
+            }
+
+                .e-button .btn:active:before {
+                    box-shadow: none;
+                }
+
+            .e-button .btn.clicked {
+                transform: scale(1) translateY(0) translateZ(0);
+            }
+
+                .e-button .btn.clicked:before {
+                    box-shadow: none;
+                }
+
+            .e-button .btn.success {
+                color: #fff;
+            }
+
+                .e-button .btn.success:hover {
+                    cursor: default;
+                }
+
+                .e-button .btn.success span.text {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                .e-button .btn.success span.success-text {
+                    transform: translate(-50%, -50%);
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .e-button .btn.success:before {
+                    right: -55px;
+                    height: 100%;
+                    width: 78px;
+                    background: #4db948;
+                    border-color: #3e9539;
+                }
+
+                .e-button .btn.success:after {
+                    transition-delay: 0.3s;
+                    transform: translateY(-50%) scale(1);
+                }
+
+                .e-button .btn.success:hover, .e-button .btn.success:active {
+                    transform: scale(1) translateY(0) translateZ(0);
+                }
+
+                    .e-button .btn.success:hover:before, .e-button .btn.success:active:before {
+                        box-shadow: none;
+                    }
+</style>
+
+<script>
+    $('.btn').stop().on('click', function () {
+        button = $(this);
+        button.addClass('clicked');
+
+        setTimeout(function () {
+            button.addClass('success');
+        }, 300);
+
+
+        setTimeout(function () {
+            button.removeClass('clicked');
+            button.removeClass('success');
+        }, 4000);
+    });
+</script>

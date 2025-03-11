@@ -1,0 +1,155 @@
+﻿@model JobConfiguration.Models.TableUpdate
+
+@{
+    ViewBag.Title = "Edit";
+    String NameOfTable = Model.TableName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(SetDateFormat());
+    </script>
+
+}
+
+<div class="row text-center">
+    <h2 style="color: mediumseagreen">Edit - @Model.TableName</h2>
+</div>
+
+@if (TempData["ErrorMessage"] != null && !String.IsNullOrWhiteSpace(TempData["ErrorMessage"].ToString()))
+{
+    <div class="alert alert-danger">
+        <p>@TempData["ErrorMessageSimple"]</p>
+        <p>@TempData["ErrorMessageSimple2"]</p>
+        <button data-toggle="collapse" data-target="#ErrorInfo">Click me for more info</button>
+        <div id="ErrorInfo" class="collapse" style="margin-top:10px;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Full Error Message:</p>
+                    <p>@TempData["ErrorMessage"]</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Error Stack Trace:</p>
+                    <p>@TempData["ErrorStackTrace"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    <div class="row" role="main">
+        <div class="col-xs-8 col-xs-offset-3 col-sm-10 col-sm-offset-0">
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.Hidden("KeySelector", Model.KeySelector)
+                @Html.Hidden("TableName", Model.TableName)
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @{
+                    int Counter = 0;
+                    foreach (KeyValuePair<object, object> val in Model.PropertiesValues)
+                    {
+                        <div class="row form-group">
+                            @Html.Label(val.Key.ToString(), htmlAttributes: new { @class = "control-label col-sm-6 text-right" })
+
+                            <div class="col-sm-6">
+                                @Html.Hidden(String.Format("PropertiesValues[{0}].key", Counter), (object)val.Key.ToString())
+
+                                @{ JobConfiguration.Models.ColumnDetails colDetails = Model.TableDetails.TableColumns.Where(x => x.ColumnName == val.Key.ToString()).First();
+
+                                    if (colDetails.CHARACTER_MAXIMUM_LENGTH == 0 || colDetails.CHARACTER_MAXIMUM_LENGTH == null)
+                                    {
+                                        colDetails.CHARACTER_MAXIMUM_LENGTH = 11;
+                                    }
+
+                                    if (colDetails.IdColumn)
+                                    {
+                                        @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = val.Value.ToString() } });
+                                    }
+                                    else if (colDetails.SetList == true)
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control", @required = "Required" });
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownList(String.Format("PropertiesValues[{0}].value", Counter), new SelectList(colDetails.Values, val.Value.ToString()), new { @class = "form-control" });
+                                        }
+                                    }
+                                    else if (colDetails.DATA_TYPE == "datetime" || colDetails.DATA_TYPE == "date")
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control datefield", @required = "Required", @maxlength = 10, @placeholder = "mm/dd/yyyy", @Value = val.Value.ToString() } });
+                                        }
+                                        else
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control datefield", @maxlength = 10, @placeholder = "mm/dd/yyyy", @Value = val.Value.ToString() } });
+                                        }
+                                    }
+                                    else if (colDetails.CHARACTER_MAXIMUM_LENGTH > 500)
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.TextArea(String.Format("PropertiesValues[{0}].value", Counter), val.Value.ToString(), new { @class = "form-control", @required = "Required", @rows = 10, @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH });
+                                        }
+                                        else
+                                        {
+                                            @Html.TextArea(String.Format("PropertiesValues[{0}].value", Counter), val.Value.ToString(), new { @class = "form-control", @rows = 10, @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH });
+                                        }
+                                    }
+                                    else if (colDetails.CHARACTER_MAXIMUM_LENGTH == -1)
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.TextArea(String.Format("PropertiesValues[{0}].value", Counter), val.Value.ToString(), new { @class = "form-control", @required = "Required", @rows = 10 });
+                                        }
+                                        else
+                                        {
+                                            @Html.TextArea(String.Format("PropertiesValues[{0}].value", Counter), val.Value.ToString(), new { @class = "form-control", @rows = 10 });
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (colDetails.IS_NULLABLE == "NO")
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @required = "Required", @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH, @Value = val.Value.ToString() } });
+                                        }
+                                        else
+                                        {
+                                            @Html.Editor(String.Format("PropertiesValues[{0}].value", Counter), new { htmlAttributes = new { @class = "form-control", @maxlength = colDetails.CHARACTER_MAXIMUM_LENGTH, @Value = val.Value.ToString() } });
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        Counter++;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row" role="navigation">
+        <div class="col-xs-4 col-xs-offset-1 col-sm-2 col-sm-offset-3 col-lg-1 col-lg-offset-4">
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn-block">Back</a>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-4 col-xs-offset-2 col-sm-2 col-lg-1">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </div>
+    </div>
+}

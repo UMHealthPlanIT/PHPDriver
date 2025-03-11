@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Custom.css")
+    @Styles.Render("~/Content/plumage")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/unobtrusive")
+    @Scripts.Render("~/bundles/plumage")
+    <script src="https://kit.fontawesome.com/2260903e15.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    @Html.Partial("NavbarPartial")
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - PHP IT</p>
+        </footer>
+    </div>
+</body>
+</html>
+<script>
+    var parseNavigationLink = (controller, action, text) => {
+        let base = "@Url.Content("~/")";
+
+        if (base === "/") {
+            base = "";
+        }
+        else if (base.length > 1) {
+            base = base.substring(1);
+        }
+
+        return {
+            linkText: text,
+            actionName: action,
+            controllerName: base + controller
+        };
+    };
+
+    navigationParameters.links.push(parseNavigationLink("Home", "Index", "Run Request"));
+
+    //security required to access certain links
+    if ("@RunRequest.Controllers.Security.IsUserAllowed(HttpContext.Current.User.Identity.Name)" == "True")
+    {
+        navigationParameters.links.push(parseNavigationLink("JobCentralControl", "Index", "Job Console"));
+    }
+
+    //this is being pushed here to put it at the end of the list of links
+    navigationParameters.links.push(parseNavigationLink("Home", "HelpPage", "Info"));
+
+    doThePlumage();
+    displayNavigation(navigationParameters);
+
+</script>

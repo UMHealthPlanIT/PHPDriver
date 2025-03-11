@@ -1,0 +1,396 @@
+﻿@model JobConfiguration.Models.TableUpdate
+
+@{
+    ViewBag.Title = "Edit";
+    String NameOfTable = Model.TableName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(SetDateFormat());
+    </script>
+
+}
+
+<style>
+    legend {
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="row text-center">
+    <h2 style="color: mediumseagreen">Edit - @Model.TableName</h2>
+</div>
+<hr />
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { @class = "row", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.Hidden("TableName", (object)ViewBag.TargetTable)
+    @Html.Hidden("Schema", (object)ViewBag.tableSchema)
+    @Html.Hidden("Attachment", Model.PropertiesValues["Attachment"].ToString())
+
+    <fieldset class="row">
+        <legend class="jobIndexLegend">Identification</legend>
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="form-group jobIndexInput centered">
+                @Html.Hidden("PropertiesValues[0].key", "JobId", new { @id = "PropertiesValues_0__key" })
+                @Html.Label("JobId", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_0__value" })
+                @Html.TextBox("PropertiesValues[0].value", null, new { @class = "form-control", @rows = 1, @Value = Model.PropertiesValues["JobId"].ToString(), onchange = "PCFormatValidation(this.id)", id = "PropertiesValues_0__value", required = true })
+            </div>
+            <div class="form-group jobIndexInput centered">
+                @Html.Hidden("PropertiesValues[1].key", "Title", new { @id = "PropertiesValues_1__key" })
+                @Html.Label("Title", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_1__value" })
+                @Html.TextArea("PropertiesValues[1].value", Model.PropertiesValues["Title"].ToString(), new { @class = "form-control", @rows = 10, id = "PropertiesValues_1__value" })
+            </div>
+        </div>
+
+    </fieldset>
+    <fieldset class="row">
+        <legend class="jobIndexLegend">Operational</legend>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[2].key", "Job Coordinator", new { @id = "PropertiesValues_2__key" })
+                        @Html.Label("Job Coordinator E-mail", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_2__value" })
+                        @Html.TextBox("PropertiesValues[2].value", null, new { @class = "form-control jobIndexInput", @rows = 1, @Value = Model.PropertiesValues["Job Coordinator"].ToString(), @type = "email", id = "PropertiesValues_2__value", required = true })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[3].key", "Tool", new { @id = "PropertiesValues_3__key" })
+                    @Html.Label("Tool", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_3__value" })
+                    @Html.DropDownList("PropertiesValues[3].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Tool").Values, Model.PropertiesValues["Tool"].ToString()), new { @class = "form-control jobIndexInput", id = "PropertiesValues_3__value", required = true })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[4].key", "Responsible Team", new { @id = "PropertiesValues_4__key" })
+                        @Html.Label("Responsible Team", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_4__value" })
+                        @Html.DropDownList("PropertiesValues[4].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Responsible Team").Values, Model.PropertiesValues["Responsible Team"].ToString()), new { @class = "form-control", id = "PropertiesValues_4__value", required = true })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[5].key", "Status", new { @id = "PropertiesValues_5__key" })
+                    @Html.Label("Status", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_5__value" })
+                    @Html.DropDownList("PropertiesValues[5].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Status").Values, Model.PropertiesValues["Status"].ToString()), new { @class = "form-control jobIndexInput", id = "PropertiesValues_5__value", required = true })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[6].key", "Run Type", new { @id = "PropertiesValues_6__key" })
+                        @Html.Label("Run Type", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_6__value" })
+                        @Html.DropDownList("PropertiesValues[6].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Run Type").Values, Model.PropertiesValues["Run Type"].ToString()), new { @class = "form-control", id = "PropertiesValues_6__value", required = true })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[7].key", "Frequency", new { @id = "PropertiesValues_7__key" })
+                    @Html.Label("Frequency", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_7__value" })
+                    @Html.DropDownList("PropertiesValues[7].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Frequency").Values, Model.PropertiesValues["Frequency"].ToString()), new { @class = "form-control jobIndexInput", id = "PropertiesValues_7__value", required = true })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[8].key", "Recovery Type", new { @id = "PropertiesValues_8__key" })
+                        @Html.Label("Recovery Type", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_8__value" })
+                        @Html.DropDownList("PropertiesValues[8].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Recovery Type").Values, Model.PropertiesValues["Recovery Type"].ToString()), new { @class = "form-control", id = "PropertiesValues_8__value" })
+                        <div class="row" style="margin-top:12px;">
+                            <div class="form-check col-md-6 form-group">
+                                <div class="">
+                                    @Html.Hidden("PropertiesValues[9].key", "Page On Error", new { @id = "PropertiesValues_9__key" })
+                                    @Html.Label("Page On Error", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_9__value" })
+                                    @Html.CheckBox("PropertiesValues[9].value", @Convert.ToBoolean(Model.PropertiesValues["Page On Error"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_9__value" })
+                                </div>
+                            </div>
+                            <div class="form-check col-md-6 form-group">
+                                <div class="pull-right">
+                                    @Html.Hidden("PropertiesValues[10].key", "On Hold", new { @id = "PropertiesValues_10__key" })
+                                    @Html.Label("On Hold", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_10__value" })
+                                    @Html.CheckBox("PropertiesValues[10].value", @Convert.ToBoolean(Model.PropertiesValues["On Hold"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_10__value" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[11].key", "Data Sources", new { @id = "PropertiesValues_11__key" })
+                    @Html.Label("Data Sources", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_11__value" })
+                    @Html.DropDownList("PropertiesValues[11].value", new MultiSelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Data Sources").Values, Model.PropertiesValues["Data Sources"].ToString().Split(',')), new { @class = "form-control jobIndexInput", id = "PropertiesValues_11__value", multiple = "multiple", required = true })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[12].key", "Recovery Type", new { @id = "PropertiesValues_12__key" }) @*Yes I realize this field isn't actually Recovery Type, but it wouldn't work otherwise. I'll fix it when I rebuild this garbage*@
+                        @Html.Label("Attachment", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_12__value" })
+                        <input type="file" class="form-control jobIndexInput" id="PropertiesValues_12__value" name="PropertiesValues[12].value" asp-for="Upload" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @if (Convert.ToBoolean(Model.PropertiesValues["Attachment"].ToString()))
+                    {
+                        @Html.Label("attachmentsButton", htmlAttributes: new { @class = "control-label", @for = "attachmentsButton", style = "visibility: hidden;" })
+                        <button type="button" id="attachmentsButton" class="btn btn-default" onclick="GetJobAttachment('@Model.PropertiesValues["JobId"].ToString()')">Get Attachment</button>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[13].key", "Technical Notes", new { @id = "PropertiesValues_13__key" })
+                        @Html.Label("Technical Notes", htmlAttributes: new { @class = "control-label ", @for = "PropertiesValues_13__value" })
+                        @Html.TextArea("PropertiesValues[13].value", Model.PropertiesValues["Technical Notes"].ToString(), new { @class = "form-control", @rows = 10, id = "PropertiesValues_13__value" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[14].key", "Recovery Details", new { @id = "PropertiesValues_14__key" })
+                    @Html.Label("Recovery Details", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_14__value" })
+                    @Html.TextArea("PropertiesValues[14].value", Model.PropertiesValues["Recovery Details"].ToString(), new { @class = "form-control jobIndexInput", @rows = 10, id = "PropertiesValues_14__value" })
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="row">
+        <legend class="jobIndexLegend">Business</legend>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[15].key", "Business Owner", new { @id = "PropertiesValues_15__key" })
+                        @Html.Label("Business Owner E-mail", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_15__value" })
+                        @Html.TextBox("PropertiesValues[15].value", null, new { @class = "form-control", @rows = 1, @Value = Model.PropertiesValues["Business Owner"].ToString(), @type = "email", id = "PropertiesValues_15__value", required = true })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[16].key", "Department", new { @id = "PropertiesValues_16__key" })
+                    @Html.Label("Department", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_16__value" })
+                    @Html.DropDownList("PropertiesValues[16].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Department").Values, Model.PropertiesValues["Department"].ToString()), new { @class = "form-control", id = "PropertiesValues_16__value" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="pull-right jobIndexInput">
+                            @Html.Hidden("PropertiesValues[17].key", "Owning Group", new { @id = "PropertiesValues_17__key" })
+                            @Html.Label("Owning Group", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_17__value" })
+                            @Html.DropDownList("PropertiesValues[17].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Owning Group").Values, Model.PropertiesValues["Owning Group"].ToString()), new { @class = "form-control", id = "PropertiesValues_17__value" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 jobIndexInput">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row jobIndexInput centered">
+                @Html.Hidden("PropertiesValues[18].key", "Business Value Description", new { @id = "PropertiesValues_18__key" })
+                @Html.Label("Business Value Description", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_18__value" })
+                @Html.TextArea("PropertiesValues[18].value", Model.PropertiesValues["Business Value Description"].ToString(), new { @class = "form-control", @rows = 10, id = "PropertiesValues_18__value" })
+
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset id="data_gov_fieldset" class="row">
+        <legend class="jobIndexLegend">Data Governance</legend>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput form-group">
+                        @Html.Hidden("PropertiesValues[32].key", "Data Steward", new { @id = "PropertiesValues_32__key" })
+                        @Html.Label("Data Steward E-mail", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_32__value" })
+                        @Html.TextBox("PropertiesValues[32].value", Model.PropertiesValues["Data Steward"].ToString(), new { @class = "form-control", @rows = 1, @type = "email", id = "PropertiesValues_32__value" })
+                    </div>
+                    <div class="pull-right jobIndexInput form-group">
+                        @Html.Hidden("PropertiesValues[33].key", "Contains PHI", new { @id = "PropertiesValues_33__key" })
+                        @Html.Label("Contains PHI", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_33__value" })
+                        @Html.CheckBox("PropertiesValues[33].value", Boolean.TryParse(Model.PropertiesValues["Contains PHI"].ToString(), out bool hasPHI) ? hasPHI : false, new { @class = "form-check-input", id = "PropertiesValues_33__value" })
+                    </div>
+                    <div class="pull-right jobIndexInput form-group">
+                        @Html.Hidden("PropertiesValues[34].key", "Contains Sensitive Data", new { @id = "PropertiesValues_34__key" })
+                        @Html.Label("Contains Sensitive Data", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_34__value" })
+                        @Html.CheckBox("PropertiesValues[34].value", Boolean.TryParse(Model.PropertiesValues["Contains Sensitive Data"].ToString(), out bool hasSensitive) ? hasSensitive : false, new { @class = "form-check-input", id = "PropertiesValues_34__value" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[35].key", "Data Domain", new { @id = "PropertiesValues_35__key" })
+                    @Html.Label("Data Domain", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_35__value" })
+                    @Html.DropDownList("PropertiesValues[35].value", new MultiSelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Data Domain").Values, Model.PropertiesValues["Data Domain"].ToString().Split(',')), new { @class = "form-control jobIndexInput", id = "PropertiesValues_35__value", multiple = "multiple" })
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="row">
+        <legend class="jobIndexLegend">Security</legend>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="form-check col-md-6">
+                    <div class="pull-right">
+                        @Html.Hidden("PropertiesValues[19].key", "Outbound Data", new { @id = "PropertiesValues_19__key" })
+                        @Html.Label("Outbound Data", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_19__value" })
+                        @Html.CheckBox("PropertiesValues[19].value", @Convert.ToBoolean(Model.PropertiesValues["Outbound Data"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_19__value" })
+                    </div>
+                </div>
+                <div class="form-check col-md-6">
+                    @Html.Hidden("PropertiesValues[20].key", "Consumes Uploaded File", new { @id = "PropertiesValues_20__key" })
+                    @Html.CheckBox("PropertiesValues[20].value", @Convert.ToBoolean(Model.PropertiesValues["Consumes Uploaded File"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_20__value" })
+                    @Html.Label("Consumes Inbound File", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_20__value" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[21].key", "Transport Method", new { @id = "PropertiesValues_21__key" })
+                        @Html.Label("Transport Method", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_21__value" })
+                        @Html.DropDownList("PropertiesValues[21].value", new SelectList(Model.TableDetails.TableColumns.Find(x => x.ColumnName == "Transport Method").Values, Model.PropertiesValues["Transport Method"].ToString()), new { @class = "form-control", id = "PropertiesValues_21__value" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[22].key", "Vendor Recipient", new { @id = "PropertiesValues_22__key" })
+                    @Html.Label("Vendor Recipient", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_22__value" })
+                    @Html.TextBox("PropertiesValues[22].value", null, new { @class = "form-control jobIndexInput", @rows = 1, id = "PropertiesValues_22__value", @Value = Model.PropertiesValues["Vendor Recipient"].ToString() })
+                </div>
+            </div>
+            <div class="row jobIndexInput centered">
+                @Html.Hidden("PropertiesValues[23].key", "Security Privacy Approval", new { @id = "PropertiesValues_23__key" })
+                @Html.Label("Security Privacy Approval", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_23__value" })
+                @Html.TextArea("PropertiesValues[23].value", Model.PropertiesValues["Security Privacy Approval"].ToString(), new { @class = "form-control", @rows = 10, id = "PropertiesValues_23__value" })
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="row">
+        <legend class="jobIndexLegend">Other</legend>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="form-check col-md-6">
+                    <div class="pull-right">
+                        @Html.Hidden("PropertiesValues[24].key", "Mission Critical Job", new { @id = "PropertiesValues_24__key" })
+                        @Html.Label("Mission Critical Job", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_24__value" })
+                        @Html.CheckBox("PropertiesValues[24].value", @Convert.ToBoolean(Model.PropertiesValues["Mission Critical Job"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_24__value" })
+                    </div>
+                </div>
+                <div class="form-check col-md-6">
+                    @Html.Hidden("PropertiesValues[25].key", "Standard Package", new { @id = "PropertiesValues_25__key" })
+                    @Html.CheckBox("PropertiesValues[25].value", @Convert.ToBoolean(Model.PropertiesValues["Standard Package"].ToString()), new { @class = "form-check-input", id = "PropertiesValues_25__value" })
+                    @Html.Label("Standard Package", htmlAttributes: new { @class = "form-check-label", @for = "PropertiesValues_25__value" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[26].key", "Peer Reviewer", new { @id = "PropertiesValues_26__key" })
+                        @Html.Label("Peer Reviewer", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_26__value" })
+                        @Html.TextBox("PropertiesValues[26].value", null, new { @class = "form-control", @rows = 1, @Value = Model.PropertiesValues["Peer Reviewer"].ToString(), id = "PropertiesValues_26__value" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[27].key", "Peer Reviewed Date", new { @id = "PropertiesValues_27__key" })
+                    @Html.Label("Peer Reviewed Date", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_27__value" })
+                    @{
+                        string peerReviewDate = "";
+                        try
+                        {
+                            peerReviewDate = Convert.ToDateTime(Model.PropertiesValues["Peer Reviewed Date"].ToString()).ToString("yyyy-MM-dd");
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    <input class="form-control jobIndexInput" type="date" value=@peerReviewDate id="PropertiesValues_27__value" name="PropertiesValues[27].value">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[28].key", "Project Association", new { @id = "PropertiesValues_28__key" })
+                        @Html.Label("Project Association", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_28__value" })
+                        @Html.TextBox("PropertiesValues[28].value", null, new { @class = "form-control", @rows = 1, @Value = Model.PropertiesValues["Project Association"].ToString(), id = "PropertiesValues_28__value" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[29].key", "Epic ID Number", new { @id = "PropertiesValues_29__key" })
+                    @Html.Label("Epic ID Number", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_29__value" })
+                    @Html.TextBox("PropertiesValues[29].value", null, new { @class = "form-control jobIndexInput", @rows = 1, @Value = Model.PropertiesValues["Epic ID Number"].ToString(), id = "PropertiesValues_29__value" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="pull-right jobIndexInput">
+                        @Html.Hidden("PropertiesValues[30].key", "Last Modified Date", new { @id = "PropertiesValues_30__key" })
+                        @Html.Label("Last Modified Date", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_30__value" })
+                        @Html.TextBox("PropertiesValues[30].value", null, new { @class = "form-control", @rows = 1, @Value = Model.PropertiesValues["Last Modified Date"].ToString(), id = "PropertiesValues_30__value", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6 jobIndexInput">
+                    @Html.Hidden("PropertiesValues[31].key", "Last Modified By", new { @id = "PropertiesValues_31__key" })
+                    @Html.Label("Last Modified By", htmlAttributes: new { @class = "control-label", @for = "PropertiesValues_31__value" })
+                    @Html.TextBox("PropertiesValues[31].value", null, new { @class = "form-control jobIndexInput", @Value = Model.PropertiesValues["Last Modified By"].ToString(), @rows = 1, id = "PropertiesValues_31__value", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+    <hr />
+    <div class="row" role="navigation">
+        <div class="col-xs-4 col-xs-offset-1 col-sm-2 col-sm-offset-3 col-lg-1 col-lg-offset-4">
+            <a href="javascript:void(0);" onclick="history.go(-1);" class="btn btn-primary btn-block">Back</a>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-4 col-xs-offset-2 col-sm-2 col-lg-1">
+                <input type="submit" value="Save" class="btn btn-success btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    $(document).ready(() => {
+        $('#PropertiesValues_17__value').change(() => {
+            let dataGovFieldsetSelector = '#data_gov_fieldset';
+            let dataGovTextFields = '#PropertiesValues_32__value,#PropertiesValues_35__value';
+            let dataGovCheckFields = '#PropertiesValues_33__value,#PropertiesValues_34__value';
+
+            let isPHP = $('#PropertiesValues_17__value').val() === 'PHP';
+
+            if (isPHP) {
+                $(dataGovFieldsetSelector).show();
+            } else {
+                $(dataGovFieldsetSelector).hide();
+                $(dataGovTextFields).val('');
+                $(dataGovCheckFields).prop('checked', false);
+            }
+
+            $(dataGovTextFields).prop('required', isPHP);
+        }).trigger('change');
+    });
+
+    function GetJobAttachment(jobId) {
+        $('#attachmentsButton').html('Downloading...');
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Attachment", "JobIndex_C")",
+            data: { jobId: jobId },
+            success: function () {
+                window.location = "@Url.Action("Attachment", "JobIndex_C")?jobId=" + jobId
+                setTimeout(
+                    function () {
+                        $('#attachmentsButton').html('Get Attachments');
+                    }, 3000);
+            },
+            error: function () {
+                $('#attachmentsButton').html('Error');
+            }
+
+        })
+
+    }
+
+</script>
